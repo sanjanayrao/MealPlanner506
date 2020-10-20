@@ -7,7 +7,7 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: '',
+      username: 'Poo',
       password: '',
       error: '',
       token: ''
@@ -25,7 +25,7 @@ class Login extends React.Component {
 //       });
     
 
-    
+
    
       this.setState({username: "Poo"}, ()=>{this.props.auth(this.state.username)});
       this.setState({error: '' });

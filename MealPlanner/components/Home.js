@@ -21,12 +21,12 @@ class Home extends React.Component {
 
    login = (token, user) => {
      console.log(this.props.navigation)
-     this.props.navigation.navigate('Prof', { 'user': user});
+     this.props.navigation.navigate('My Meal Planner', { 'user': user});
     
   }
    createUser = (token, user) => {
        this._storeData(token, user);
-       this.props.navigation.navigate('Profile', {'token': token, 'user': user});
+       this.props.navigation.navigate('My Meal Planner', {'token': token, 'user': user});
 
    }
    

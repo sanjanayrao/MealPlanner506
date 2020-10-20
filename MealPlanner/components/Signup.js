@@ -14,41 +14,11 @@ class Signup extends React.Component {
   }
 
   async createAccount(){
-    if(this.state.username && this.state.password){
-     let msg = await fetch('https://mysqlcs639.cs.wisc.edu/users', {
-      method: 'POST',
-      headers: {
-        'Accept' : 'application/json',
-        'Content-Type' : 'application/json'
-      },
-      body: JSON.stringify({
-       username: this.state.username,
-       password: this.state.password
-       })
-      });
-      
-      data = await msg.json();
-      //collect error message
-      err = Object.values(data);
-      err = err[0];
-
-      if(msg.ok){
-        let data = await fetch('https://mysqlcs639.cs.wisc.edu/login', {
-           method: 'GET',
-           headers: {
-            'Accept' : 'application/json',
-            'Content-Type' : 'application/json',
-            'Authorization' : 'Basic ' + base64.encode(this.state.username + ':' +  this.state.password)
-            }});
-
-        data = await data.json();
-       this.setState({token: data["token"]}, ()=>{this.props.auth(data["token"], this.state.username)});
+    if( this.state.username && this.state.password){
+       this.setState({username: this.state.username});
 
         this.setState({error: '' });
-      }else{
-        this.setState({error: err });
-      }
-      
+     
     }else{
       this.setState({error: 'Please fill out all required fields!'})
     }
