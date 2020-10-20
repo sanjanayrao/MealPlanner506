@@ -20,7 +20,6 @@ class Home extends React.Component {
   }
 
    login = (token, user) => {
-     console.log(this.props.navigation)
      this.props.navigation.navigate('My Meal Planner', { 'user': user});
     
   }

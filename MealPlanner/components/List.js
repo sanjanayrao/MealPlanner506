@@ -1,197 +1,126 @@
+import * as React from 'react';
+const { useCallback, useState } = React
+import {  View, StyleSheet, FlatList, LayoutAnimation, Platform, UIManager } from 'react-native';
+import { Card, ListItem, Icon, Text } from 'react-native-elements';
+
+import SwipeRow from './SwipeRow'
+
+if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+} 
+
+// NOTE: this implementation is based off of a medium post tutorial on swipeable carde
+// https://snack.expo.io/@computerjazz/swipetodelete-rngh-reanimated
+
+
+
+
+// grocery list if a payload of array of ingredient objects, NO DUPLICATES
+const test = [
   
-import React, {Component} from "react";
-import {LayoutAnimation, UIManager, Animated, PanResponder, Dimensions, StyleSheet, AsyncStorage} from 'react-native';
-import {Body, Container, View, Text, Card, CardItem} from "native-base";
-import Button from './Button';
-import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
+    {
+      'name': 'egg',
+      'amount' : '2',
+      'unit' : 'cartons',
+       'key' : 13
+  },
+  {
+    'name': 'rice',
+    'amount' : '4',
+    'unit' : 'bags',
+    'key' : 1
 
+},
+{
+  'name': 'garlic',
+  'amount' : '2',
+  'unit' : 'cloves',
+  'key' : 14
 
-export class SwipeableCard extends Component {
-  translateX = new Animated.Value(0);
-  _panResponder = PanResponder.create({
-    onMoveShouldSetResponderCapture: () => true,
-    onMoveShouldSetPanResponderCapture: () => true,
-    onPanResponderMove: Animated.event([null, {dx: this.translateX}]),
-    onPanResponderRelease: (e, {vx, dx}) => {
-      const screenWidth = Dimensions.get("window").width;
-      if (Math.abs(vx) >= 0.5 || Math.abs(dx) >= 0.5 * screenWidth) {
-        Animated.timing(this.translateX, {
-          toValue: dx > 0 ? screenWidth : -screenWidth,
-          duration: 200
-        }).start(this.props.onDismiss);
-      } else {
-        Animated.spring(this.translateX, {
-          toValue: 0,
-          bounciness: 10
-        }).start();
-      }
-    }
-  });
+}, {
+  'name': 'onion',
+  'amount' : '7',
+  'unit' : 'pounds',
+  'key' : 11
 
+}, {
+  'name': 'tomato',
+  'amount' : '3',
+  'unit' : 'pounds',
+  'key' : 18
 
-  render() {
-    return (
-      <View>
-        <Animated.View
-          style={{transform: [{translateX: this.translateX}]}} {...this._panResponder.panHandlers}>
-          <TouchableOpacity onLongPress={()=>{this.props.edit()}}>
-          <Card style={styles.card}>
-            <CardItem>
-              <Body>
-              <Text style={styles.heading}>
-                {this.props.header}
-              </Text>
-              <Text style={styles.paragraph}>
-                {this.props.body}
-              </Text>
-              </Body>
-            </CardItem>
-          </Card>
-          </TouchableOpacity>
-        </Animated.View>
-      </View>
+}, {
+  'name': 'potato',
+  'amount' : '9',
+  'unit' : 'pounds',
+  'key' : 122
 
-    );
-  }
-}
+},
+]
 
+class App extends React.Component {
 
-export default class List extends Component {
   state = {
-    closedIndices: [],
-    items: [],
-    user: ''
-  };
-
-  constructor() {
-    super();
-    UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
-    this.shouldRender = this.shouldRender.bind(this);
+    data: [],
   }
-
-  async deleteItem(id){
-  
-        
-  }
-
-  async fetchList(){
-    this.setState({closedIndices: []});
-    
-    items = [
-        {
-            'name': 'garlic',
-            'amount' : 4
-        },
-        {
-            'name': 'onion',
-            'amount' : 4
-        },{
-            'name': 'lettuc',
-            'amount' : 4
-        },
-
-    ]
-    this.setState({items: items});
-  
-   
-  }
-
-
 
   componentDidMount(){
-    this.fetchList
+    // reduce meals to just 
+    let temp = test;
+   
+    this.setState({data: temp})
   }
-  
-  componentWillUnmount(){
-  }
- 
-  toolTip(){
-    if(this.state.list){
-      return <View style={styles.hint}>
-      <Text   style={{color: '#9aa195', fontSize: 12}}> Swipe to remove </Text>
-    </View>;
-    }
-  }
-  shouldRender(index) {
-    return this.state.closedIndices.indexOf(index) === -1 && !this.state.showEdit && !this.state.showAdd;
+  deleteItem = (item) => {
+    const updatedData = this.state.data.filter(d => d !== item)
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
+    this.setState({ data: updatedData })
+    // TODO: MAKE API CALL HERE TO DELETE ITEM
   }
 
+  renderItem = ({ item, index }) => (
+       
+        <SwipeRow
+          key={item.key}
+          item={item}
+          swipeThreshold={-150}
+          onSwipe={this.deleteItem} 
+        >
+            <Text h4 style={styles.swipe}>{item.name} - {item.amount} {item.unit}</Text>
+        </SwipeRow>
+      ) 
 
-  showCardView(){
-    if(!this.state.showEdit && !this.state.showAdd){
-
-      return <ScrollView>
-      {this.state.items.map((item, i) => this.shouldRender(i) &&
-        <TouchableOpacity key={i} ><View key={i}><SwipeableCard id={i}
-        header={item["name"]} 
-        body={item["amount"]}
-              onDismiss={() => {
-
-          if ([...new Array(this.state.items.length)].slice(i + 1, this.state.items.length).some(this.shouldRender)) {
-            LayoutAnimation.configureNext(LayoutAnimation.Presets.spring); 
-          }          
-          this.setState({
-            closedIndices: [...this.state.closedIndices, i]
-          })
-        }}
-        />
-          </View></TouchableOpacity>)}</ScrollView>;
-    }
-  }
   render() {
+
     return (
-      <Container style={styles.container}>
-        <Text style={styles.head}>Today's Grocery List</Text>
-            {this.showCardView()}      
-            {this.toolTip() }
-      </Container>
+      <View style={styles.container}>
+        <Text style={styles.header} h2>
+          Grocery List
+        </Text>
+       <FlatList 
+          data={this.state.data}
+          renderItem={this.renderItem}
+        />
+      </View>
     );
   }
 }
 
-var styles = StyleSheet.create({
-  head:{
-    marginTop: 60,
-    fontSize: 40,
-    alignSelf: 'center'
-  },
+export default App
+
+const styles = StyleSheet.create({
   container: {
-    height: '100%',
-    backgroundColor: '#ecf0f1',
-    padding: 8
-    },
-  paragraph: {
-    fontSize: 12,
-    paddingBottom: 5,
-  },
-  heading: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    paddingBottom: 5,
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#fff',
-    width: '100%',
-    padding: 0,
-  },
-  add:{
-    backgroundColor: '#9FC9AE', 
-    padding: 10, 
-    borderRadius: 10,
-    height: 60,
-    width: 175,
-    alignSelf: 'center',
-    alignItems: 'center',
-    margin:10,
-    justifyContent: 'center',
-    alignContent: 'center'
-  },
-  hint:{
     flex: 1,
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'flex-end'    
+  },
+  swipe:{  
+    backgroundColor: "white",
+    color: 'black',
+    fontSize: 16,
+    flex: 1,
+    padding: 25,
+    textAlign: 'center',
+    margin: 2
+  } ,
+  header:{
+    margin: 15
   }
 });

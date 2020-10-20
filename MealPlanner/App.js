@@ -19,21 +19,21 @@ function Homescreen({navigation}) {
 }
 
 
-function Mealsscreen() {
+function Mealsscreen({navigation}) {
   return (
-    <Meals/>
+    <Meals navigation={navigation} />
   );
 }
 
-function Mealscreen() {
+function Mealscreen( {route}) {
   return (
-    <MealInfo/>
+    <MealInfo route={route}  />
   );
 }
 
-function Deckscreen() {
+function Deckscreen({navigation}) {
   return (
-    <Deck/>
+    <Deck navigation={navigation}  />
   );
 }
 
@@ -70,6 +70,8 @@ function MyStack() {
     <Stack.Navigator>
       <Stack.Screen name="Log In" component={Homescreen} />
       <Stack.Screen name="Meal View" component={Mealscreen}/>
+      <Stack.Screen name="Deck" component={Deckscreen} />
+      <Stack.Screen name="Meals" component={Mealsscreen} />
       <Stack.Screen name="My Meal Planner" component={BottomTabs} />
     </Stack.Navigator>
   );
