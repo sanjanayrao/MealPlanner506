@@ -21,7 +21,7 @@ class Home extends React.Component {
 
    login = (token, user) => {
      console.log(this.props.navigation)
-     this.props.navigation.navigate('Meals', { 'user': user});
+     this.props.navigation.navigate('Prof', { 'user': user});
     
   }
    createUser = (token, user) => {

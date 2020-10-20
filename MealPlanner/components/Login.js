@@ -27,7 +27,7 @@ class Login extends React.Component {
 
     
    
-      this.setState({username: "TEST"}, ()=>{this.props.auth(this.state.username)});
+      this.setState({username: "Poo"}, ()=>{this.props.auth(this.state.username)});
       this.setState({error: '' });
   }
 

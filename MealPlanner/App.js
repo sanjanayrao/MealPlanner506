@@ -11,9 +11,9 @@ import Settings from './components/Settings'
 
 
 
-function Homescreen() {
+function Homescreen({navigation}) {
   return (
-    <Home/>
+    <Home navigation={navigation}/>
   );
 }
 
@@ -61,7 +61,7 @@ function MyStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Log In" component={Homescreen} />
-      <Stack.Screen name="Profile" component={BottomTabs} />
+      <Stack.Screen name="Prof" component={BottomTabs} />
     </Stack.Navigator>
   );
 }
