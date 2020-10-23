@@ -8,8 +8,8 @@ import Meals from './components/Meals';
 import MealInfo from './components/MealInfo';
 import Deck from './components/Deck';
 import List from './components/List';
-import Settings from './components/Settings'
-
+import Settings from './components/Settings';
+import AddMeal from './components/AddMeal';
 
 
 function Homescreen({navigation}) {
@@ -49,6 +49,13 @@ function Settingscreen(){
   );
 }
 
+function AddMealScreen(){
+  return(
+    <AddMeal/>
+  );
+}
+
+
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
@@ -73,6 +80,7 @@ function MyStack() {
       <Stack.Screen name="Deck" component={Deckscreen} />
       <Stack.Screen name="Meals" component={Mealsscreen} />
       <Stack.Screen name="My Meal Planner" component={BottomTabs} />
+      <Stack.Screen name="Add Meal" component={AddMealScreen} />
     </Stack.Navigator>
   );
 }

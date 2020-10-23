@@ -123,6 +123,7 @@ export default class Meals extends React.Component{
     }
     
     addMeal(){
+        this.props.navigation.navigate('Add Meal')
 
     }
     render(){
