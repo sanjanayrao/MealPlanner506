@@ -2,13 +2,13 @@ import React from 'react';
 import { Text, View, TouchableWithoutFeedback, TextInput, StyleSheet, Dimensions } from 'react-native';
 import Button from './Button';
 import base64 from 'base-64';
-import * as fb from '../backend/firebase'
+import * as controller from '../backend/controller'
 
 class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: 'Poo',
+      username: 'admin',
       password: '',
       error: '',
       token: ''
@@ -24,12 +24,17 @@ class Login extends React.Component {
 //         'Authorization' : 'Basic ' + base64.encode(this.state.username + ':' +  this.state.password)
 //        }
 //       });
-    
-      console.log("SEND REQUEST")
-      await fb.query_users([["username", "==", "admin"],["password", "==", "admin"]])
-   
-      this.setState({username: "Poo"}, ()=>{this.props.auth(this.state.username)});
-      this.setState({error: '' });
+    var login_result
+    await controller.user_login(this.state.username, this.state.password).then(function(result){
+      login_result = result
+    })
+
+    if(login_result.success) {
+        this.setState({username: this.state.username}, ()=>{this.props.auth(this.state.username)});
+    } else {
+        this.setState({password: ''});
+        this.setState({error: login_result.err });
+    }
   }
 
   render() {
