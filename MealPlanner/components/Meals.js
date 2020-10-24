@@ -27,7 +27,7 @@ const testMeals = [
 
 
     },{
-        "name": "yummyneww",
+        "name": "A really long recipe name that never seems to end",
         "ingredients": [
             {
                 'name': 'water',
@@ -121,7 +121,7 @@ export default class Meals extends React.Component{
         }
         return cards;
     }
-    
+
     addMeal(){
         this.props.navigation.navigate('Add Meal')
 
@@ -143,9 +143,7 @@ export default class Meals extends React.Component{
                                 <Card.Title>
                                     {item.item.name}
                                 </Card.Title>
-                                <Text>
-                                    Serves: {item.item.servings}
-                                </Text>
+                               
                                 <Button
                                     text={'View Meal'}
                                     textStyle={{color: 'white'}}

@@ -1,6 +1,7 @@
 import React from 'react';
 import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView} from 'react-native';
 import { Card, ListItem, Icon, Text } from 'react-native-elements';
+import Button from './Button';
 
 
 export default class MealInfo extends React.Component{
@@ -16,6 +17,13 @@ export default class MealInfo extends React.Component{
         }
     }
 
+    deleteMeal(){
+        // TODO: MAKE API CALL HERE AND HANDLE DELETION OF MEAL
+    }
+    edit(){
+        // display edit modal    
+    }
+    
     componentDidMount(){
         this.setState({meal : this.props.route.params.meal})
     }
@@ -31,12 +39,76 @@ export default class MealInfo extends React.Component{
         }
         return ingreds
     }
+   
     render(){
         return(
             <ScrollView>
                 <Card>
                     <Card.Title> 
-                        <Text h2> {this.state.meal.name} </Text>
+                        
+                        {/* <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}} >
+                            <View >
+                                <Text style={styles.title} h2> {this.state.meal.name} </Text>
+                            </View>
+                            <View >
+                            <Button
+                                text={'Edit'}
+                                textStyle={{color: 'white'}}
+                                buttonStyle={styles.edit}
+                                onPress={()=>this.edit() }
+                            />
+                            </View>
+                            <View >
+                            <Button
+                                text={'Delete'}
+                                textStyle={{color: 'white'}}
+                                buttonStyle={styles.delete}
+                                onPress={()=>this.deleteMeal() }
+                            /> 
+                            </View>
+                           
+                        </View> */}
+                        <View style={{
+                            flex: 1,
+                            flexDirection: 'row',
+                            width: '100%',
+                            justifyContent: 'space-between',
+                        }}>
+                            <View style={{
+                                flex: 1,
+                                justifyContent: 'space-between',
+                            }}>
+                                <Text style={styles.title} h2> {this.state.meal.name} </Text>
+                            </View>
+                            <View style={{
+                                flex: 1,
+                                flexDirection: 'row'
+                            }}>
+                                <View style={{
+                                    flex: 1,
+                                }}>
+                                    <Button
+                                        text={'Edit'}
+                                        textStyle={{color: 'white'}}
+                                        buttonStyle={styles.edit}
+                                        onPress={()=>this.edit() }
+                                    />
+                                </View>
+                                <View style={{
+                                    flex: 1,
+                                }}>
+                                    <Button
+                                        text={'Delete'}
+                                        textStyle={{color: 'white'}}
+                                        buttonStyle={styles.delete}
+                                        onPress={()=>this.deleteMeal() }
+                                    /> 
+                                </View>
+                            </View>
+                        </View>
+                        );
+                         
+                         
                     </Card.Title>
                     <View style={styles.textArea}>
                         <Text  style={styles.header} h4>
@@ -66,5 +138,26 @@ const styles = StyleSheet.create({
     },
     header:{
         marginBottom: 10
-    }
+    },
+    delete:{
+        backgroundColor: 'red', 
+        padding: 10, 
+        borderRadius: 10,
+        marginHorizontal: 5,
+        alignSelf: 'flex-end',
+        alignItems: 'center',
+        position: 'relative'
+
+    },
+    edit:{
+        backgroundColor: '#9FC9AE', 
+        padding: 10, 
+        borderRadius: 10,
+        marginHorizontal: 5,
+        alignSelf: 'flex-end',
+        alignItems: 'center',
+        position: 'relative'
+
+    },
+    
 });

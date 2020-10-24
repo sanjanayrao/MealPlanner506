@@ -1,7 +1,7 @@
 import React from 'react';
 import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView} from 'react-native';
 import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
-
+import Button from './Button'
 
 export default class AddMeal extends React.Component{
     constructor(props){
@@ -15,8 +15,14 @@ export default class AddMeal extends React.Component{
     }
 
     updateDB(){
-        // update the database with the added meal here
+        // TODO:  update the database with the added meal here
+
+        
+        this.props.navigation.goBack();
+
+
     }
+
     render(){
         return(
             <View>
@@ -37,9 +43,27 @@ export default class AddMeal extends React.Component{
                     placeholder="Servings"
                     onChangeText={value => this.setState({ servings: value })}
                     />
+                     <Button
+                        text={'Add Meal'}
+                        textStyle={{color: 'white'}}
+                        buttonStyle={styles.edit}
+                        onPress={()=>this.updateDB() }
+                    />
                 </Card>
                 
             </View>
         )
     }
 }
+const styles = StyleSheet.create({
+    edit:{
+        backgroundColor: '#9FC9AE', 
+        padding: 10, 
+        borderRadius: 10,
+        marginHorizontal: 5,
+        alignSelf: 'flex-end',
+        alignItems: 'center',
+        position: 'relative'
+
+    },
+})

@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, TouchableWithoutFeedback, TextInput, StyleSheet, Dimensions } from 'react-native';
 import Button from './Button';
 import base64 from 'base-64';
+import * as fb from '../backend/firebase'
 
 class Login extends React.Component {
   constructor() {
@@ -24,8 +25,8 @@ class Login extends React.Component {
 //        }
 //       });
     
-
-
+      console.log("SEND REQUEST")
+      await fb.query_users([["username", "==", "admin"],["password", "==", "admin"]])
    
       this.setState({username: "Poo"}, ()=>{this.props.auth(this.state.username)});
       this.setState({error: '' });

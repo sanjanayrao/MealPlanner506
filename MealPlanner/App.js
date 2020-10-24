@@ -49,9 +49,9 @@ function Settingscreen(){
   );
 }
 
-function AddMealScreen(){
+function AddMealScreen({navigation}){
   return(
-    <AddMeal/>
+    <AddMeal navigation={navigation}/>
   );
 }
 
