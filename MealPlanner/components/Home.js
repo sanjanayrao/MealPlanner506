@@ -39,7 +39,7 @@ class Home extends React.Component {
           <Button buttonStyle={styles.signUpButton} textStyle={{color: 'white'}} text={'Sign Up'} onPress={() => this.showSignup()}/>
         </View>
         <Login auth={this.login} switch={()=>{this.showSignup()}} width={300} height={600} show={this.state.showLogin} hide={() => this.hideLogin()}/>
-        <Signup auth={this.createUser} switch={()=>{this.showLogin()}} width={300} height={600} show={this.state.showSignup} hide={() => this.hideSignup()}/>
+        <Signup auth={this.login} switch={()=>{this.showLogin()}} width={300} height={600} show={this.state.showSignup} hide={() => this.hideSignup()}/>
       </View>
     );
   }

@@ -1,7 +1,7 @@
 const firebase = require("firebase");
 require("firebase/firestore");
 
-var firebaseConfig = {
+var firebase_config = {
     apiKey: "AIzaSyDRCnGnTx85iTkSaI9aMI168sQ81NpcwmA",
     authDomain: "meal-planner-2692d.firebaseapp.com",
     databaseURL: "https://meal-planner-2692d.firebaseio.com",
@@ -12,9 +12,7 @@ var firebaseConfig = {
     measurementId: "G-X1STGXH62T"
 };
 
-// Initialize Firebase
-//if(!firebase.app.length) // Comment this out the first time you start expo
-    firebase.initializeApp(firebaseConfig);
+export default !firebase.apps.length ? firebase.initializeApp(firebase_config) : firebase.app();
 
 const db = firebase.firestore();
 
@@ -25,7 +23,7 @@ const __DEBUG__ = false;
  * 
  * @param {array[array]}   queries     An array of query parameters
  * 
- * @return {array[Objects]} Returns an array of each matchin document data 
+ * @return {array[Objects]} Returns an array of each matching document data 
  */
 export async function query_users(queries) {
     if(__DEBUG__) {
@@ -62,13 +60,13 @@ export async function query_users(queries) {
 }
 
 /**
- *  Sets data in the users collection with the provided data
+ *  Add data in the users collection with the provided data at a new doc
  * 
  * @param {Object}  doc     A firebase document object
  * 
  * @returns Return true on success
  */
-export async function write_users(doc) {
+export async function add_users(doc) {
     if(__DEBUG__) {
         console.debug("--BEGIN DEBUGGING--");
         console.debug("WRITING TO USERS COLLECTION");
@@ -79,8 +77,8 @@ export async function write_users(doc) {
     var users_ref = db.collection("users");
     var err = false;
 
-    await users_ref.doc(doc.id)
-    .set(doc.data)
+    await users_ref
+    .add(doc.data)
     .then(function(){})
     .catch(function(error) {
         console.error("Error updating document: ", error);
