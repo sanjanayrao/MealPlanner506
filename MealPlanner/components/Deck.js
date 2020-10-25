@@ -99,6 +99,17 @@ export default class Meals extends React.Component{
         }
     }
 
+    generate(){
+        // TODO: GET GENERATED MEALS FROM API
+        let rand = [];
+        for(const i in testMeals){
+            if(Math.random() < 0.5){
+                rand.push(testMeals[i])
+            }
+        }
+        this.setState({meals: rand})
+    }
+
     getMealCards(){
         let cards = [];
 
@@ -125,7 +136,14 @@ export default class Meals extends React.Component{
     render(){
         return(
            <ScrollView>
-                <Text style={styles.header} h2>Meals on Deck</Text>
+               <View  style={{
+                                flex: 1,
+                                flexDirection: 'row'
+                            }}> 
+                    <Text style={styles.header} h2>Meals on Deck</Text>
+                    <Button text={'↺'} textStyle={{color:'white', fontSize: 36}} buttonStyle={styles.generate} onPress={()=>this.generate()}/>
+               </View>
+
                 {this.getMealCards()}
                 
            </ScrollView>
@@ -153,5 +171,14 @@ const styles = StyleSheet.create({
     },
     header:{
         margin: 15
+      },
+      generate:{
+        backgroundColor: '#553555', 
+        padding: 10, 
+        borderRadius: 50,
+        width: '15%',
+        alignSelf: 'flex-end',
+        alignItems: 'center',
+        margin:10,
       }
   });

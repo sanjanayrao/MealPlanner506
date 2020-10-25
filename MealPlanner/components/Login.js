@@ -9,21 +9,14 @@ class Login extends React.Component {
     super();
     this.state = {
       username: 'admin',
-      password: '',
+      password: 'admin',
       error: '',
       token: ''
     };
   }
 
   async sendRequest(){
-//    let msg = await fetch('https://mysqlcs639.cs.wisc.edu/login', {
-//       method: 'GET',
-//       headers: {
-//         'Accept' : 'application/json',
-//         'Content-Type' : 'application/json',
-//         'Authorization' : 'Basic ' + base64.encode(this.state.username + ':' +  this.state.password)
-//        }
-//       });
+
     var login_result
     await controller.user_login(this.state.username, this.state.password).then(function(result){
       login_result = result

@@ -129,10 +129,12 @@ export default class Meals extends React.Component{
     render(){
         return(
             <View>
-            <Text style={styles.header} h2>My Meals</Text>
-            <Button text={'+'} textStyle={{color:'white', fontSize: 36}} buttonStyle={styles.add} onPress={()=>this.addMeal()}/>
+                <View>
+                     <Text style={styles.header} h2>My Meals</Text>
+                     <Button text={'+'} textStyle={{color:'white', fontSize: 36}} buttonStyle={styles.add} onPress={()=>this.addMeal()}/>
 
-
+                </View>   
+            
                 <SafeAreaView style={styles.container}>
                     <FlatList 
                         data={this.state.meals}

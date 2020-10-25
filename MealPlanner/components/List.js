@@ -80,7 +80,7 @@ class App extends React.Component {
   renderItem = ({ item, index }) => (
        
         <SwipeRow
-          key={item.key}
+          key={item.key.toString()}
           item={item}
           swipeThreshold={-150}
           onSwipe={this.deleteItem} 

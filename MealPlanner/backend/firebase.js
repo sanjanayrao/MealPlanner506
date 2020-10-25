@@ -13,7 +13,7 @@ var firebaseConfig = {
 };
 
 // Initialize Firebase
-if(!firebase.app.length) // Comment this out the first time you start expo
+//if(!firebase.app.length) // Comment this out the first time you start expo
     firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();

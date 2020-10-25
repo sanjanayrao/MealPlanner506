@@ -1,6 +1,6 @@
 import React from 'react';
-import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView} from 'react-native';
-import { Card, ListItem, Icon, Text } from 'react-native-elements';
+import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, Modal, TouchableHighlight} from 'react-native';
+import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
 import Button from './Button';
 
 
@@ -10,7 +10,14 @@ export default class MealInfo extends React.Component{
         this.state = {
             meal : { 
                 name: '',
-                ingredients: {},
+                ingredients: [],
+                steps: '',
+                servings: 0
+            },
+            modal: false,
+            modalVals : {
+                name: '',
+                ingredients: [],
                 steps: '',
                 servings: 0
             }
@@ -21,9 +28,44 @@ export default class MealInfo extends React.Component{
         // TODO: MAKE API CALL HERE AND HANDLE DELETION OF MEAL
     }
     edit(){
-        // display edit modal    
+        // display edit modal   
+        this.showModal();
+
+    }
+    updateMeal(){
+        let mealObj = this.state.meal;
+        if(this.state.meal.name != this.state.modalVals.name){
+            mealObj['name'] = this.state.modalVals.name;
+        }
+        if(this.state.meal.ingredients != this.state.modalVals.ingredients){
+            mealObj['ingredients'] = this.parseIngredients(this.state.modalVals.ingredients);
+        }
+        if(this.state.meal.steps != this.state.modalVals.steps){
+            mealObj['steps'] = this.state.modalVals.steps;
+        }
+        if(this.state.meal.servings.toString() != this.state.modalVals.servings.toString()){
+            mealObj['servings'] = this.state.modalVals.servings;
+        }
+        this.setState({meal: mealObj})
+        // MAKE API CALL HERE TO UPDATE THE MEAL W THE CURRENT STATE
     }
     
+    parseIngredients(ingred_string){
+        let arr = ingred_string.split(",")
+        let obj = [];
+        for(const i in arr){
+            let item = arr[i].trim().split(' ')
+            console.log(item)
+            obj.push({
+                'name' : item[3],
+                'amount' : item[0],
+                'unit' : item[1]
+            })
+        }
+        console.log(obj)
+        return obj
+
+    }
     componentDidMount(){
         this.setState({meal : this.props.route.params.meal})
     }
@@ -33,41 +75,108 @@ export default class MealInfo extends React.Component{
             for(const i in this.state.meal.ingredients){
                 let ing = this.state.meal.ingredients[i];
                 ingreds.push(
-                <Text>➤ {ing.name} -  x{ing.amount} {ing.unit}</Text>
+                <Text key={i}>➤ {ing.name} -  x{ing.amount} {ing.unit}</Text>
                 )
             }
         }
         return ingreds
     }
-   
+   returnCurrIngredientsString(){
+       let s = ""
+       for(const i in this.state.meal.ingredients){
+            let ing = this.state.meal.ingredients[i];
+            let add = ing.amount + " " + ing.unit + " of " + ing.name + ", "
+            s += add;
+       }
+       return s;
+   }
+    hideModalAndSave = () =>{
+        this.updateMeal();
+        this.setState({modal: false})
+    }
+
+    hideModal = () => {
+        this.setState({modal: false})
+    }
+
+    showModal = () =>{
+        
+        this.setState({modalVals: Object.assign({}, this.state.meal)})
+        this.setState({modal: true})
+    }
+
+    changeName(val){
+        let myObj = this.state.modalVals
+        myObj.name = val
+        this.setState({modalVals: myObj})
+    }
+
+    changeIngredients(val){
+        let myObj = this.state.modalVals
+        myObj.ingredients = val
+        this.setState({modalVals: myObj})
+    }
+    changeSteps(val){
+        let myObj = this.state.modalVals
+        myObj.steps = val
+        this.setState({modalVals: myObj})
+    }
+    changeServings(val){
+        let myObj = this.state.modalVals
+        myObj.servings = val
+        this.setState({modalVals: myObj})
+    }
     render(){
         return(
             <ScrollView>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={this.state.modal}
+                    onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Input
+                        placeholder={this.state.modalVals.name}
+                        onChangeText={value => this.changeName(value)}
+                        />
+                        <Input
+                        placeholder={this.returnCurrIngredientsString()}
+                        onChangeText={value => this.changeIngredients(value)}
+                        />
+                        <Input
+                        placeholder={this.state.modalVals.steps}
+                        onChangeText={value => this.changeSteps(value)}
+                        />
+                        <Input
+                        placeholder={this.state.modalVals.servings.toString()}
+                        onChangeText={value => this.changeServings(value)}
+                        />
+
+                        <TouchableHighlight
+                        style={{ ...styles.openButton}}
+                        onPress={() => {
+                            this.hideModalAndSave();
+                        }}
+                        >
+                        <Text style={{color: 'white'}}>Save Changes</Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight
+                        style={{ ...styles.cancel}}
+                        onPress={() => {
+                            this.hideModal();
+                        }}
+                        >
+                        <Text style={{color: 'white'}} >Cancel</Text>
+                        </TouchableHighlight>
+                    </View>
+                    </View>
+                </Modal>
                 <Card>
                     <Card.Title> 
-                        
-                        {/* <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}} >
-                            <View >
-                                <Text style={styles.title} h2> {this.state.meal.name} </Text>
-                            </View>
-                            <View >
-                            <Button
-                                text={'Edit'}
-                                textStyle={{color: 'white'}}
-                                buttonStyle={styles.edit}
-                                onPress={()=>this.edit() }
-                            />
-                            </View>
-                            <View >
-                            <Button
-                                text={'Delete'}
-                                textStyle={{color: 'white'}}
-                                buttonStyle={styles.delete}
-                                onPress={()=>this.deleteMeal() }
-                            /> 
-                            </View>
-                           
-                        </View> */}
                         <View style={{
                             flex: 1,
                             flexDirection: 'row',
@@ -143,7 +252,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'red', 
         padding: 10, 
         borderRadius: 10,
-        marginHorizontal: 5,
         alignSelf: 'flex-end',
         alignItems: 'center',
         position: 'relative'
@@ -153,11 +261,54 @@ const styles = StyleSheet.create({
         backgroundColor: '#9FC9AE', 
         padding: 10, 
         borderRadius: 10,
-        marginHorizontal: 5,
         alignSelf: 'flex-end',
         alignItems: 'center',
         position: 'relative'
 
     },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+      },
+      modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        width: "90%"
+      },
+      openButton: {
+        backgroundColor: "#553555",
+        borderRadius: 10,
+        padding: 10,
+        margin: 5,
+        elevation: 2,
+      },
+      cancel:{
+        backgroundColor: "gray",
+        borderRadius: 10,
+        padding: 10,
+        elevation: 2
+      },
+      textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+      },
+      modalText: {
+        marginBottom: 15,
+        textAlign: "center"
+      }
     
 });
