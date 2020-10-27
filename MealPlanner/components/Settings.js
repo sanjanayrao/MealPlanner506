@@ -10,7 +10,8 @@ export default class Settings extends React.Component{
     constructor(){
         super();
         this.state = {
-            visible: false
+            visible: false,
+            visibleTwo: false
         };
     }
 
@@ -18,21 +19,41 @@ export default class Settings extends React.Component{
         this.setState({visible: false})
         // TODO:  remove all meals here
     }
+    recoverAll(){
+        this.setState({visibleTwo: false})
+        //TODOL recover meals here
+    }
     setStateFalse(){
         this.setState({visible: false})
+    }
+    setVisibleTwo(){
+        this.setState({visibleTwo: false})
     }
 
     render(){
         return(
-            <View>
+            <View style={{
+                alignItems: "center"
+            
+            }}>
+                <Text style={styles.header} h2>  Settings </Text>
                 <Card>  
-                    <Text>Settings</Text>
-                    <Button
+                 
+                    <Button style={styles.button}
                         text={'Remove All Meals'}
                         textStyle={{color: 'white'}}
                         buttonStyle={styles.edit}
                         onPress={()=> 
                             this.setState({visible: true})
+                        }
+                    />
+                    <View style={styles.space} />
+                    <Button style={styles.button}
+                        text={'Recover All Meals'}
+                        textStyle={{color: 'white'}}
+                        buttonStyle={styles.edit}
+                        onPress={()=> 
+                            this.setState({visibleTwo: true})
                         }
                     />
                     <Dialog
@@ -56,6 +77,27 @@ export default class Settings extends React.Component{
                         }
                     
                     ></Dialog>
+                    <Dialog
+                        visible={this.state.visibleTwo}
+                        dialogTitle={<DialogTitle title="Are you sure?" />}
+                        footer={
+                            <DialogFooter>
+                                <DialogButton
+                                    buttonStyle={styles.edit}
+                                    text="Yes"
+                                    onPress={()=>this.recoverAll() }
+                                />
+                                <DialogButton
+                                    text="No"
+                                    buttonStyle={styles.edit}
+                                    onPress={()=> 
+                                        this.setVisibleTwo()
+                                    }
+                                />
+                            </DialogFooter>
+                        }
+                    
+                    ></Dialog>
                 </Card>  
             </View>
         )
@@ -65,7 +107,7 @@ export default class Settings extends React.Component{
 const styles = StyleSheet.create({
     edit:{
         backgroundColor: '#9FC9AE', 
-        padding: 10, 
+        padding: 20, 
         borderRadius: 10,
         marginHorizontal: 5,
         alignSelf: 'flex-end',
@@ -73,4 +115,22 @@ const styles = StyleSheet.create({
         position: 'relative'
 
     },
+    button:{
+        backgroundColor: '#9FC9AE', 
+        padding: 10, 
+        borderRadius: 10,
+        height: 60,
+        width: "75%",
+        alignSelf: 'center',
+        alignItems: 'center',
+        margin:1000,
+        justifyContent: 'center',
+        alignContent: 'center'
+    
+      },
+      space: {
+        width: 20, // or whatever size you need
+        height: 20,
+      },
+   
 })
