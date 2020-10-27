@@ -1,9 +1,12 @@
 import React from 'react';
-import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
-import { Text, View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet} from 'react-native';
+import {View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView} from 'react-native';
+import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
+import  {Dialog, DialogFooter, DialogButton, DialogContent, DialogTitle } from 'react-native-popup-dialog';
+import Button from './Button'
 
 
-export default class Deck extends React.Component{
+
+export default class Settings extends React.Component{
     constructor(){
         super();
         this.state = {
@@ -14,6 +17,9 @@ export default class Deck extends React.Component{
     removeAll(){
         this.setState({visible: false})
         // TODO:  remove all meals here
+    }
+    setStateFalse(){
+        this.setState({visible: false})
     }
 
     render(){
@@ -35,17 +41,20 @@ export default class Deck extends React.Component{
                         footer={
                             <DialogFooter>
                                 <DialogButton
+                                    buttonStyle={styles.edit}
                                     text="Yes"
                                     onPress={()=>this.removeAll() }
                                 />
                                 <DialogButton
                                     text="No"
+                                    buttonStyle={styles.edit}
                                     onPress={()=> 
-                                        this.setState({visible: false})
+                                        this.setStateFalse()
                                     }
                                 />
                             </DialogFooter>
                         }
+                    
                     ></Dialog>
                 </Card>  
             </View>
