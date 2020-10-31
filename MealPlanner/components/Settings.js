@@ -11,7 +11,6 @@ export default class Settings extends React.Component{
         super();
         this.state = {
             visible: false,
-            visibleTwo: false
         };
     }
 
@@ -19,25 +18,21 @@ export default class Settings extends React.Component{
         this.setState({visible: false})
         // TODO:  remove all meals here
     }
-    recoverAll(){
-        this.setState({visibleTwo: false})
-        //TODOL recover meals here
-    }
+   
     setStateFalse(){
+        // hide the modal
         this.setState({visible: false})
     }
-    setVisibleTwo(){
-        this.setState({visibleTwo: false})
-    }
+    
 
     render(){
         return(
             <View style={{
-                alignItems: "center"
-            
+                
+               
             }}>
                 <Text style={styles.header} h2>  Settings </Text>
-                <Card>  
+                <Card >  
                  
                     <Button style={styles.button}
                         text={'Remove All Meals'}
@@ -48,57 +43,29 @@ export default class Settings extends React.Component{
                         }
                     />
                     <View style={styles.space} />
-                    <Button style={styles.button}
-                        text={'Recover All Meals'}
-                        textStyle={{color: 'white'}}
-                        buttonStyle={styles.edit}
-                        onPress={()=> 
-                            this.setState({visibleTwo: true})
-                        }
-                    />
-                    <Dialog
+                
+                   
+                </Card>  
+                <Dialog
                         visible={this.state.visible}
                         dialogTitle={<DialogTitle title="Are you sure?" />}
                         footer={
                             <DialogFooter>
                                 <DialogButton
-                                    buttonStyle={styles.edit}
                                     text="Yes"
                                     onPress={()=>this.removeAll() }
                                 />
                                 <DialogButton
                                     text="No"
-                                    buttonStyle={styles.edit}
                                     onPress={()=> 
                                         this.setStateFalse()
                                     }
                                 />
                             </DialogFooter>
                         }
+                         
                     
                     ></Dialog>
-                    <Dialog
-                        visible={this.state.visibleTwo}
-                        dialogTitle={<DialogTitle title="Are you sure?" />}
-                        footer={
-                            <DialogFooter>
-                                <DialogButton
-                                    buttonStyle={styles.edit}
-                                    text="Yes"
-                                    onPress={()=>this.recoverAll() }
-                                />
-                                <DialogButton
-                                    text="No"
-                                    buttonStyle={styles.edit}
-                                    onPress={()=> 
-                                        this.setVisibleTwo()
-                                    }
-                                />
-                            </DialogFooter>
-                        }
-                    
-                    ></Dialog>
-                </Card>  
             </View>
         )
     }
@@ -109,10 +76,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#9FC9AE', 
         padding: 20, 
         borderRadius: 10,
-        marginHorizontal: 5,
-        alignSelf: 'flex-end',
-        alignItems: 'center',
-        position: 'relative'
+        marginHorizontal: 5
 
     },
     button:{
