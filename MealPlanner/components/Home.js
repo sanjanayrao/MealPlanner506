@@ -20,14 +20,22 @@ class Home extends React.Component {
   }
 
    login = (user) => {
-     this.props.navigation.navigate('My Meal Planner', { 'user': user});
+     this._storeData(user)
+     this.props.navigation.navigate('My Meal Planner',  { 'user': user});
+
+
     
   }
-   createUser = (token, user) => {
-       this._storeData(token, user);
-       this.props.navigation.navigate('My Meal Planner', {'token': token, 'user': user});
-
-   }
+   _storeData = async (user) => {
+  try {
+    await AsyncStorage.setItem(
+      'user',
+      user
+    );
+  } catch (error) {
+    // Error saving data
+  }
+};
    
 
   render() {

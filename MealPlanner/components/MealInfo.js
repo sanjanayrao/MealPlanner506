@@ -2,7 +2,7 @@ import React from 'react';
 import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, Modal, TouchableHighlight} from 'react-native';
 import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
 import Button from './Button';
-
+import * as helper from '../backend/helper'
 
 export default class MealInfo extends React.Component{
     constructor(){
@@ -10,14 +10,15 @@ export default class MealInfo extends React.Component{
         this.state = {
             meal : { 
                 name: '',
-                ingredients: [],
+                ingredients: '',
                 steps: '',
-                servings: 0
+                servings: 0,
+                user: ''
             },
             modal: false,
             modalVals : {
                 name: '',
-                ingredients: [],
+                ingredients: '',
                 steps: '',
                 servings: 0
             }
@@ -27,6 +28,7 @@ export default class MealInfo extends React.Component{
     deleteMeal(){
         // TODO: MAKE API CALL HERE AND HANDLE DELETION OF MEAL
     }
+   
     edit(){
         // display edit modal   
         this.showModal();
@@ -52,30 +54,22 @@ export default class MealInfo extends React.Component{
     
     parseIngredients(ingred_string){
         let arr = ingred_string.split(",")
-        let obj = [];
-        for(const i in arr){
-            let item = arr[i].trim().split(' ')
-            console.log(item)
-            obj.push({
-                'name' : item[3],
-                'amount' : item[0],
-                'unit' : item[1]
-            })
-        }
-        console.log(obj)
-        return obj
+       
+        return arr
 
     }
     componentDidMount(){
+        
         this.setState({meal : this.props.route.params.meal})
     }
     getIngredients(){
         let ingreds = [];
         if(this.state.meal.ingredients){
-            for(const i in this.state.meal.ingredients){
-                let ing = this.state.meal.ingredients[i];
+            var ingr_arr = helper.string_to_array(this.state.meal.ingredients);
+            for(const i in ingr_arr){
+                let ing = ingr_arr[i];
                 ingreds.push(
-                <Text key={i}>➤ {ing.name} -  x{ing.amount} {ing.unit}</Text>
+                <Text key={i}>➤{ing}</Text>
                 )
             }
         }
@@ -83,12 +77,16 @@ export default class MealInfo extends React.Component{
     }
    returnCurrIngredientsString(){
        let s = ""
+       /*
        for(const i in this.state.meal.ingredients){
             let ing = this.state.meal.ingredients[i];
             let add = ing.amount + " " + ing.unit + " of " + ing.name + ", "
             s += add;
        }
+       
        return s;
+       */
+      return this.state.meal.ingredients
    }
     hideModalAndSave = () =>{
         this.updateMeal();

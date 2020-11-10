@@ -69,7 +69,22 @@ class App extends React.Component {
     let temp = test;
    
     this.setState({data: temp})
+    this._retrieveData()
+
   }
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('user');
+      if (value !== null) {
+        // We have data!!
+        this.setState({user: value})
+
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+
   deleteItem = (item) => {
     const updatedData = this.state.data.filter(d => d !== item)
     LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)

@@ -2,6 +2,8 @@ import React from 'react';
 import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView} from 'react-native';
 import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
 import Button from './Button'
+import * as controller from '../backend/controller'
+import * as helper from '../backend/helper'
 
 export default class AddMeal extends React.Component{
     constructor(props){
@@ -10,17 +12,32 @@ export default class AddMeal extends React.Component{
             name: '',
             ingredients: '',
             steps: '',
-            servings: ''
+            servings: '',
+            user: ''
         }
     }
 
-    updateDB(){
-        // TODO:  update the database with the added meal here
-
+    async updateDB(){
+        var response = {};
+        await controller.add_meal(
+            this.state.user, 
+            this.state.name, 
+            helper.string_to_array(this.state.ingredients), 
+            this.state.steps,
+            this.state.servings
+        )
+        .then(function(result) {
+            response = result
+        })
         
+        if(response.success) {
+            // TODO: Do something with the id because the meal was added
+        }
         this.props.navigation.goBack();
+    }
 
-
+    componentDidMount(){
+        this.setState({user: this.props.route.params.user})
     }
 
     render(){

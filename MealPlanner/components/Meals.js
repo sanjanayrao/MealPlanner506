@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, FlatList, SafeAreaView} from 'react-native';
+import { View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, FlatList, SafeAreaView, AsyncStorage} from 'react-native';
 import { Card, ListItem, Icon, Text } from 'react-native-elements';
 import Button from './Button';
-
+import * as controller from '../backend/controller';
+import * as helper from '../backend/helper';
 
 const testMeals = [
     {
@@ -18,12 +19,15 @@ const testMeals = [
                 'amount' : '4',
                 'unit' : 'pounds'
             },
+
             
 
         ],
         "steps" : "hfrihferigherigrjtijrt",
         "servings" : 5,
-        "key" : 13
+        "key" : 13,
+        "user" : "admin"
+
 
 
     },{
@@ -44,7 +48,9 @@ const testMeals = [
         ],
         "steps" : "stir it a lot",
         "servings" : 5,
-        "key" : 12
+        "key" : 12,
+        "user" : "admin"
+
 
 
     },{
@@ -65,7 +71,9 @@ const testMeals = [
         ],
         "steps" : "boil until he ded",
         "servings" : 5,
-        "key" : 1   
+        "key" : 1   ,
+        "user" : "admin"
+
 
 
     },{
@@ -86,18 +94,56 @@ const testMeals = [
         ],
         "steps" : "bake it",
         "servings" : 5,
-        "key" : 18
+        "key" : 18,
+        "user" : "admin"
 
     }
 ]
 
 export default class Meals extends React.Component{
-    constructor(){
+    constructor(props){
         super();
         this.state = {
-            meals: testMeals
+            meals: testMeals,
+            user: ''
         }
     }
+
+    async get_meals(){
+        // use controller thing
+        var response = {};
+
+        await controller.get_meals("admin")
+        .then(function(result) {
+            response = result;
+        });
+        
+        // overwrite test meals?
+        if(response.success){
+            this.setState({meals: response.meals});
+        }
+
+        //this.setState({meals: data_from_shit})
+    }
+    
+    componentDidMount(){
+        this._retrieveData()
+
+        this.get_meals();
+    }
+    
+    _retrieveData = async () => {
+        try {
+          const value = await AsyncStorage.getItem('user');
+          if (value !== null) {
+            // We have data!!
+            this.setState({user: value})
+
+          }
+        } catch (error) {
+          // Error retrieving data
+        }
+      };
 
     getMealCards(){
         let cards = [];
@@ -115,7 +161,8 @@ export default class Meals extends React.Component{
                     text={'View Meal'}
                     textStyle={{color: 'white'}}
                     buttonStyle={styles.mealButton}
-                    onPress={()=>this.props.navigation.navigate('Meal View', {'meal' : this.state.meals[i] } )}
+                    onPress={()=>this.props.navigation.navigate('Meal View', 
+                                                        {'meal' : this.state.meals[i] } )}
                     />            
             </Card>)
         }
@@ -123,7 +170,7 @@ export default class Meals extends React.Component{
     }
 
     addMeal(){
-        this.props.navigation.navigate('Add Meal')
+        this.props.navigation.navigate('Add Meal', {'user' : this.state.user})
 
     }
     render(){

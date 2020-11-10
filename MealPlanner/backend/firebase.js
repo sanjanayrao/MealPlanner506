@@ -19,32 +19,33 @@ const db = firebase.firestore();
 const __DEBUG__ = false;
 
 /**
- * Queries the users collection with the given array of query parameters
+ * Queries the a collection with the given array of query parameters
  * 
- * @param {array[array]}   queries     An array of query parameters
+ * @param {array[array]}    queries         An array of query parameters
+ * @param {string}          collection      The name of a collection in firestore
  * 
  * @return {array[Objects]} Returns an array of each matching document data 
  */
-export async function query_users(queries) {
+export async function query_collection(queries, collection) {
     if(__DEBUG__) {
         console.debug("--BEGIN DEBUGGING--");
-        console.debug("QUERYING USERS COLLECTION");
+        console.debug("QUERYING", collection, "COLLECTION");
         console.debug("QUERY PARAMETERS:\n", queries);
     }
 
     // Filter document reference for each query parameter
-    var users_ref = db.collection("users");
+    var collection_ref = db.collection(collection);
     queries.forEach(query => {
-        users_ref = users_ref.where(query[0], query[1], query[2]);
+        collection_ref = collection_ref.where(query[0], query[1], query[2]);
     });
 
-    var users_query = [];
+    var collection_query = [];
 
     // Retrieve filtered data
-    await users_ref.get()
+    await collection_ref.get()
     .then(function(query_snapshot) {
         query_snapshot.forEach(function(doc) {
-            users_query.push({"id": doc.id, "data": doc.data()})
+            collection_query.push({"id": doc.id, "data": doc.data()})
         })
     })
     .catch(function(error) {
@@ -52,67 +53,80 @@ export async function query_users(queries) {
     });
 
     if(__DEBUG__) {
-        console.debug("QUERY DATA:\n", users_query);
+        console.debug("QUERY DATA:\n", collection_query);
         console.debug("--END DEBUGGING--");
     }
 
-    return users_query;
+    return collection_query;
 }
 
 /**
- *  Add data in the users collection with the provided data at a new doc
+ *  Add data in a collection with the provided data at a new doc
  * 
- * @param {Object}  doc     A firebase document object
+ * @param {Object}      data             A firebase document data
+ * @param {string}      collection      The name of a collection in firestore
  * 
- * @returns Return true on success
+ * @returns Returns a response object
  */
-export async function add_users(doc) {
+export async function add_collection(data, collection) {
     if(__DEBUG__) {
         console.debug("--BEGIN DEBUGGING--");
-        console.debug("WRITING TO USERS COLLECTION");
+        console.debug("WRITING TO", collection, "COLLECTION");
         console.debug("WRITE DATA:\n", data);
         console.debug("--END DEBUGGING--");
     }
 
-    var users_ref = db.collection("users");
-    var err = false;
+    var collection_ref = db.collection(collection);
 
-    await users_ref
-    .add(doc.data)
-    .then(function(){})
+    var response = {
+        success: false,
+        id: null
+    }
+
+    await collection_ref
+    .add(data)
+    .then(function(doc_ref) {
+        response.success = true;
+        response.id = doc_ref.id;
+    })
     .catch(function(error) {
         console.error("Error updating document: ", error);
-        err = true;
+        response.success = false;
     });
 
-    return !err;
+    return response;
 }
 
 /**
  *  Updates data in the users collection with the provided data
  * 
- * @param {Object}  doc     A firebase document object
+ * @param {Object}      doc             A firebase document object
+ * @param {string}      collection      The name of a collection in firestore
  * 
  * @returns Return true on success
  */
-export async function update_users(doc) {
+export async function update_collection(doc, collection) {
     if(__DEBUG__) {
         console.debug("--BEGIN DEBUGGING--");
-        console.debug("UPDATING USERS COLLECTION");
-        console.debug("UPDATE DATA:\n", data);
+        console.debug("UPDATING", collection, "COLLECTION");
+        console.debug("UPDATE DATA:\n", doc.data);
         console.debug("--END DEBUGGING--");
     }
 
-    var users_ref = db.collection("users");
-    var err = false;
+    var collection_ref = db.collection(collection);
+    var response = {
+        success: false
+    };
 
-    await users_ref.doc(doc.id)
+    await collection_ref.doc(doc.id)
     .update(doc.data)
-    .then(function(){})
+    .then(function() {
+        response.success = true;
+    })
     .catch(function(error) {
         console.error("Error updating document: ", error);
-        err = true;
+        response.success = false;
     });
 
-    return !err;
+    return response;
 }

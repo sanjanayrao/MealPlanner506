@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useRoute } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Home from './components/Home';
 import Meals from './components/Meals';
@@ -18,9 +18,10 @@ function Homescreen({navigation}) {
 }
 
 
-function Mealsscreen({navigation}) {
+function Mealsscreen({route, navigation}) {
+  var user = route.params
   return (
-    <Meals navigation={navigation} />
+    <Meals navigation={navigation} user={user} />
   );
 }
 
@@ -42,15 +43,15 @@ function Listscreen() {
   );
 }
 
-function Settingscreen(){
+function Settingscreen({navigation}){
   return (
-    <Settings/>
+    <Settings navigation={navigation}/>
   );
 }
 
-function AddMealScreen({navigation}){
+function AddMealScreen({route, navigation}){
   return(
-    <AddMeal navigation={navigation}/>
+    <AddMeal navigation={ navigation} route={route}/>
   );
 }
 
@@ -60,7 +61,7 @@ const Tab = createBottomTabNavigator();
 function BottomTabs() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Meals" component={Mealsscreen} />
+      <Tab.Screen name="Meals"  component={Mealsscreen} />
       <Tab.Screen name="Deck" component={Deckscreen} />
       <Tab.Screen name="List" component={Listscreen} />
       <Tab.Screen name="Settings" component={Settingscreen} />
@@ -78,7 +79,7 @@ function MyStack() {
       <Stack.Screen name="Meal View" component={Mealscreen}/>
       <Stack.Screen name="Deck" component={Deckscreen} />
       <Stack.Screen name="Meals" component={Mealsscreen} />
-      <Stack.Screen name="My Meal Planner" component={BottomTabs} />
+      <Stack.Screen  options={{headerBackTitleVisible:false, headerLeft: null}}  name="My Meal Planner" component={BottomTabs} />
       <Stack.Screen name="Add Meal" component={AddMealScreen} />
     </Stack.Navigator>
   );
