@@ -12,21 +12,16 @@ class Home extends React.Component {
       showSignup: false,
     };
   }
-  async _storeData(token, user){
-    try{
-     var sentToken = await AsyncStorage.setItem('token', JSON.stringify(token));
-     var sentUser = await AsyncStorage.setItem('user', JSON.stringify(user));
-    }catch(e){}
-  }
+ 
 
-   login = (user) => {
-     this._storeData(user)
+   login = async (user) => {
+     await this._storeData(user)
      this.props.navigation.navigate('My Meal Planner',  { 'user': user});
 
 
     
   }
-   _storeData = async (user) => {
+  _storeData = async (user) => {
   try {
     await AsyncStorage.setItem(
       'user',

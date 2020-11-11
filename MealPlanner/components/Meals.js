@@ -61,7 +61,7 @@ export default class Meals extends React.Component{
 
         for(const i in this.state.meals){
             cards.push(
-            <Card key={i}>
+            <Card key={this.state.meals[i].id}>
                 <Card.Title>
                     {this.state.meals[i].name}
                 </Card.Title>
