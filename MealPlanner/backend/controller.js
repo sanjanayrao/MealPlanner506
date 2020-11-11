@@ -2,6 +2,7 @@ import * as fb from './firebase'
 import base64 from 'base-64'
 import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
 import * as helper from './helper'
+import { add } from 'react-native-reanimated';
 
 const invalid_login = 'Invalid Username or Password';
 const internal_error = 'Internal Error: Unable to process request';
@@ -221,6 +222,48 @@ export async function get_meals(username) {
 
     return response;
 }
+
+
+export async function get_deck_meals(username) {
+    var response = {
+        success: false, 
+        err: '',
+        meals: []
+    };
+
+    // Encode username and password
+    var encoded_username = base64.encode(username.trim())
+
+    // Search deck collection for deck meals attached to user
+    await fb.query_collection([["username", "==", encoded_username]], "meals")
+    .then(function(result) {
+        // A single match was found (successful login)
+        if(result.length == 0) {
+            response.success = false;
+            response.err = "No meals"
+        } else {
+            response.success = true;
+            result.forEach(meal_doc => {
+                console.log(meal_doc)
+                var meal = {}
+                meal.id = meal_doc.id;
+                meal.name = meal_doc.data.name;
+                meal.ingredients = meal_doc.data.ingredients.join(",");
+                meal.steps = meal_doc.data.directions;
+                meal.servings = meal_doc.data.servings;
+                meal.username = meal_doc.data.username;
+                response.meals.push(meal);
+            });
+        }
+    })
+    .catch(function(error) {
+        console.error("Error querying user meals: ", error);
+        response.err = internal_error;
+    })
+
+    return response;
+}
+
 
 export async function delete_meal(username, id) {
     var response = {
@@ -454,11 +497,10 @@ export async function delete_all_meals(username) {
     
     if(!response.success) 
         return response;
-
-    for (let i = 0; i < user_doc.meals.length; i++) {
+    for (let i = 0; i < user_doc.data.meals.length; i++) {
             
         // Delete from meals collection
-        await fb.delete_collection({id: user_doc.meals[i]}, "meals")
+        await fb.delete_collection({id: user_doc.data.meals[i]}, "meals")
         .then(function(result) {
             response.success = result.success;
         })
@@ -491,5 +533,29 @@ export async function delete_all_meals(username) {
         });
     }
 
+    return response
+}
+
+// TODO
+export async function delete_user(user){
+    var response = {
+        success: false,
+        err: '',
+    };
+    await delete_all_meals(user)
+
+}
+
+export async function update_meal(username, name, ingredients, steps, servings, id){
+    var response = {
+        success: false,
+        err: '',
+        id: null
+    };
+
+    response = await delete_meal(username, id)
+    if(response.success)
+        response = await add_meal(username, name, ingredients, steps, servings)
+    
     return response
 }

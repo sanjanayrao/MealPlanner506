@@ -36,6 +36,10 @@ export default class Meals extends React.Component{
     
     componentDidMount(){
          this._retrieveData()
+         const listener = this.props.navigation.addListener('focus', () => {
+            // do something
+            this.get_meals(this.state.user)
+         })
     }
    
     _retrieveData = async () => {
@@ -82,7 +86,7 @@ export default class Meals extends React.Component{
     }
     render(){
         return(
-            <ScrollView>
+            <View>
                 <View>
                      <Text style={styles.header} h2>My Meals</Text>
                      <Button text={'+'} textStyle={{color:'white', fontSize: 36}} buttonStyle={styles.add} onPress={()=>this.addMeal()}/>
@@ -112,7 +116,7 @@ export default class Meals extends React.Component{
                     }
                     />
                 </SafeAreaView>
-                </ScrollView>
+                </View>
         )
     }
 

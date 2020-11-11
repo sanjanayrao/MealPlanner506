@@ -27,6 +27,11 @@ export default class MealInfo extends React.Component{
         }
     }
 
+    componentDidMount(){
+        this._retrieveData()
+        this.setState({meal : this.props.route.params.meal})
+    }
+    
     async deleteMeal(){
         var response = {};
         await controller.delete_meal(this.state.user, this.state.meal.id)
@@ -35,8 +40,8 @@ export default class MealInfo extends React.Component{
         })
 
         if(!response.success)
-            console.error("UHOH");
-        console.log(this.props)
+            console.error("UHOH in delete");
+        this.props.navigation.navigate.goBack()
     }
    
     edit(){
@@ -65,7 +70,7 @@ export default class MealInfo extends React.Component{
             mealObj['name'] = this.state.modalVals.name;
         }
         if(this.state.meal.ingredients != this.state.modalVals.ingredients){
-            mealObj['ingredients'] = this.parseIngredients(this.state.modalVals.ingredients);
+            mealObj['ingredients'] = helper.string_to_array(this.state.modalVals.ingredients);
         }
         if(this.state.meal.steps != this.state.modalVals.steps){
             mealObj['steps'] = this.state.modalVals.steps;
@@ -73,20 +78,22 @@ export default class MealInfo extends React.Component{
         if(this.state.meal.servings.toString() != this.state.modalVals.servings.toString()){
             mealObj['servings'] = this.state.modalVals.servings;
         }
-        this.setState({meal: mealObj})
+        this.setState({meal: mealObj}, ()=>{this.sendUpdate()})
         // MAKE API CALL HERE TO UPDATE THE MEAL W THE CURRENT STATE
     }
-    
-    parseIngredients(ingred_string){
-        let arr = ingred_string.split(",")
-       
-        return arr
 
+    async sendUpdate(){
+        var response = {};
+        await controller.update_meal(this.state.user, this.state.meal.name, this.state.meal.ingredients, this.state.meal.steps, this.state.meal.servings, this.state.meal.id)
+        .then(function(result) {
+            response = result;
+        })
+
+        if(!response.success)
+            console.error("UHOH in update");
     }
-    componentDidMount(){
-        this._retrieveData()
-        this.setState({meal : this.props.route.params.meal})
-    }
+    
+
     getIngredients(){
         let ingreds = [];
         if(this.state.meal.ingredients){

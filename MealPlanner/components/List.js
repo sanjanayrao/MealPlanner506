@@ -23,11 +23,13 @@ class List extends React.Component {
   componentDidMount(){
       console.log("MOUNTING")
     this._retrieveData()
-    this._update = this.props.navigation.addListener('focus', () => {
+    const listener = this.props.navigation.addListener('focus', () => {
       // do something
+      this._update()
     });
 
   }
+  
   _update(){
     this._retrieveData()
   }
@@ -36,7 +38,6 @@ class List extends React.Component {
       const value = await AsyncStorage.getItem('user');
       if (value !== null) {
         // We have data!!
-        console.log("DATA")
         this.setState({user: value})
         this.retrieveItems(value)
       }
@@ -50,9 +51,8 @@ class List extends React.Component {
     await controller.get_grocery_list(user)
     .then(function(result) {
         response = result;
+        console.log("list",result)
     })
-
-    console.log("AAHH", response)
 
     if(response.success)
         this.setState({data: response.list});

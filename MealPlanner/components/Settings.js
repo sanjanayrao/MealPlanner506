@@ -37,8 +37,9 @@ export default class Settings extends React.Component{
 
     async removeAllMeals(){
         this.setStateFalseMeals()
-        // TODO:  remove all meals here
+        // remove all meals here
         await controller.delete_all_meals(this.state.user)
+        this.props.navigation.navigate("Log In")
 
     }
     removeUser(){
@@ -105,7 +106,7 @@ export default class Settings extends React.Component{
                 </Card>  
                 <Dialog
                         visible={this.state.visibleDeleteMeals}
-                        dialogTitle={<DialogTitle title="Are you sure you want to clear all your meals?" />}
+                        dialogTitle={<DialogTitle title="Are you sure you want to clear all your meals? You will have to log back in after." />}
                         footer={
                             <DialogFooter>
                                 <DialogButton

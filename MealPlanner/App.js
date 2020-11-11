@@ -25,9 +25,9 @@ function Mealsscreen({route, navigation}) {
   );
 }
 
-function Mealscreen( {route}) {
+function Mealscreen( {route, navigation}) {
   return (
-    <MealInfo route={route}  />
+    <MealInfo route={route} navigation={navigation}  />
   );
 }
 
