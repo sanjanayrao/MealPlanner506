@@ -6,8 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "mocha -r esm",
-    "test-with-coverage": "nyc --reporter=text mocha"
+    "test": "nyc --reporter=text mocha -r esm ./test/*",
+    "test-with-coverage": "nyc --reporter=text mocha -r esm ./test/*"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",

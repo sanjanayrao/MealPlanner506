@@ -223,7 +223,6 @@ export async function get_meals(username) {
     return response;
 }
 
-
 export async function get_deck_meals(username) {
     var response = {
         success: false, 
@@ -263,7 +262,6 @@ export async function get_deck_meals(username) {
 
     return response;
 }
-
 
 export async function delete_meal(username, id) {
     var response = {
@@ -553,9 +551,28 @@ export async function update_meal(username, name, ingredients, steps, servings, 
         id: null
     };
 
-    response = await delete_meal(username, id)
-    if(response.success)
-        response = await add_meal(username, name, ingredients, steps, servings)
-    
-    return response
+    // Encode username and password
+    var encoded_username = base64.encode(username)
+
+    // Create meal doc
+    var meal_doc = {}
+    meal_doc.id = id;
+    meal_doc.data = {};
+    meal_doc.data.username = encoded_username;
+    meal_doc.data.name = name;
+    meal_doc.ingredients = ingredients;
+    meal_doc.servings = servings;
+    meal_doc.directions = steps;
+
+    await fb.update_collection(meal_doc, "meals")
+    .then(function(result) {
+        response.success = result.success;
+    })
+    .catch(function(error) {
+        console.error("Error updating meal: ", error);
+        response.err = internal_error;
+        response.success = false;
+    })
+
+    return response;
 }

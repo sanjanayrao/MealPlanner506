@@ -3,8 +3,6 @@
  * 
  */
 
-
-
 import * as fb from '../backend/firebase';
 import base64 from 'base-64';
 
@@ -21,5 +19,6 @@ describe('firebase.query_collection()' , function ()  {
         const queries = [["username", "==", base64.encode("admin")],["password", "==", base64.encode("admin")]];
         const result = await fb.query_collection(queries,"users"); 
         assert.equal(result.length, 1);
+        assert.equal(result.data.username, base64.encode("admin"))
     });
 });
