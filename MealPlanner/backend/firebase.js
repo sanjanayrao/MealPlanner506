@@ -18,13 +18,14 @@ const db = firebase.firestore();
 
 const __DEBUG__ = false;
 
+
 /**
  * Queries the a collection with the given array of query parameters
  * 
  * @param {array[array]}    queries         An array of query parameters
  * @param {string}          collection      The name of a collection in firestore
  * 
- * @return {array[Objects]} Returns an array of each matching document data 
+ * @return {array[Objects]} Returns an array of each matching document 
  */
 export async function query_collection(queries, collection) {
     if(__DEBUG__) {
@@ -59,6 +60,7 @@ export async function query_collection(queries, collection) {
 
     return collection_query;
 }
+
 
 /**
  *  Add data in a collection with the provided data at a new doc
@@ -97,13 +99,14 @@ export async function add_collection(data, collection) {
     return response;
 }
 
+
 /**
  *  Updates data in the users collection with the provided data
  * 
  * @param {Object}      doc             A firebase document object
  * @param {string}      collection      The name of a collection in firestore
  * 
- * @returns Return true on success
+ * @returns Returns a response object
  */
 export async function update_collection(doc, collection) {
     if(__DEBUG__) {
@@ -129,4 +132,41 @@ export async function update_collection(doc, collection) {
     });
 
     return response;
+}
+
+
+/**
+ *  Deletes a document from a collection
+ * 
+ * @param {Object}      doc             A firebase document object
+ * @param {string}      collection      The name of a collection in firebase
+ * 
+ * @returns Returns a response object
+ */
+
+export async function delete_collection(doc, collection) {
+    if(__DEBUG__) {
+        console.debug("--BEGIN DEBUGGING--");
+        console.debug("DELETING FROM", collection, "COLLECTION");
+        console.debug("DELETE DOC:\n", doc.id);
+        console.debug("--END DEBUGGING--");
+    }
+
+    var collection_ref = db.collection(collection);
+    var response = {
+        success: false,
+        id: null
+    };
+
+    await collection_ref.doc(doc.id)
+    .delete()
+    .then(function() {
+        response.success = true;
+    })
+    .catch(function(error) {
+        console.error("Error deleting document: ", error);
+        response.success = false;
+    });
+
+    return response
 }

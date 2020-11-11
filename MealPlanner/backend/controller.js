@@ -1,6 +1,7 @@
 import * as fb from './firebase'
 import base64 from 'base-64'
 import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
+import * as helper from './helper'
 
 const invalid_login = 'Invalid Username or Password';
 const internal_error = 'Internal Error: Unable to process request';
@@ -17,7 +18,7 @@ export async function user_login(username, password) {
     var response = {success: false, err: ''};
 
     // Check username and password format
-    if(check_string(username) || check_string(password)){
+    if(helper.check_string(username) || helper.check_string(password)){
         response.err = invalid_login;
         return response;
     }
@@ -54,7 +55,7 @@ export async function user_signup(username, password) {
     var response = {success: false, err: ''};
 
     // Check username and password format
-    if(check_string(username) || check_string(password)){
+    if(helper.check_string(username) || helper.check_string(password)){
         response.err = invalid_login;
         return response;
     }
@@ -85,7 +86,8 @@ export async function user_signup(username, password) {
         data: {
             "username": encoded_username, 
             "password": encoded_password,
-            meals: []
+            meals: [],
+            deck: []
         }
     }
 
@@ -207,6 +209,7 @@ export async function get_meals(username) {
                 meal.ingredients = meal_doc.data.ingredients.join(",");
                 meal.steps = meal_doc.data.directions;
                 meal.servings = meal_doc.data.servings;
+                meal.username = meal_doc.data.username;
                 response.meals.push(meal);
             });
         }
@@ -219,14 +222,274 @@ export async function get_meals(username) {
     return response;
 }
 
-function check_string(str) {
-    var string = str.trim();
+export async function delete_meal(username, id) {
+    var response = {
+        success: false,
+        err: '',
+        id: null
+    };
 
-	if(string.match(/[\s]/)) 
-		return true
-	
-	if(string.length == 0)
-		return true
+    var user_doc = {};
 
-    return false
+    // Encode username and password
+    var encoded_username = base64.encode(username)
+
+    // Check if the users exits
+    await fb.query_collection([["username", "==", encoded_username]], "users")
+    .then(function(result) {
+        if(result.length != 1) {
+            response.err = 'The user could not be found';
+            response.success = false;
+        } else {
+            response.success = true;
+            user_doc = result[0];
+        }
+    })
+    .catch(function(error) {
+        console.error("Error querying user: ", error);
+        response.err = internal_error;
+        response.success = false;
+    })
+    
+    if(!response.success) 
+        return response;
+
+    // Delete from meals collection
+    await fb.delete_collection({id: id}, "meals")
+    .then(function(result) {
+        response.success = result.success;
+    })
+    .catch(function(error) {
+        console.error("Error deleting meal: ", error);
+        response.err = internal_error;
+        response.success = false;
+    })
+
+    if(!response.success)
+        return response
+
+    // Delete from user meals list
+    var index = user_doc.data.meals.indexOf(id);
+    var meals = []
+    if(index > -1)
+        meals = user_doc.data.meals.splice(index,1);
+
+    user_doc.data.meals = meals
+    
+    // Update user meals in users collection
+    await fb.update_collection(user_doc, "users")
+    .then(function(result) {
+        response.success = result.success;
+    })
+    .catch(function(error) {
+        console.error("Error deleting meal: ", error);
+        response.err = internal_error;
+        response.success = false;
+    })
+
+    return response
+}
+
+export async function generate_deck(username, servings) {
+    var response = {
+        success: false,
+        err: '',
+        deck: null
+    };
+
+    var user_doc = {};
+
+    // Encode username and password
+    var encoded_username = base64.encode(username)
+
+    // Check if the users exits
+    await fb.query_collection([["username", "==", encoded_username]], "users")
+    .then(function(result) {
+        if(result.length != 1) {
+            response.err = 'The user could not be found';
+            response.success = false;
+        } else {
+            response.success = true;
+            user_doc = result[0];
+        }
+    })
+    .catch(function(error) {
+        console.error("Error querying user: ", error);
+        response.err = internal_error;
+        response.success = false;
+    })
+
+    var user_meals = [];
+
+    // Get all user meals
+    await fb.query_collection([["username", "==", encoded_username]], "meals")
+    .then(function(result) {
+        if(result.length == 0) {
+            response.err = "No meals";
+            response.success = false;
+        } else {
+            user_meals = result;
+            response.success = true;
+        }
+    })
+    .catch(function(error) {
+        console.error("Error querying meals: ", error);
+        response.err = internal_error;
+        response.success = false;
+    })
+
+    if(!response.success)
+        return response;
+
+    // Generate a deck list
+    var deck = [];
+    var user_deck = [];
+    var num_servings = 0;
+
+    helper.shuffleArray(user_meals);
+ 
+    for (let i = 0; i < user_meals.length && num_servings < parseInt(servings); i++) {
+        deck.push(user_meals[i].data);
+        user_deck.push(user_meals[i].id);
+        num_servings += parseInt(user_meals[i].data.servings);
+    }
+
+    // Add deck list to users doc
+    user_doc.data.deck = user_deck;
+
+    console.log(user_doc);
+
+    // Update user doc in users collection
+    await fb.update_collection(user_doc, "users")
+    .then(function(result) {
+        response.success = true;
+    })
+    .catch(function(error) {
+        console.error("Error updating user doc: ", error);
+        response.err = internal_error;
+        response.success = false;
+    })
+
+    if(response.success) 
+        response.deck = deck;
+
+    return response
+}
+
+export async function get_grocery_list(username) {
+    var response = {
+        success: false,
+        err: '',
+        list: []
+    };
+
+    var user_doc = {};
+
+    // Encode username and password
+    var encoded_username = base64.encode(username)
+
+    // Check if the users exits
+    await fb.query_collection([["username", "==", encoded_username]], "users")
+    .then(function(result) {
+        if(result.length != 1) {
+            response.err = 'The user could not be found';
+            response.success = false;
+        } else {
+            response.success = true;
+            user_doc = result[0];
+        }
+    })
+    .catch(function(error) {
+        console.error("Error querying user: ", error);
+        response.err = internal_error;
+        response.success = false;
+    })
+
+    if(!response.success)
+        return success;
+        
+    var user_meals = [];
+
+    // Get all users meals
+    await get_meals(username)
+    .then(function(result) {
+        response.success = true;
+        user_meals = result.meals;
+    })
+
+    user_meals.forEach(meal => {
+        response.list.push(helper.string_to_array(meal.ingredients))
+    });
+
+    return response;
+}
+
+export async function delete_all_meals(username) {
+    var response = {
+        success: false,
+        err: '',
+    };
+
+    var user_doc = {};
+
+    // Encode username and password
+    var encoded_username = base64.encode(username)
+
+    // Check if the users exits
+    await fb.query_collection([["username", "==", encoded_username]], "users")
+    .then(function(result) {
+        if(result.length != 1) {
+            response.err = 'The user could not be found';
+            response.success = false;
+        } else {
+            response.success = true;
+            user_doc = result[0];
+        }
+    })
+    .catch(function(error) {
+        console.error("Error querying user: ", error);
+        response.err = internal_error;
+        response.success = false;
+    })
+    
+    if(!response.success) 
+        return response;
+
+    for (let i = 0; i < user_doc.meals.length; i++) {
+            
+        // Delete from meals collection
+        await fb.delete_collection({id: user_doc.meals[i]}, "meals")
+        .then(function(result) {
+            response.success = result.success;
+        })
+        .catch(function(error) {
+            console.error("Error deleting meal: ", error);
+            response.err = internal_error;
+            response.success = false;
+        });
+
+        if(!response.success)
+            return response
+
+        // Delete from user meals list
+        var index = user_doc.data.meals.indexOf(id);
+        var meals = []
+        if(index > -1)
+            meals = user_doc.data.meals.splice(index,1);
+
+        user_doc.data.meals = meals
+        
+        // Update user meals in users collection
+        await fb.update_collection(user_doc, "users")
+        .then(function(result) {
+            response.success = result.success;
+        })
+        .catch(function(error) {
+            console.error("Error deleting meal: ", error);
+            response.err = internal_error;
+            response.success = false;
+        });
+    }
+
+    return response
 }

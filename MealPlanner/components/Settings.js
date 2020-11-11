@@ -3,7 +3,7 @@ import {View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, Scrol
 import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
 import  {Dialog, DialogFooter, DialogButton, DialogContent, DialogTitle } from 'react-native-popup-dialog';
 import Button from './Button'
-
+import * as controller from '../backend/controller'
 
 
 export default class Settings extends React.Component{
@@ -35,13 +35,17 @@ export default class Settings extends React.Component{
     }
 
 
-    removeAllMeals(){
+    async removeAllMeals(){
         this.setStateFalseMeals()
         // TODO:  remove all meals here
+        await controller.delete_all_meals(this.state.user)
+
     }
     removeUser(){
         this.setStateFalseUser()
             // TODO:  remove user 
+        this.props.navigation.navigate("Log In")
+
     }
     logout(){
         this.props.navigation.navigate("Log In")

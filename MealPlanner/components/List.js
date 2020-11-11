@@ -1,8 +1,10 @@
 import * as React from 'react';
 const { useCallback, useState } = React
-import {  View, StyleSheet, FlatList, LayoutAnimation, Platform, UIManager } from 'react-native';
+import {  View, StyleSheet, FlatList, LayoutAnimation, Platform, UIManager, AsyncStorage } from 'react-native';
 import { Card, ListItem, Icon, Text } from 'react-native-elements';
-
+import { useFocusEffect } from '@react-navigation/native';
+import * as helper from '../backend/helper'
+import * as controller from '../backend/controller'
 import SwipeRow from './SwipeRow'
 
 if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -12,95 +14,66 @@ if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental
 // NOTE: this implementation is based off of a medium post tutorial on swipeable carde
 // https://snack.expo.io/@computerjazz/swipetodelete-rngh-reanimated
 
-
-
-
-// grocery list if a payload of array of ingredient objects, NO DUPLICATES
-const test = [
-  
-    {
-      'name': 'egg',
-      'amount' : '2',
-      'unit' : 'cartons',
-       'key' : 13
-  },
-  {
-    'name': 'rice',
-    'amount' : '4',
-    'unit' : 'bags',
-    'key' : 1
-
-},
-{
-  'name': 'garlic',
-  'amount' : '2',
-  'unit' : 'cloves',
-  'key' : 14
-
-}, {
-  'name': 'onion',
-  'amount' : '7',
-  'unit' : 'pounds',
-  'key' : 11
-
-}, {
-  'name': 'tomato',
-  'amount' : '3',
-  'unit' : 'pounds',
-  'key' : 18
-
-}, {
-  'name': 'potato',
-  'amount' : '9',
-  'unit' : 'pounds',
-  'key' : 122
-
-},
-]
-
-class App extends React.Component {
+class List extends React.Component {
 
   state = {
     data: [],
   }
 
   componentDidMount(){
-    // reduce meals to just 
-    let temp = test;
-   
-    this.setState({data: temp})
+      console.log("MOUNTING")
     this._retrieveData()
+    this._update = this.props.navigation.addListener('focus', () => {
+      // do something
+    });
 
+  }
+  _update(){
+    this._retrieveData()
   }
   _retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('user');
       if (value !== null) {
         // We have data!!
+        console.log("DATA")
         this.setState({user: value})
-
+        this.retrieveItems(value)
       }
     } catch (error) {
       // Error retrieving data
     }
   };
 
+  async retrieveItems(user){
+    var response = {};
+    await controller.get_grocery_list(user)
+    .then(function(result) {
+        response = result;
+    })
+
+    console.log("AAHH", response)
+
+    if(response.success)
+        this.setState({data: response.list});
+  }
+   
+
   deleteItem = (item) => {
     const updatedData = this.state.data.filter(d => d !== item)
     LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
     this.setState({ data: updatedData })
-    // TODO: MAKE API CALL HERE TO DELETE ITEM
   }
 
   renderItem = ({ item, index }) => (
        
         <SwipeRow
-          key={item.key.toString()}
+          key={ Math.floor(Math.random() * 1001).toString()}
           item={item}
           swipeThreshold={-150}
           onSwipe={this.deleteItem} 
         >
-            <Text h4 style={styles.swipe}>{item.name} - {item.amount} {item.unit}</Text>
+            <Text h4 style={styles.swipe}>{item}</Text>
         </SwipeRow>
       ) 
 
@@ -120,7 +93,7 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default List
 
 const styles = StyleSheet.create({
   container: {

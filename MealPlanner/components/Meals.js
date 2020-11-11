@@ -1,119 +1,29 @@
 import React from 'react';
 import { View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, FlatList, SafeAreaView, AsyncStorage} from 'react-native';
 import { Card, ListItem, Icon, Text } from 'react-native-elements';
+import { useFocusEffect } from '@react-navigation/native';
 import Button from './Button';
 import * as controller from '../backend/controller';
 import * as helper from '../backend/helper';
 
-const testMeals = [
-    {
-        "name": "poo",
-        "ingredients": [
-            {
-                'name': 'garlic',
-                'amount' : '4',
-                'unit' : 'cloves'
-            },
-            {
-                'name': 'garpotatolic',
-                'amount' : '4',
-                'unit' : 'pounds'
-            },
-
-            
-
-        ],
-        "steps" : "hfrihferigherigrjtijrt",
-        "servings" : 5,
-        "key" : 13,
-        "user" : "admin"
-
-
-
-    },{
-        "name": "A really long recipe name that never seems to end",
-        "ingredients": [
-            {
-                'name': 'water',
-                'amount' : '12',
-                'unit' : 'gallons'
-            },
-            {
-                'name': 'tomato',
-                'amount' : '4',
-                'unit' : 'pounds'
-            },
-            
-
-        ],
-        "steps" : "stir it a lot",
-        "servings" : 5,
-        "key" : 12,
-        "user" : "admin"
-
-
-
-    },{
-        "name": "brandt",
-        "ingredients": [
-            {
-                'name': 'salt',
-                'amount' : '4',
-                'unit' : 'tons'
-            },
-            {
-                'name': 'evil',
-                'amount' : '32',
-                'unit' : 'centimeters'
-            },
-            
-
-        ],
-        "steps" : "boil until he ded",
-        "servings" : 5,
-        "key" : 1   ,
-        "user" : "admin"
-
-
-
-    },{
-        "name": "not food",
-        "ingredients": [
-            {
-                'name': 'garlic',
-                'amount' : '4',
-                'unit' : 'cloves'
-            },
-            {
-                'name': 'mustard',
-                'amount' : '4',
-                'unit' : 'cups'
-            },
-            
-
-        ],
-        "steps" : "bake it",
-        "servings" : 5,
-        "key" : 18,
-        "user" : "admin"
-
-    }
-]
 
 export default class Meals extends React.Component{
     constructor(props){
         super();
         this.state = {
-            meals: testMeals,
+            meals: [],
             user: ''
         }
+        this.get_meals = this.get_meals.bind(this)
     }
 
-    async get_meals(){
+    async get_meals(user){
         // use controller thing
         var response = {};
-
-        await controller.get_meals("admin")
+        if(!user){
+            user = this.state.user
+        }
+        await controller.get_meals(user)
         .then(function(result) {
             response = result;
         });
@@ -122,22 +32,19 @@ export default class Meals extends React.Component{
         if(response.success){
             this.setState({meals: response.meals});
         }
-
-        //this.setState({meals: data_from_shit})
     }
     
     componentDidMount(){
-        this._retrieveData()
-
-        this.get_meals();
+         this._retrieveData()
     }
-    
+   
     _retrieveData = async () => {
         try {
           const value = await AsyncStorage.getItem('user');
           if (value !== null) {
             // We have data!!
             this.setState({user: value})
+            this.get_meals(value)
 
           }
         } catch (error) {
@@ -170,12 +77,12 @@ export default class Meals extends React.Component{
     }
 
     addMeal(){
-        this.props.navigation.navigate('Add Meal', {'user' : this.state.user})
+        this.props.navigation.navigate('Add Meal', {update : this.get_meals})
 
     }
     render(){
         return(
-            <View>
+            <ScrollView>
                 <View>
                      <Text style={styles.header} h2>My Meals</Text>
                      <Button text={'+'} textStyle={{color:'white', fontSize: 36}} buttonStyle={styles.add} onPress={()=>this.addMeal()}/>
@@ -186,9 +93,9 @@ export default class Meals extends React.Component{
                     <FlatList 
                         data={this.state.meals}
                         numColumns={2} 
-                        keyExtractor={(item) => item.key}
+                        keyExtractor={(item) => item.id}
                         renderItem={(item) => 
-                            <Card key={item.key}>
+                            <Card key={item.id}>
                                 <Card.Title>
                                     {item.item.name}
                                 </Card.Title>
@@ -205,7 +112,7 @@ export default class Meals extends React.Component{
                     }
                     />
                 </SafeAreaView>
-                </View>
+                </ScrollView>
         )
     }
 

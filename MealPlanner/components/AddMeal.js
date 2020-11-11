@@ -1,5 +1,5 @@
 import React from 'react';
-import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView} from 'react-native';
+import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, AsyncStorage} from 'react-native';
 import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
 import Button from './Button'
 import * as controller from '../backend/controller'
@@ -33,11 +33,26 @@ export default class AddMeal extends React.Component{
         if(response.success) {
             // TODO: Do something with the id because the meal was added
         }
+        this.props.route.params.update()
         this.props.navigation.goBack();
     }
 
+    
+    _retrieveData = async () => {
+        try {
+          const value = await AsyncStorage.getItem('user');
+          if (value !== null) {
+            // We have data!!
+            this.setState({user: value})
+
+          }
+        } catch (error) {
+          // Error retrieving data
+        }
+      };
+
     componentDidMount(){
-        this.setState({user: this.props.route.params.user})
+        this._retrieveData()
     }
 
     render(){

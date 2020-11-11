@@ -37,9 +37,9 @@ function Deckscreen({navigation}) {
   );
 }
 
-function Listscreen() {
+function Listscreen({navigation}) {
   return (
-    <List/>
+    <List navigation={navigation} />
   );
 }
 

@@ -1,8 +1,9 @@
 import React from 'react';
-import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, Modal, TouchableHighlight} from 'react-native';
+import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, Modal, TouchableHighlight, AsyncStorage} from 'react-native';
 import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
 import Button from './Button';
 import * as helper from '../backend/helper'
+import * as controller from '../backend/controller'
 
 export default class MealInfo extends React.Component{
     constructor(){
@@ -13,8 +14,9 @@ export default class MealInfo extends React.Component{
                 ingredients: '',
                 steps: '',
                 servings: 0,
-                user: ''
+                id: ''
             },
+            user: '',
             modal: false,
             modalVals : {
                 name: '',
@@ -25,8 +27,16 @@ export default class MealInfo extends React.Component{
         }
     }
 
-    deleteMeal(){
-        // TODO: MAKE API CALL HERE AND HANDLE DELETION OF MEAL
+    async deleteMeal(){
+        var response = {};
+        await controller.delete_meal(this.state.user, this.state.meal.id)
+        .then(function(result) {
+            response = result;
+        })
+
+        if(!response.success)
+            console.error("UHOH");
+        console.log(this.props)
     }
    
     edit(){
@@ -34,6 +44,21 @@ export default class MealInfo extends React.Component{
         this.showModal();
 
     }
+
+    _retrieveData = async () => {
+        try {
+          const value = await AsyncStorage.getItem('user');
+          if (value !== null) {
+            // We have data!!
+            this.setState({user: value})
+
+          }
+        } catch (error) {
+          // Error retrieving data
+        }
+      };
+
+    
     updateMeal(){
         let mealObj = this.state.meal;
         if(this.state.meal.name != this.state.modalVals.name){
@@ -59,7 +84,7 @@ export default class MealInfo extends React.Component{
 
     }
     componentDidMount(){
-        
+        this._retrieveData()
         this.setState({meal : this.props.route.params.meal})
     }
     getIngredients(){
@@ -218,10 +243,11 @@ export default class MealInfo extends React.Component{
                          
                     </Card.Title>
                     <View style={styles.textArea}>
+                        
+                        <Text style={styles.header}>Serves: {this.state.meal.servings}</Text>
                         <Text  style={styles.header} h4>
                             Ingredients:
                         </Text>
-                        <Text style={styles.header}>Serves: {this.state.meal.servings}</Text>
                         {this.getIngredients()}
                     </View>
                     <View style={styles.textArea}>

@@ -1,110 +1,29 @@
 import React from 'react';
-import { View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, Picker, FlatList} from 'react-native';
+import { View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, Picker, FlatList, AsyncStorage} from 'react-native';
 import { Card, ListItem, Icon, Text } from 'react-native-elements';
 import Button from './Button';
 import * as controller from '../backend/controller'
 
-const testMeals = [
-    {
-        "name": "poo",
-        "ingredients": [
-            {
-                'name': 'garlic',
-                'amount' : '4',
-                'unit' : 'cloves'
-            },
-            {
-                'name': 'garpotatolic',
-                'amount' : '4',
-                'unit' : 'pounds'
-            },
-            
 
-        ],
-        "steps" : "hfrihferigherigrjtijrt",
-        "servings" : 5,
-        "key" : 13
-
-
-    },{
-        "name": "yummyneww",
-        "ingredients": [
-            {
-                'name': 'water',
-                'amount' : '12',
-                'unit' : 'gallons'
-            },
-            {
-                'name': 'tomato',
-                'amount' : '4',
-                'unit' : 'pounds'
-            },
-            
-
-        ],
-        "steps" : "stir it a lot",
-        "servings" : 5,
-        "key" : 12
-
-
-    },{
-        "name": "brandt",
-        "ingredients": [
-            {
-                'name': 'salt',
-                'amount' : '4',
-                'unit' : 'tons'
-            },
-            {
-                'name': 'evil',
-                'amount' : '32',
-                'unit' : 'centimeters'
-            },
-            
-
-        ],
-        "steps" : "boil until he ded",
-        "servings" : 5,
-        "key" : 1   
-
-
-    },{
-        "name": "not food",
-        "ingredients": [
-            {
-                'name': 'garlic',
-                'amount' : '4',
-                'unit' : 'cloves'
-            },
-            {
-                'name': 'mustard',
-                'amount' : '4',
-                'unit' : 'cups'
-            },
-            
-
-        ],
-        "steps" : "bake it",
-        "servings" : 5,
-        "key" : 18
-
-    }
-]
 
 export default class Meals extends React.Component{
     constructor(){
         super();
         this.state = {
-            meals: testMeals,
-            servings: "4"
+            meals: [],
+            servings: '4',
+            user: ''
         }
     }
 
-    async get_meals(){
+    async get_meals(user){
         // use controller thing
         var response = {};
 
-        await controller.get_meals("admin")
+        if(!user){
+            user = this.state.user
+        }
+        await controller.get_meals(user)
         .then(function(result) {
             response = result;
         });
@@ -117,18 +36,34 @@ export default class Meals extends React.Component{
 
         //this.setState({meals: data_from_shit})
     }
-    componentDidMount(){
-        this.get_meals()
-    }
-    generate(){
-        // TODO: GET GENERATED MEALS FROM API using the number of servings in the stateS
-        let rand = [];
-        for(const i in testMeals){
-            if(Math.random() < 0.5){
-                rand.push(testMeals[i])
-            }
+    _retrieveData = async () => {
+        try {
+          const value = await AsyncStorage.getItem('user');
+          if (value !== null) {
+            // We have data!!
+            this.setState({user: value})
+            this.get_meals(value)
+
+          }
+        } catch (error) {
+          // Error retrieving data
         }
-        this.setState({meals: rand})
+      };
+    componentDidMount(){
+        this._retrieveData()
+    }
+    async generate(){
+        console.log("GENERATE");
+        //  GET GENERATED MEALS FROM API using the number of servings in the stateS
+        var response = {};
+        await controller.generate_deck(this.state.user, this.state.servings)
+        .then(function(result) {
+            response = result
+        })
+
+        if(response.success) {
+            this.setState({meals: response.deck})
+        }   
     }
 
     getMealCards(){
@@ -155,19 +90,27 @@ export default class Meals extends React.Component{
         return cards;
     }
     
+    picker(itemValue){
+        this.setState({servings: itemValue})
+        console.log(itemValue)
+    }
     render(){
         return(
            <ScrollView>
                <View  style={{
-                                flex: 1,
                                 flexDirection: 'row',
                                 margin: 10
                             }}> 
                     <Text style={styles.header} h2>Meals on Deck</Text>
+                    
                     <Picker
                         selectedValue={this.state.servings}
-                        style={{ height: 20, width: 50, borderWidth:4}}
-                        onValueChange={(itemValue, itemIndex) => this.setState({servings: itemValue})}
+                        style={{ height: 5, width: 50,
+                            
+                        marginTop: -68,
+                
+                        }}
+                        onValueChange={(itemValue) => this.picker(itemValue) }
                     >
                         <Picker.Item label="4" value="4" />
                         <Picker.Item label="5" value="5" />
@@ -191,9 +134,7 @@ export default class Meals extends React.Component{
                </View>
                 <View>
                     {this.getMealCards()}
-
                 </View>
-                
            </ScrollView>
         )
     }
