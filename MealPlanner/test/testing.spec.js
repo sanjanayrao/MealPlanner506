@@ -4,20 +4,22 @@
  */
 
 
-const assert = require('assert');
-const firebase = require('../backend/firebase');
+
 import * as fb from '../backend/firebase';
+import base64 from 'base-64';
 
-const test = require("firebase-functions-test")({
-    projectId: "meal-planner-2692d"
-});
+const chai = require('chai');
+const charAsPromised = require('chai-as-promised');
+chai.use(charAsPromised);
 
-describe('firebase' , function ()  {
-    it('should return an array of matching doc data given a query', () => {
-        const queries = {}; //FILL
-        //await then result
-        return fb.query_users(queries).then(result => {
-            assert.strictEqual(result, "FILL");
-        });
+var should = chai.should();
+var assert = require("assert");
+
+
+describe('firebase.query_collection()' , function ()  {
+    it('should return an array of matching documents given a valid user query', async function() {
+        const queries = [["username", "==", base64.encode("admin")],["password", "==", base64.encode("admin")]];
+        const result = await fb.query_collection(queries,"users"); 
+        assert.equal(result.length, 1);
     });
 });

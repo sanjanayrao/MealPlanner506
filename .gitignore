@@ -10,5 +10,6 @@ npm-debug.*
 web-build/
 /MealPlanner/node_modules/
 /MealPlanner/.expo/
+/MealPlanner/.nyc_output/
 # macOS
 .DS_Store

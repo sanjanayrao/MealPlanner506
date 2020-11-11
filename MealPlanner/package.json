@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "mocha"
+    "test": "mocha -r esm",
+    "test-with-coverage": "nyc --reporter=text mocha"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
@@ -35,7 +36,12 @@
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "chai": "^4.2.0",
-    "mocha": "^8.2.1"
+    "chai-as-promised": "^7.1.1",
+    "esm": "^3.2.25",
+    "firebase-functions": "^3.11.0",
+    "firebase-functions-test": "^0.2.3",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0"
   },
   "private": true
 }
