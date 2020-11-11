@@ -25,12 +25,11 @@ class Signup extends React.Component {
       this.setState({error: 'Please fill out all required fields!'})
     }
     */
-	  console.log("CREATE ACCOUNT")
     var signup_result
     await controller.user_signup(this.state.username, this.state.password).then(function(result){
     	signup_result = result
     })
-		console.log(signup_result);
+
     if(signup_result.success) {
       this.setState({username: this.state.username}, ()=>{this.props.auth(this.state.username)});
     } else {

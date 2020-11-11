@@ -42,9 +42,10 @@ export default class Settings extends React.Component{
         this.props.navigation.navigate("Log In")
 
     }
-    removeUser(){
+    async removeUser(){
         this.setStateFalseUser()
             // TODO:  remove user 
+        await controller.delete_user(this.state.user)
         this.props.navigation.navigate("Log In")
 
     }
@@ -69,10 +70,7 @@ export default class Settings extends React.Component{
 
     render(){
         return(
-            <View style={{
-                
-               
-            }}>
+            <View>
                 <Text style={styles.header} h2>  Settings </Text>
                 <Card >  
                  

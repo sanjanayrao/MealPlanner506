@@ -12,7 +12,8 @@ export default class Meals extends React.Component{
         super();
         this.state = {
             meals: [],
-            user: ''
+            user: '',
+            err: ''
         }
         this.get_meals = this.get_meals.bind(this)
     }
@@ -31,17 +32,26 @@ export default class Meals extends React.Component{
         // overwrite test meals?
         if(response.success){
             this.setState({meals: response.meals});
+            this.setState({err: response.err})
+        } else {
+            this.setState({meals: []})
+            this.setState({err: response.err})
         }
     }
     
+    
     componentDidMount(){
          this._retrieveData()
-         const listener = this.props.navigation.addListener('focus', () => {
+         this.focusListener = this.props.navigation.addListener('focus', () => {
             // do something
             this.get_meals(this.state.user)
          })
     }
    
+    componentWillUnmount(){
+        this.focusListener()
+    }
+  
     _retrieveData = async () => {
         try {
           const value = await AsyncStorage.getItem('user');
@@ -92,7 +102,7 @@ export default class Meals extends React.Component{
                      <Button text={'+'} textStyle={{color:'white', fontSize: 36}} buttonStyle={styles.add} onPress={()=>this.addMeal()}/>
 
                 </View>   
-            
+                {this.state.err ? <Text style={{marginTop: '40%', alignSelf: 'center', color:'grey'}}>{this.state.err}</Text> : <Text></Text>}
                 <SafeAreaView style={styles.container}>
                     <FlatList 
                         data={this.state.meals}
@@ -137,9 +147,10 @@ const styles = StyleSheet.create({
     },
     add:{
         backgroundColor: '#553555', 
-        padding: 10, 
-        borderRadius: 50,
-        width: '15%',
+        paddingTop: 7,
+        borderRadius: 100,
+        width: 60,
+        height: 60,
         alignSelf: 'flex-end',
         alignItems: 'center',
         margin:10,

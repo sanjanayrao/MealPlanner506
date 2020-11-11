@@ -38,10 +38,14 @@ export default class MealInfo extends React.Component{
         .then(function(result) {
             response = result;
         })
-
+        if(response.success) {
+            for(let i =0; i < 1000000; i++){}
+            this.props.navigation.goBack()
+            console.log("DELETED");
+        }
         if(!response.success)
             console.error("UHOH in delete");
-        this.props.navigation.navigate.goBack()
+       
     }
    
     edit(){
@@ -70,7 +74,7 @@ export default class MealInfo extends React.Component{
             mealObj['name'] = this.state.modalVals.name;
         }
         if(this.state.meal.ingredients != this.state.modalVals.ingredients){
-            mealObj['ingredients'] = helper.string_to_array(this.state.modalVals.ingredients);
+            mealObj['ingredients'] = this.state.modalVals.ingredients;
         }
         if(this.state.meal.steps != this.state.modalVals.steps){
             mealObj['steps'] = this.state.modalVals.steps;
@@ -78,13 +82,14 @@ export default class MealInfo extends React.Component{
         if(this.state.meal.servings.toString() != this.state.modalVals.servings.toString()){
             mealObj['servings'] = this.state.modalVals.servings;
         }
-        this.setState({meal: mealObj}, ()=>{this.sendUpdate()})
-        // MAKE API CALL HERE TO UPDATE THE MEAL W THE CURRENT STATE
+        
+        this.setState({meal: mealObj}, ()=>{this.sendUpdate(mealObj)})
     }
 
-    async sendUpdate(){
+    async sendUpdate(mealObj){
         var response = {};
-        await controller.update_meal(this.state.user, this.state.meal.name, this.state.meal.ingredients, this.state.meal.steps, this.state.meal.servings, this.state.meal.id)
+        mealObj.ingredients = helper.string_to_array(mealObj.ingredients);
+        await controller.update_meal(this.state.user, mealObj)
         .then(function(result) {
             response = result;
         })

@@ -21,8 +21,6 @@ class List extends React.Component {
   }
 
   componentDidMount(){
-      console.log("MOUNTING")
-    this._retrieveData()
     const listener = this.props.navigation.addListener('focus', () => {
       // do something
       this._update()
@@ -51,7 +49,6 @@ class List extends React.Component {
     await controller.get_grocery_list(user)
     .then(function(result) {
         response = result;
-        console.log("list",result)
     })
 
     if(response.success)
@@ -68,7 +65,6 @@ class List extends React.Component {
   renderItem = ({ item, index }) => (
        
         <SwipeRow
-          key={ Math.floor(Math.random() * 1001).toString()}
           item={item}
           swipeThreshold={-150}
           onSwipe={this.deleteItem} 
@@ -76,6 +72,7 @@ class List extends React.Component {
             <Text h4 style={styles.swipe}>{item}</Text>
         </SwipeRow>
       ) 
+
 
   render() {
 
@@ -87,7 +84,8 @@ class List extends React.Component {
        <FlatList 
           data={this.state.data}
           renderItem={this.renderItem}
-        />
+          keyExtractor={(item, index) => index.toString()}
+          />
       </View>
     );
   }
