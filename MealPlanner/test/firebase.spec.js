@@ -2,7 +2,7 @@
  * !This file is for testing purposes only and should not be built with the application
  * 
  */
-
+/*
 import * as fb from '../backend/firebase';
 import base64 from 'base-64';
 
@@ -35,5 +35,5 @@ describe('Firebase functions', () => {
     });
 
 })
-
+*/
 

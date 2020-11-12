@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "nyc --reporter=text mocha -r esm ./test/controller.spec.js",
+    "test": "nyc --reporter=text mocha -r esm ./test/*",
     "test-with-coverage": "nyc --reporter=text mocha -r esm ./test/*"
   },
   "dependencies": {

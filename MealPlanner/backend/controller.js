@@ -1,10 +1,7 @@
-import * as fb from './firebase';
+const fb = require('./firebasemock');
 //const fb = require('./firebasemock');
-import base64 from 'base-64';
-import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
-import * as helper from './helper';
-import { add } from 'react-native-reanimated';
-import { useReducer } from 'react';
+const base64 = require('base-64');
+const helper = require('./helper');
 
 const invalid_login = 'Invalid Username or Password';
 const internal_error = 'Internal Error: Unable to process request';
@@ -36,19 +33,11 @@ export async function user_login(username, password) {
         // A single match was found (successful login)
         if(result.length == 1) {
             response.success = true;
-        } 
-        // Multiple matching user doc (VERY BAD!!)
-        else if (result.length != 0) {
-            console.error("Error duplicate users: ", result);
-        } 
+        }
         // No match was found (failed login)
         else {
             response.err = invalid_login;
         }
-    })
-    .catch(function(error) {
-        console.error("Error querying user: ", error);
-        response.err = internal_error;
     })
 
     return response
@@ -618,3 +607,4 @@ export async function update_meal(username, meal){
 
     return response;
 }
+*/

@@ -1,10 +1,11 @@
+const base64 = require('base-64');
 
 // Create user_doc to be added to users collection
 var user_doc = {
     id: null,
     data: {
-        "username": encoded_username, 
-        "password": encoded_password,
+        "username": "", 
+        "password": "",
         meals: [],
         deck: []
     }
@@ -25,9 +26,42 @@ var mockCollection = {
 }
 
 export async function query_collection(queries, collection) {
-    if ((queries[0][2] == "pjulakanti") && (queries[1][2] == "mockword")){
-        collection_query = ["Pranav"];
+    var collection_query = [];
+    if ((queries[0][2] == base64.encode("pjulakanti")) && (queries[1][2] == base64.encode("mockword"))){
+        collection_query = [{
+            id: "12345",
+            data: {
+                username: base64.encode("pjulakanti"),
+                password: base64.encode("mockword"),
+                meals: [],
+                deck: []
+            }
+        }];
     }
+    else if ((queries[0][2] == base64.encode("duplicate")) && (queries[1][2] == base64.encode("user"))){
+        collection_query = [{
+            id: "12345",
+            data: {
+                username: base64.encode("duplicate"),
+                password: base64.encode("duplicate"),
+                meals: [],
+                deck: []
+            }
+        },
+        {
+            id: "12345",
+            data: {
+                username: base64.encode("duplicate"),
+                password: base64.encode("duplicate"),
+                meals: [],
+                deck: []
+            }
+        }];
+    } 
+    else if ((queries[0][2] == base64.encode("error")) && (queries[1][2] == base64.encode("error"))) {
+        throw "Error";
+    }
+
     return collection_query;
 }
 
