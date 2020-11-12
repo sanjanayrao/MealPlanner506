@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View, TouchableWithoutFeedback, TextInput, StyleSheet, Dimensions } from 'react-native';
 import Button from './Button';
-import base64 from 'base-64';
-import * as controller from '../backend/controller'
+//import base64 from 'base-64';
+//import * as controller from '../backend/controller'
 
 class Login extends React.Component {
   constructor() {

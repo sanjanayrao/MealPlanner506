@@ -6,8 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "nyc --reporter=text mocha -r esm ./test/*",
-    "test-with-coverage": "nyc --reporter=text mocha -r esm ./test/*"
+    "test": "jest"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
@@ -35,13 +34,23 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@testing-library/react": "^11.1.2",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
     "esm": "^3.2.25",
     "firebase-functions": "^3.11.0",
     "firebase-functions-test": "^0.2.3",
+    "jest": "^26.6.3",
+    "jest-dom": "^4.0.0",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0"
+  },
+  "jest": {
+    "preset": "react-native",
+    "collectCoverage": true,
+    "verbose": true
   },
   "private": true
 }

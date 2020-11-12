@@ -1,9 +1,9 @@
 import React from 'react';
 import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, AsyncStorage} from 'react-native';
-import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
+//import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
 import Button from './Button'
-import * as controller from '../backend/controller'
-import * as helper from '../backend/helper'
+//import * as controller from '../backend/controller'
+//import * as helper from '../backend/helper'
 
 export default class AddMeal extends React.Component{
     constructor(props){

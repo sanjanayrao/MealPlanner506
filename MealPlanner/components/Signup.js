@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet} from 'react-native';
 import Button from './Button';
-import base64 from 'base-64';
-import * as controller from '../backend/controller';
+//import base64 from 'base-64';
+//import * as controller from '../backend/controller';
 
 class Signup extends React.Component {
   constructor() {
