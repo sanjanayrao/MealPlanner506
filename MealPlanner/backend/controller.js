@@ -1,7 +1,8 @@
-import * as fb from './firebase'
-import base64 from 'base-64'
+import * as fb from './firebase';
+//const fb = require('./firebasemock');
+import base64 from 'base-64';
 import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
-import * as helper from './helper'
+import * as helper from './helper';
 import { add } from 'react-native-reanimated';
 import { useReducer } from 'react';
 
@@ -53,6 +54,7 @@ export async function user_login(username, password) {
     return response
 }
 
+/*
 export async function user_signup(username, password) {
     var response = {success: false, err: ''};
 

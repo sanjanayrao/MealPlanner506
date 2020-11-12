@@ -1,6 +1,15 @@
-import * as fb from '../backend/firebase';
-import controller from '../backend/controller';
-import base64 from 'base-64';
+var assert = require("assert");
+const controller = require('../backend/controller');
 
+//user_login test
+describe("user_login", function() {
 
-const MY_PROJECT_ID = "meal-planner-2692d";
+    it("returns true if the login information is valid", function() {
+      var username = "pjulakanti";
+      var password = "mockword";
+      let expected = controller.user_login(username, password);
+      assert.equal(expected.success, true);
+    });
+
+  
+  });
