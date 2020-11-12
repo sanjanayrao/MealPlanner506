@@ -6,19 +6,34 @@
 import * as fb from '../backend/firebase';
 import base64 from 'base-64';
 
-const chai = require('chai');
-const charAsPromised = require('chai-as-promised');
-chai.use(charAsPromised);
+const assert = require('assert');
+const firebase = require('@firebase/testing');
 
-var should = chai.should();
-var assert = require("assert");
+const MY_PROJECT_ID = "meal-planner-2692d";
 
+describe('Firebase functions', () => {
 
-describe('firebase.query_collection()' , function ()  {
-    it('should return an array of matching documents given a valid user query', async function() {
-        const queries = [["username", "==", base64.encode("admin")],["password", "==", base64.encode("admin")]];
-        const result = await fb.query_collection(queries,"users"); 
-        assert.equal(result.length, 1);
-        assert.equal(result.data.username, base64.encode("admin"))
+    let myFunctions;
+
+    before(() => {
+
+      myFunctions = require('../backend/firebase');
     });
-});
+
+    after(() => {
+        // Do cleanup tasks.
+        test.cleanup();
+
+    });
+
+    describe('firebase.query_collection()' , function ()  {
+        it('should return an array of matching documents given a valid user query', async function() {
+            const db = firebase.initializeTestApp({projectId: MY_PROJECT_ID}).firestore();
+            const testDoc = db.collection("users").doc("helpme")
+            await firebase.assertSucceeds(testDoc.get());
+        });
+    });
+
+})
+
+
