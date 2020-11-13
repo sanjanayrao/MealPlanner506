@@ -1,10 +1,15 @@
+import 'jsdom-global/register';
 import React from 'react';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react'
+import {  fireEvent, waitFor, screen } from '@testing-library/react'
 import Settings from '../components/Settings';
 
 import Adapter from "enzyme-adapter-react-16";
-import { shallow, configure,  } from "enzyme";
+import { shallow, configure, render, mount  } from "enzyme";
 import { expect } from 'chai';
+import { Button, StyleSheet } from 'react-native';
+
+
+
 
 
 
@@ -60,10 +65,21 @@ describe('Settings Test 1', () => {
       componentInstance.setStateFalseLogout();
       expect(wrapper.state('visibleDeleteUser')).equals(false);
 
-    });
+      expect(wrapper.find('Button').exists()).equals(true)
+      expect(wrapper.find('Text').exists()).equals(true)
 
-    
-
-   
+    });  
    
 });
+describe('Settings Test 5', () => {
+  it("Checking Initial State", () => {
+    const wrapper = mount(<Settings />);
+    expect(wrapper.containsMatchingElement( <Text>  Settings </Text>)).equals(false);
+   
+      
+    
+  });
+ 
+});
+
+

@@ -44,6 +44,8 @@
     "firebase-functions-test": "^0.2.3",
     "jest": "^26.6.3",
     "jest-dom": "^4.0.0",
+    "jsdom": "16.4.0",
+    "jsdom-global": "3.0.2",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0"
   },
@@ -51,7 +53,6 @@
     "preset": "react-native",
     "collectCoverage": true,
     "verbose": true
-
   },
   "private": true
 }

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, Picker, FlatList, AsyncStorage} from 'react-native';
-//import { Card, ListItem, Icon, Text } from 'react-native-elements';
 import Button from './Button';
-//import * as controller from '../backend/controller'
+
 
 
 

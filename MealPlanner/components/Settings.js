@@ -1,9 +1,7 @@
-import React from 'react'; //passes
-import {Text, View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, AsyncStorage} from 'react-native'; //passes
-//import { Card, ListItem, Icon, Text, Input } from 'react-native-elements'; //fails
-//import  {Dialog, DialogFooter, DialogButton, DialogContent, DialogTitle } from 'react-native-popup-dialog';//fails
-import Button from './Button' //passes
-//import * as controller from '../backend/controller' 
+import React from 'react'; 
+import {Text, View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, AsyncStorage} from 'react-native'; 
+import Button from './Button' 
+
 
 
 export default class Settings extends React.Component{
@@ -70,7 +68,7 @@ export default class Settings extends React.Component{
     render(){
         return(
             <View>
-                <Text style={styles.header} h2>  Settings </Text>
+                <Text>  Settings </Text>
                 <View >  
                  
                     <Button style={styles.button}
