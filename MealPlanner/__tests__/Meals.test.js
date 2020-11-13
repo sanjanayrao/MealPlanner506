@@ -27,6 +27,7 @@ describe('Meals Test 1', () => {
       it("Checking Initial State", () => {
         const wrapper = shallow(<Meals />);
         const componentInstance = wrapper.instance();
+        componentInstance.get_meals();
         expect(wrapper.state('err')).equals('');
         expect(wrapper.state('user')).equals('');
        
@@ -34,3 +35,20 @@ describe('Meals Test 1', () => {
     
       });
       });
+      describe('Meals Test 3', () => {
+        it("Checking Initial State", () => {
+          const wrapper = shallow(<Meals />);
+          const componentInstance = wrapper.instance();
+          componentInstance.get_meals();
+          expect(wrapper.state('err')).equals('');
+          expect(wrapper.state('user')).equals('');
+          componentInstance.setUser('tester');
+          expect(wrapper.state('user')).equals('tester');
+          componentInstance.setErr('err');
+          expect(wrapper.state('err')).equals('err');
+         
+  
+      
+        });
+        });
+      

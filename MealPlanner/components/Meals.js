@@ -17,6 +17,13 @@ export default class Meals extends React.Component{
     get_meals(){
         
     }
+    setUser(value){
+        this.setState({user: value});
+      }
+      setErr(value){
+        this.setState({err: value});
+      }
+    
     
     
     

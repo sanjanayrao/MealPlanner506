@@ -7,11 +7,10 @@ import Button from '../components/Button.ios';
 
 
 
-
-
 configure({ adapter: new Adapter() });
 
 it("Login Renders Same as Prior Test", () => {
     const wrapper = render(<Login />);
     expect(wrapper).toMatchSnapshot();
   });
+  

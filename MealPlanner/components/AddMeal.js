@@ -15,28 +15,21 @@ export default class AddMeal extends React.Component{
             user: ''
         }
     }
-
-    async updateDB(){
-        var response = {};
-        await controller.add_meal(
-            this.state.user, 
-            this.state.name, 
-            helper.string_to_array(this.state.ingredients), 
-            this.state.steps,
-            this.state.servings
-        )
-        .then(function(result) {
-            response = result
-        })
-        
-        if(response.success) {
-            // TODO: Do something with the id because the meal was added
-        }
-        this.props.route.params.update()
-        this.props.navigation.goBack();
-    }
-
-    
+    setName(value){
+        this.setState({name: value});
+      }
+      setIngredients(value){
+        this.setState({ingredients: value});
+      }
+      setSteps(value){
+        this.setState({steps: value});
+      }
+      setServings(value){
+        this.setState({servings: value});
+      }
+      setUser(value){
+        this.setState({user: value});
+      }
     _retrieveData = async () => {
         try {
           const value = await AsyncStorage.getItem('user');

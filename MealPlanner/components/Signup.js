@@ -13,7 +13,6 @@ class Signup extends React.Component {
     };
   }
 
-  
     
 
   render() {
@@ -58,6 +57,16 @@ class Signup extends React.Component {
     }
     return (<View></View>)
   }
+  setUserName(value){
+  this.setState({username: value});
+}
+setPassword(value){
+  this.setState({password: value});
+}
+setError(value){
+  this.setState({error: value});
+}
+
 }
 
 

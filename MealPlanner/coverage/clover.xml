@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1605302048389" clover="3.2.0">
-  <project timestamp="1605302048390" name="All files">
-    <metrics statements="145" coveredstatements="64" conditionals="20" coveredconditionals="5" methods="83" coveredmethods="31" elements="248" coveredelements="100" complexity="0" loc="145" ncloc="145" packages="1" files="10" classes="10"/>
+<coverage generated="1605307933624" clover="3.2.0">
+  <project timestamp="1605307933624" name="All files">
+    <metrics statements="149" coveredstatements="72" conditionals="18" coveredconditionals="6" methods="91" coveredmethods="40" elements="258" coveredelements="118" complexity="0" loc="149" ncloc="149" packages="1" files="10" classes="10"/>
     <file name="AddMeal.js" path="C:\Users\dwalt\Documents\506\meal planner second iteration\MealPlanner506\MealPlanner\components\AddMeal.js">
-      <metrics statements="21" coveredstatements="8" conditionals="4" coveredconditionals="0" methods="11" coveredmethods="4"/>
-      <line num="9" count="2" type="stmt"/>
-      <line num="10" count="2" type="stmt"/>
-      <line num="20" count="0" type="stmt"/>
-      <line num="21" count="0" type="stmt"/>
-      <line num="29" count="0" type="stmt"/>
-      <line num="32" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="35" count="0" type="stmt"/>
-      <line num="36" count="0" type="stmt"/>
-      <line num="40" count="2" type="stmt"/>
-      <line num="41" count="2" type="stmt"/>
-      <line num="42" count="2" type="stmt"/>
-      <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="45" count="0" type="stmt"/>
-      <line num="54" count="2" type="stmt"/>
-      <line num="58" count="2" type="stmt"/>
-      <line num="63" count="0" type="stmt"/>
-      <line num="67" count="0" type="stmt"/>
-      <line num="71" count="0" type="stmt"/>
-      <line num="75" count="0" type="stmt"/>
-      <line num="81" count="0" type="stmt"/>
-      <line num="89" count="1" type="stmt"/>
+      <metrics statements="20" coveredstatements="12" conditionals="2" coveredconditionals="0" methods="14" coveredmethods="8"/>
+      <line num="9" count="5" type="stmt"/>
+      <line num="10" count="5" type="stmt"/>
+      <line num="19" count="0" type="stmt"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="31" count="1" type="stmt"/>
+      <line num="33" count="5" type="stmt"/>
+      <line num="34" count="4" type="stmt"/>
+      <line num="35" count="4" type="stmt"/>
+      <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="38" count="0" type="stmt"/>
+      <line num="47" count="4" type="stmt"/>
+      <line num="51" count="9" type="stmt"/>
+      <line num="56" count="0" type="stmt"/>
+      <line num="60" count="0" type="stmt"/>
+      <line num="64" count="0" type="stmt"/>
+      <line num="68" count="0" type="stmt"/>
+      <line num="74" count="0" type="stmt"/>
+      <line num="82" count="2" type="stmt"/>
     </file>
     <file name="Button.android.js" path="C:\Users\dwalt\Documents\506\meal planner second iteration\MealPlanner506\MealPlanner\components\Button.android.js">
       <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
@@ -33,7 +32,7 @@
     </file>
     <file name="Button.ios.js" path="C:\Users\dwalt\Documents\506\meal planner second iteration\MealPlanner506\MealPlanner\components\Button.ios.js">
       <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-      <line num="7" count="10" type="stmt"/>
+      <line num="7" count="11" type="stmt"/>
       <line num="8" count="0" type="stmt"/>
     </file>
     <file name="Deck.js" path="C:\Users\dwalt\Documents\506\meal planner second iteration\MealPlanner506\MealPlanner\components\Deck.js">
@@ -113,29 +112,31 @@
       <line num="60" count="4" type="stmt"/>
     </file>
     <file name="Meals.js" path="C:\Users\dwalt\Documents\506\meal planner second iteration\MealPlanner506\MealPlanner\components\Meals.js">
-      <metrics statements="22" coveredstatements="6" conditionals="4" coveredconditionals="1" methods="12" coveredmethods="2"/>
-      <line num="9" count="4" type="stmt"/>
-      <line num="10" count="4" type="stmt"/>
-      <line num="15" count="4" type="stmt"/>
-      <line num="26" count="0" type="stmt"/>
-      <line num="29" count="4" type="stmt"/>
-      <line num="30" count="0" type="stmt"/>
-      <line num="31" count="0" type="stmt"/>
-      <line num="32" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="34" count="0" type="stmt"/>
-      <line num="35" count="0" type="stmt"/>
-      <line num="44" count="0" type="stmt"/>
-      <line num="46" count="0" type="stmt"/>
-      <line num="47" count="0" type="stmt"/>
-      <line num="59" count="0" type="stmt"/>
-      <line num="64" count="0" type="stmt"/>
-      <line num="68" count="0" type="stmt"/>
-      <line num="72" count="4" type="stmt"/>
-      <line num="76" count="0" type="stmt"/>
-      <line num="84" count="0" type="stmt"/>
-      <line num="86" count="0" type="stmt"/>
-      <line num="96" count="0" type="stmt"/>
-      <line num="108" count="2" type="stmt"/>
+      <metrics statements="24" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="14" coveredmethods="5"/>
+      <line num="9" count="5" type="stmt"/>
+      <line num="10" count="5" type="stmt"/>
+      <line num="15" count="5" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="24" count="1" type="stmt"/>
+      <line num="33" count="0" type="stmt"/>
+      <line num="36" count="5" type="stmt"/>
+      <line num="37" count="0" type="stmt"/>
+      <line num="38" count="0" type="stmt"/>
+      <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="41" count="0" type="stmt"/>
+      <line num="42" count="0" type="stmt"/>
+      <line num="51" count="0" type="stmt"/>
+      <line num="53" count="0" type="stmt"/>
+      <line num="54" count="0" type="stmt"/>
+      <line num="66" count="0" type="stmt"/>
+      <line num="71" count="0" type="stmt"/>
+      <line num="75" count="0" type="stmt"/>
+      <line num="79" count="7" type="stmt"/>
+      <line num="83" count="0" type="stmt"/>
+      <line num="91" count="0" type="stmt"/>
+      <line num="93" count="0" type="stmt"/>
+      <line num="103" count="0" type="stmt"/>
+      <line num="115" count="2" type="stmt"/>
     </file>
     <file name="Settings.js" path="C:\Users\dwalt\Documents\506\meal planner second iteration\MealPlanner506\MealPlanner\components\Settings.js">
       <metrics statements="21" coveredstatements="14" conditionals="2" coveredconditionals="0" methods="14" coveredmethods="10"/>
@@ -162,20 +163,23 @@
       <line num="108" count="2" type="stmt"/>
     </file>
     <file name="Signup.js" path="C:\Users\dwalt\Documents\506\meal planner second iteration\MealPlanner506\MealPlanner\components\Signup.js">
-      <metrics statements="13" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="7" coveredmethods="2"/>
-      <line num="8" count="5" type="stmt"/>
-      <line num="9" count="5" type="stmt"/>
-      <line num="20" count="5" type="cond" truecount="1" falsecount="1"/>
+      <metrics statements="16" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="10" coveredmethods="4"/>
+      <line num="8" count="6" type="stmt"/>
+      <line num="9" count="6" type="stmt"/>
+      <line num="19" count="9" type="cond" truecount="1" falsecount="1"/>
+      <line num="20" count="0" type="stmt"/>
       <line num="21" count="0" type="stmt"/>
-      <line num="22" count="0" type="stmt"/>
-      <line num="24" count="0" type="stmt"/>
-      <line num="26" count="0" type="stmt"/>
-      <line num="33" count="0" type="stmt"/>
-      <line num="39" count="0" type="stmt"/>
-      <line num="47" count="0" type="stmt"/>
-      <line num="52" count="0" type="stmt"/>
-      <line num="59" count="5" type="stmt"/>
-      <line num="66" count="4" type="stmt"/>
+      <line num="23" count="0" type="stmt"/>
+      <line num="25" count="0" type="stmt"/>
+      <line num="32" count="0" type="stmt"/>
+      <line num="38" count="0" type="stmt"/>
+      <line num="46" count="0" type="stmt"/>
+      <line num="51" count="0" type="stmt"/>
+      <line num="58" count="9" type="stmt"/>
+      <line num="61" count="1" type="stmt"/>
+      <line num="64" count="2" type="stmt"/>
+      <line num="67" count="0" type="stmt"/>
+      <line num="75" count="4" type="stmt"/>
     </file>
   </project>
 </coverage>

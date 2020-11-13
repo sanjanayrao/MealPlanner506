@@ -7,8 +7,6 @@ import { shallow, configure, render  } from "enzyme";
 
 
 
-
-
 configure({ adapter: new Adapter() });
 
 it("Settings Renders Same as Prior Test", () => {

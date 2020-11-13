@@ -7,11 +7,10 @@ import Button from '../components/Button.ios';
 
 
 
-
-
 configure({ adapter: new Adapter() });
 
 it("Home Renders Same as Prior Test", () => {
     const wrapper = render(<Home />);
     expect(wrapper).toMatchSnapshot();
   });
+  

@@ -8,6 +8,7 @@ import { expect } from 'chai';
 
 
 
+
 configure({ adapter: new Adapter() });
 
 describe('ListVar Test 1', () => {
@@ -22,3 +23,4 @@ describe('ListVar Test 1', () => {
       expect(wrapper.find("View").length).equals(1);
     });
     });
+    

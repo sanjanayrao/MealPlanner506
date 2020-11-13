@@ -6,12 +6,10 @@ import { shallow, configure, render  } from "enzyme";
 import Button from '../components/Button.ios';
 
 
-
-
-
 configure({ adapter: new Adapter() });
 
 it("Deck Renders Same as Prior Test", () => {
     const wrapper = render(<Deck />);
     expect(wrapper).toMatchSnapshot();
   });
+  

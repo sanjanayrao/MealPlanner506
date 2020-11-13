@@ -9,10 +9,6 @@ import { expect } from 'chai';
 import { Button, StyleSheet } from 'react-native';
 
 
-
-
-
-
 configure({ adapter: new Adapter() });
 
 describe('Settings Test 1', () => {
@@ -81,5 +77,4 @@ describe('Settings Test 5', () => {
   });
  
 });
-
 
