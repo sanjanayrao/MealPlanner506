@@ -1,9 +1,9 @@
 import React from 'react'; //passes
-import {View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, AsyncStorage} from 'react-native'; //passes
-import { Card, ListItem, Icon, Text, Input } from 'react-native-elements'; //fails
-import  {Dialog, DialogFooter, DialogButton, DialogContent, DialogTitle } from 'react-native-popup-dialog';//fails
+import {Text, View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, AsyncStorage} from 'react-native'; //passes
+//import { Card, ListItem, Icon, Text, Input } from 'react-native-elements'; //fails
+//import  {Dialog, DialogFooter, DialogButton, DialogContent, DialogTitle } from 'react-native-popup-dialog';//fails
 import Button from './Button' //passes
-import * as controller from '../backend/controller' //fails
+//import * as controller from '../backend/controller' 
 
 
 export default class Settings extends React.Component{
@@ -72,7 +72,7 @@ export default class Settings extends React.Component{
         return(
             <View>
                 <Text style={styles.header} h2>  Settings </Text>
-                <Card >  
+                <View >  
                  
                     <Button style={styles.button}
                         text={'Remove all meals'}
@@ -101,61 +101,8 @@ export default class Settings extends React.Component{
                     <View style={styles.space} />
                 
                    
-                </Card>  
-                <Dialog
-                        visible={this.state.visibleDeleteMeals}
-                        dialogTitle={<DialogTitle title="Are you sure you want to clear all your meals? You will have to log back in after." />}
-                        footer={
-                            <DialogFooter>
-                                <DialogButton
-                                    text="Yes"
-                                    onPress={()=>this.removeAllMeals() }
-                                />
-                                <DialogButton
-                                    text="No"
-                                    onPress={()=> 
-                                        this.setStateFalseMeals()
-                                    }
-                                />
-                            </DialogFooter>
-                        }
-                    ></Dialog>
-                    <Dialog
-                        visible={this.state.visibleDeleteUser}
-                        dialogTitle={<DialogTitle title="Are you sure you want to delete your account?" />}
-                        footer={
-                            <DialogFooter>
-                                <DialogButton
-                                    text="Yes"
-                                    onPress={()=>this.removeUser() }
-                                />
-                                <DialogButton
-                                    text="No"
-                                    onPress={()=> 
-                                        this.setStateFalseLogout()
-                                    }
-                                />
-                            </DialogFooter>
-                        }
-                    ></Dialog>
-                    <Dialog
-                        visible={this.state.visibleLogout}
-                        dialogTitle={<DialogTitle title="Are you sure you want to log out?" />}
-                        footer={
-                            <DialogFooter>
-                                <DialogButton
-                                    text="Yes"
-                                    onPress={()=>this.logout() }
-                                />
-                                <DialogButton
-                                    text="No"
-                                    onPress={()=> 
-                                        this.setStateFalseUser()
-                                    }
-                                />
-                            </DialogFooter>
-                        }
-                    ></Dialog>
+                </View>  
+                
             </View>
         )
     }

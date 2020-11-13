@@ -1,9 +1,9 @@
 import React from 'react';
-import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, Modal, TouchableHighlight, AsyncStorage} from 'react-native';
-import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
+import { Text, View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, Modal, TouchableHighlight, AsyncStorage} from 'react-native';
+//import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
 import Button from './Button';
-import * as helper from '../backend/helper'
-import * as controller from '../backend/controller'
+//import * as helper from '../backend/helper'
+//import * as controller from '../backend/controller'
 
 export default class MealInfo extends React.Component{
     constructor(){
@@ -174,19 +174,19 @@ export default class MealInfo extends React.Component{
                 >
                     <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Input
+                        <TextInput
                         placeholder={this.state.modalVals.name}
                         onChangeText={value => this.changeName(value)}
                         />
-                        <Input
+                        <TextInput
                         placeholder={this.returnCurrIngredientsString()}
                         onChangeText={value => this.changeIngredients(value)}
                         />
-                        <Input
+                        <TextInput
                         placeholder={this.state.modalVals.steps}
                         onChangeText={value => this.changeSteps(value)}
                         />
-                        <Input
+                        <TextInput
                         placeholder={this.state.modalVals.servings.toString()}
                         onChangeText={value => this.changeServings(value)}
                         />
@@ -210,8 +210,8 @@ export default class MealInfo extends React.Component{
                     </View>
                     </View>
                 </Modal>
-                <Card>
-                    <Card.Title> 
+                
+                   
                         <View style={{
                             flex: 1,
                             flexDirection: 'row',
@@ -253,7 +253,7 @@ export default class MealInfo extends React.Component{
                         );
                          
                          
-                    </Card.Title>
+                    
                     <View style={styles.textArea}>
                         
                         <Text style={styles.header}>Serves: {this.state.meal.servings}</Text>
@@ -271,7 +271,7 @@ export default class MealInfo extends React.Component{
                         </Text>
                    </View>
 
-                </Card>
+               
             </ScrollView>
         )
     }

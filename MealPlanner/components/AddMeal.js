@@ -58,20 +58,20 @@ export default class AddMeal extends React.Component{
     render(){
         return(
             <View>
-                <Card>
-                    <Input
+               
+                    <TextInput
                     placeholder="Name"
                     onChangeText={value => this.setState({ name: value })}
                     />
-                     <Input
+                     <TextInput
                     placeholder="Ingredients: eg '4 cloves of garlic'"
                     onChangeText={value => this.setState({ ingredients: value })}
                     />
-                     <Input
+                     <TextInput
                     placeholder="Steps"
                     onChangeText={value => this.setState({ steps: value })}
                     />
-                     <Input
+                     <TextInput
                     placeholder="Servings"
                     onChangeText={value => this.setState({ servings: value })}
                     />
@@ -81,7 +81,7 @@ export default class AddMeal extends React.Component{
                         buttonStyle={styles.edit}
                         onPress={()=>this.updateDB() }
                     />
-                </Card>
+                
                 
             </View>
         )

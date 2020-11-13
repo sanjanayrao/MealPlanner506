@@ -1,11 +1,11 @@
 import * as React from 'react';
 const { useCallback, useState } = React
-import {  View, StyleSheet, FlatList, LayoutAnimation, Platform, UIManager, AsyncStorage } from 'react-native';
-import { Card, ListItem, Icon, Text } from 'react-native-elements';
-import { useFocusEffect } from '@react-navigation/native';
-import * as helper from '../backend/helper'
-import * as controller from '../backend/controller'
-import SwipeRow from './SwipeRow'
+import { Text, View, StyleSheet, FlatList, LayoutAnimation, Platform, UIManager, AsyncStorage } from 'react-native';
+//import { Card, ListItem, Icon, Text } from 'react-native-elements';
+//import { useFocusEffect } from '@react-navigation/native';
+//import * as helper from '../backend/helper'
+//import * as controller from '../backend/controller'
+//import SwipeRow from './SwipeRow'
 
 if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -20,14 +20,14 @@ class List extends React.Component {
     data: [],
   }
 
-  componentDidMount(){
-    const listener = this.props.navigation.addListener('focus', () => {
+  //componentDidMount(){
+    //const listener = this.props.navigation.addListener('focus', () => {
       // do something
-      this._update()
-    });
+      //this._update()
+    //});
 
-  }
-  
+ // }
+
   _update(){
     this._retrieveData()
   }

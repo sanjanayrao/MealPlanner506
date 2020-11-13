@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react'
-import Home from '../components/Home';
+import ListVar from '../components/List';
 
 import Adapter from "enzyme-adapter-react-16";
 import { shallow, configure,  } from "enzyme";
@@ -10,15 +10,15 @@ import { expect } from 'chai';
 
 configure({ adapter: new Adapter() });
 
-describe('Home Test 1', () => {
+describe('ListVar Test 1', () => {
     it('Checking  if it renders', () => {
-      shallow(<Home />);
+      shallow(<ListVar />);
     });
   });
   
-  describe('Home Test 2', () => {
+  describe('ListVar Test 2', () => {
     it("Checking Children Elements of Login", () => {
-      const wrapper = shallow(<Home />);
-      expect(wrapper.find("View").length).equals(2);
+      const wrapper = shallow(<ListVar />);
+      expect(wrapper.find("View").length).equals(1);
     });
     });

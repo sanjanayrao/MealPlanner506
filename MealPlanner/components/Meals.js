@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, FlatList, SafeAreaView, AsyncStorage} from 'react-native';
-import { Card, ListItem, Icon, Text } from 'react-native-elements';
-import { useFocusEffect } from '@react-navigation/native';
+import { Text, View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, FlatList, SafeAreaView, AsyncStorage} from 'react-native';
+//import { Card, ListItem, Icon, Text } from 'react-native-elements';
+//import { useFocusEffect } from '@react-navigation/native';
 import Button from './Button';
-import * as controller from '../backend/controller';
-import * as helper from '../backend/helper';
+//import * as controller from '../backend/controller';
+//import * as helper from '../backend/helper';
 
 
 export default class Meals extends React.Component{
@@ -40,13 +40,13 @@ export default class Meals extends React.Component{
     }
     
     
-    componentDidMount(){
-         this._retrieveData()
-         this.focusListener = this.props.navigation.addListener('focus', () => {
-            // do something
-            this.get_meals(this.state.user)
-         })
-    }
+//    componentDidMount(){
+ //        this._retrieveData()
+  //       this.focusListener = this.props.navigation.addListener('focus', () => {
+   //         // do something
+     //       this.get_meals(this.state.user)
+       //  })
+   // }
    
     componentWillUnmount(){
         this.focusListener()
@@ -71,10 +71,10 @@ export default class Meals extends React.Component{
 
         for(const i in this.state.meals){
             cards.push(
-            <Card key={this.state.meals[i].id}>
-                <Card.Title>
+            <View key={this.state.meals[i].id}>
+                <Text>
                     {this.state.meals[i].name}
-                </Card.Title>
+                </Text>
                 <Text>
                     Serves: {this.state.meals[i].servings}
                 </Text>
@@ -85,7 +85,7 @@ export default class Meals extends React.Component{
                     onPress={()=>this.props.navigation.navigate('Meal View', 
                                                         {'meal' : this.state.meals[i] } )}
                     />            
-            </Card>)
+            </View>)
         }
         return cards;
     }
