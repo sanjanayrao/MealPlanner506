@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1605295402803" clover="3.2.0">
-  <project timestamp="1605295402803" name="All files">
-    <metrics statements="143" coveredstatements="64" conditionals="20" coveredconditionals="5" methods="81" coveredmethods="31" elements="244" coveredelements="100" complexity="0" loc="143" ncloc="143" packages="1" files="9" classes="9"/>
+<coverage generated="1605298463910" clover="3.2.0">
+  <project timestamp="1605298463910" name="All files">
+    <metrics statements="145" coveredstatements="64" conditionals="20" coveredconditionals="5" methods="83" coveredmethods="31" elements="248" coveredelements="100" complexity="0" loc="145" ncloc="145" packages="1" files="10" classes="10"/>
     <file name="AddMeal.js" path="C:\Users\dwalt\Documents\506\meal planner second iteration\MealPlanner506\MealPlanner\components\AddMeal.js">
       <metrics statements="21" coveredstatements="8" conditionals="4" coveredconditionals="0" methods="11" coveredmethods="4"/>
       <line num="10" count="2" type="stmt"/>
@@ -25,6 +25,11 @@
       <line num="76" count="0" type="stmt"/>
       <line num="82" count="0" type="stmt"/>
       <line num="90" count="1" type="stmt"/>
+    </file>
+    <file name="Button.android.js" path="C:\Users\dwalt\Documents\506\meal planner second iteration\MealPlanner506\MealPlanner\components\Button.android.js">
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <line num="6" count="0" type="stmt"/>
+      <line num="7" count="0" type="stmt"/>
     </file>
     <file name="Button.ios.js" path="C:\Users\dwalt\Documents\506\meal planner second iteration\MealPlanner506\MealPlanner\components\Button.ios.js">
       <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>

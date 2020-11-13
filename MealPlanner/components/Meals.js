@@ -1,10 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, FlatList, SafeAreaView, AsyncStorage} from 'react-native';
-//import { Card, ListItem, Icon, Text } from 'react-native-elements';
-//import { useFocusEffect } from '@react-navigation/native';
 import Button from './Button';
-//import * as controller from '../backend/controller';
-//import * as helper from '../backend/helper';
+
 
 
 export default class Meals extends React.Component{
@@ -23,13 +20,7 @@ export default class Meals extends React.Component{
     
     
     
-//    componentDidMount(){
- //        this._retrieveData()
-  //       this.focusListener = this.props.navigation.addListener('focus', () => {
-   //         // do something
-     //       this.get_meals(this.state.user)
-       //  })
-   // }
+
    
     componentWillUnmount(){
         this.focusListener()

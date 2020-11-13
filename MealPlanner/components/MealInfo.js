@@ -32,21 +32,7 @@ export default class MealInfo extends React.Component{
         this.setState({meal : this.props.route.params.meal})
     }
     
-    async deleteMeal(){
-        var response = {};
-        await controller.delete_meal(this.state.user, this.state.meal.id)
-        .then(function(result) {
-            response = result;
-        })
-        if(response.success) {
-            for(let i =0; i < 1000000; i++){}
-            this.props.navigation.goBack()
-            console.log("DELETED");
-        }
-        if(!response.success)
-            console.error("UHOH in delete");
-       
-    }
+    
    
     edit(){
         // display edit modal   
@@ -161,6 +147,7 @@ export default class MealInfo extends React.Component{
         myObj.servings = val
         this.setState({modalVals: myObj})
     }
+    
     render(){
         return(
             <ScrollView>
