@@ -66,7 +66,7 @@ export async function user_signup(username, password) {
 		}
     })
     .catch(function(error) {
-        console.error("Error querying user: ", error);
+        // console.error("Error querying user: ", error);
         response.err = internal_error;
 	})
 	
@@ -91,8 +91,9 @@ export async function user_signup(username, password) {
         user_doc.id = result.id;
     })
     .catch(function(error) {
-        console.error("Error adding user: ", error);
-        login.err = internal_error;
+        // console.error("Error adding user: ", error);
+        response.err = internal_error;
+        response.success = false;
     })
 
     if(!response.success)
@@ -125,7 +126,7 @@ export async function add_meal(username, name, ingredients, steps, servings) {
         }
     })
     .catch(function(error) {
-        console.error("Error querying user: ", error);
+        // console.error("Error querying user: ", error);
         response.err = internal_error;
         response.success = false;
     })
@@ -150,7 +151,7 @@ export async function add_meal(username, name, ingredients, steps, servings) {
         response.id = result.id;
     })
     .catch(function(error) {
-        console.error("Error adding meal: ", error);
+        // console.error("Error adding meal: ", error);
         response.err = internal_error;
         response.success = false;
     })
@@ -168,7 +169,7 @@ export async function add_meal(username, name, ingredients, steps, servings) {
         response.success = result.success;
     })
     .catch(function(error) {
-        console.error("Error updating user meal list: ", error);
+        // console.error("Error updating user meal list: ", error);
         response.err = internal_error;
         response.success = false;
     })
@@ -208,7 +209,7 @@ export async function get_meals(username) {
         }
     })
     .catch(function(error) {
-        console.error("Error querying user meals: ", error);
+        // console.error("Error querying user meals: ", error);
         response.err = internal_error;
         response.success = false;
     })
@@ -248,7 +249,7 @@ export async function get_deck_meals(username) {
         }
     })
     .catch(function(error) {
-        console.error("Error querying user meals: ", error);
+        // console.error("Error querying user meals: ", error);
         response.err = internal_error;
     })
 
@@ -279,7 +280,7 @@ export async function delete_meal(username, id) {
         }
     })
     .catch(function(error) {
-        console.error("Error querying user: ", error);
+        // console.error("Error querying user: ", error);
         response.err = internal_error;
         response.success = false;
     })
@@ -293,7 +294,7 @@ export async function delete_meal(username, id) {
         response.success = result.success;
     })
     .catch(function(error) {
-        console.error("Error deleting meal: ", error);
+        // console.error("Error deleting meal: ", error);
         response.err = internal_error;
         response.success = false;
     })
@@ -315,7 +316,7 @@ export async function delete_meal(username, id) {
         response.success = result.success;
     })
     .catch(function(error) {
-        console.error("Error deleting meal: ", error);
+        // console.error("Error deleting meal: ", error);
         response.err = internal_error;
         response.success = false;
     })
@@ -347,10 +348,13 @@ export async function generate_deck(username, servings) {
         }
     })
     .catch(function(error) {
-        console.error("Error querying user: ", error);
+        // console.error("Error querying user: ", error);
         response.err = internal_error;
         response.success = false;
     })
+
+    if(!response.success)
+        return response;
 
     var user_meals = [];
 
@@ -366,7 +370,7 @@ export async function generate_deck(username, servings) {
         }
     })
     .catch(function(error) {
-        console.error("Error querying meals: ", error);
+        // console.error("Error querying meals: ", error);
         response.err = internal_error;
         response.success = false;
     })
@@ -396,7 +400,7 @@ export async function generate_deck(username, servings) {
         response.success = true;
     })
     .catch(function(error) {
-        console.error("Error updating user doc: ", error);
+        // console.error("Error updating user doc: ", error);
         response.err = internal_error;
         response.success = false;
     })
@@ -431,7 +435,7 @@ export async function get_grocery_list(username) {
         }
     })
     .catch(function(error) {
-        console.error("Error querying user: ", error);
+        // console.error("Error querying user: ", error);
         response.err = internal_error;
         response.success = false;
     })
@@ -447,6 +451,7 @@ export async function get_grocery_list(username) {
         response.success = true;
         user_meals = result.meals;
     })
+
 
     user_meals.forEach(meal => {
         
@@ -484,11 +489,11 @@ export async function delete_all_meals(username) {
         }
     })
     .catch(function(error) {
-        console.error("Error querying user: ", error);
+        // console.error("Error querying user: ", error);
         response.err = internal_error;
         response.success = false;
     })
-    
+
     if(!response.success) 
         return response;
 
@@ -500,12 +505,12 @@ export async function delete_all_meals(username) {
             response.success = result.success;
         })
         .catch(function(error) {
-            console.error("Error deleting meal: ", error);
+            // console.error("Error deleting meal: ", error);
             response.err = internal_error;
             response.success = false;
         });
 
-        if(!response.success)
+        if(!response.success) 
             return response
 
     }
@@ -521,7 +526,7 @@ export async function delete_all_meals(username) {
         response.success = result.success;
     })
     .catch(function(error) {
-        console.error("Error deleting meal: ", error);
+        // console.error("Error deleting meal: ", error);
         response.err = internal_error;
         response.success = false;
     });
@@ -567,7 +572,7 @@ export async function delete_user(username){
         response.success = result.success;
     })
     .catch(function(error) {
-        console.error("Error deleting user: ", error);
+        // console.error("Error deleting user: ", error);
         response.err = internal_error;
         response.success = false;
     })
@@ -600,7 +605,7 @@ export async function update_meal(username, meal){
         response.success = result.success;
     })
     .catch(function(error) {
-        console.error("Error updating meal: ", error);
+        // console.error("Error updating meal: ", error);
         response.err = internal_error;
         response.success = false;
     })
