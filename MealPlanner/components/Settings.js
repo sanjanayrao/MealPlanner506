@@ -35,20 +35,7 @@ export default class Settings extends React.Component{
     }
 
 
-    async removeAllMeals(){
-        this.setStateFalseMeals()
-        // remove all meals here
-        await controller.delete_all_meals(this.state.user)
-        this.props.navigation.navigate("Log In")
-
-    }
-    async removeUser(){
-        this.setStateFalseUser()
-            // TODO:  remove user 
-        await controller.delete_user(this.state.user)
-        this.props.navigation.navigate("Log In")
-
-    }
+    
     logout(){
         this.props.navigation.navigate("Log In")
         this.setStateFalseUser()
@@ -56,7 +43,7 @@ export default class Settings extends React.Component{
 
     setStateFalseMeals(){
         // hide the modal
-        this.setState({visibleDeleteMeals: false})
+        this.setState({visibleDeleteMeals: true})
     }
     setStateFalseLogout(){
         // hide the modal
@@ -65,6 +52,18 @@ export default class Settings extends React.Component{
     setStateFalseUser(){
         // hide the modal
         this.setState({visibleLogout: false})
+    }
+    setStateMeals(){
+        // hide the modal
+        this.setState({visibleDeleteMeals: false})
+    }
+    setStateLogout(){
+        // hide the modal
+        this.setState({visibleDeleteUser: true})
+    }
+    setStateUser(){
+        // hide the modal
+        this.setState({visibleLogout: true})
     }
     
 

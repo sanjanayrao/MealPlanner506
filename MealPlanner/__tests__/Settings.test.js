@@ -22,3 +22,48 @@ describe('Settings Test 1', () => {
       expect(wrapper.find("View").length).equals(3);
     });
     });
+
+    describe('Settings Test 3', () => {
+      it("Checking Initial State", () => {
+        const wrapper = shallow(<Settings />);
+        const componentInstance = wrapper.instance();
+        expect(wrapper.state('visibleDeleteUser')).equals(false);
+        expect(wrapper.state('visibleLogout')).equals(false);
+        expect(wrapper.state('visibleDeleteUser')).equals(false);
+        expect(wrapper.state('user')).equals('');
+
+      });
+     
+  });
+
+  describe('Settings Test 4', () => {
+    it("Checking State after changes to state", () => {
+      const wrapper = shallow(<Settings />);
+      const componentInstance = wrapper.instance();
+      expect(wrapper.state('visibleDeleteUser')).equals(false);
+      expect(wrapper.state('visibleLogout')).equals(false);
+      expect(wrapper.state('visibleDeleteMeals')).equals(false);
+      expect(wrapper.state('user')).equals('');
+      
+      componentInstance.setStateFalseMeals();
+      expect(wrapper.state('visibleDeleteMeals')).equals(true);
+      componentInstance.setStateMeals();
+      expect(wrapper.state('visibleDeleteMeals')).equals(false);
+      
+      componentInstance.setStateUser();
+      expect(wrapper.state('visibleLogout')).equals(true);
+      componentInstance.setStateFalseUser();
+      expect(wrapper.state('visibleLogout')).equals(false);
+      
+      componentInstance.setStateLogout();
+      expect(wrapper.state('visibleDeleteUser')).equals(true);
+      componentInstance.setStateFalseLogout();
+      expect(wrapper.state('visibleDeleteUser')).equals(false);
+
+    });
+
+    
+
+   
+   
+});

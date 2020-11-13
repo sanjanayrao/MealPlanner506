@@ -15,19 +15,7 @@ class Login extends React.Component {
     };
   }
 
- // async sendRequest(){
-  //  var login_result
-  //  await controller.user_login(this.state.username, this.state.password).then(function(result) {
-  //    login_result = result
-   // })
-
-  //  if(login_result.success) {
-  //    this.setState({username: this.state.username}, ()=>{this.props.auth(this.state.username)});
-  //  } else {
-  //    this.setState({password: ''});
-  //    this.setState({error: login_result.err });
-  //  }
- // }
+ 
 
   render() {
     if(this.props.show) {

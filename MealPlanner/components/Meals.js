@@ -17,27 +17,10 @@ export default class Meals extends React.Component{
         }
         this.get_meals = this.get_meals.bind(this)
     }
-
-    async get_meals(user){
-        // use controller thing
-        var response = {};
-        if(!user){
-            user = this.state.user
-        }
-        await controller.get_meals(user)
-        .then(function(result) {
-            response = result;
-        });
+    get_meals(){
         
-        // overwrite test meals?
-        if(response.success){
-            this.setState({meals: response.meals});
-            this.setState({err: response.err})
-        } else {
-            this.setState({meals: []})
-            this.setState({err: response.err})
-        }
     }
+    
     
     
 //    componentDidMount(){

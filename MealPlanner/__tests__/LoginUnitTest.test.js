@@ -1,9 +1,10 @@
 import React from 'react';
-import {cleanup, fireEvent} from '@testing-library/react';
+import {cleanup, fireEvent, findByText} from '@testing-library/react';
 import Login from '../components/Login';
 import Adapter from "enzyme-adapter-react-16";
 import { shallow, configure, render  } from "enzyme";
 import { expect } from 'chai';
+
 
 
 
@@ -36,6 +37,10 @@ describe('Login Test 2', () => {
     
     });
     });
+
+    
+
+   
 
     
 

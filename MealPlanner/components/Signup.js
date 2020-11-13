@@ -1,8 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet} from 'react-native';
 import Button from './Button';
-//import base64 from 'base-64';
-//import * as controller from '../backend/controller';
+
 
 class Signup extends React.Component {
   constructor() {
@@ -14,30 +13,8 @@ class Signup extends React.Component {
     };
   }
 
-  async createAccount(){
-      /*
-    if( this.state.username && this.state.password){
-       this.setState({username: this.state.username});
-
-        this.setState({error: '' });
-     
-    }else{
-      this.setState({error: 'Please fill out all required fields!'})
-    }
-    */
-    var signup_result
-    await controller.user_signup(this.state.username, this.state.password).then(function(result){
-    	signup_result = result
-    })
-
-    if(signup_result.success) {
-      this.setState({username: this.state.username}, ()=>{this.props.auth(this.state.username)});
-    } else {
-			this.setState({username: ''});
-      this.setState({password: ''});
-      this.setState({error: signup_result.err });
-    }
-  }
+  
+    
 
   render() {
     if(this.props.show) {

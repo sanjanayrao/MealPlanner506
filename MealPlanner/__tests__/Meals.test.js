@@ -22,3 +22,15 @@ describe('Meals Test 1', () => {
       expect(wrapper.find("View").length).equals(2);
     });
     });
+
+    describe('Meals Test 3', () => {
+      it("Checking Initial State", () => {
+        const wrapper = shallow(<Meals />);
+        const componentInstance = wrapper.instance();
+        expect(wrapper.state('err')).equals('');
+        expect(wrapper.state('user')).equals('');
+       
+
+    
+      });
+      });

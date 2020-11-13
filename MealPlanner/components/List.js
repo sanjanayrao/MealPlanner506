@@ -44,16 +44,7 @@ class List extends React.Component {
     }
   };
 
-  async retrieveItems(user){
-    var response = {};
-    await controller.get_grocery_list(user)
-    .then(function(result) {
-        response = result;
-    })
-
-    if(response.success)
-        this.setState({data: response.list});
-  }
+  
    
 
   deleteItem = (item) => {

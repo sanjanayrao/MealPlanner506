@@ -17,9 +17,20 @@ describe('Signup Test 1', () => {
     });
   });
   
-  describe('Sigup Test 2', () => {
+  describe('Signup Test 2', () => {
     it("Checking Children Elements of Login", () => {
       const wrapper = shallow(<Signup />);
       expect(wrapper.find("View").length).equals(1);
     });
+    });
+
+    describe('Signup Test 3', () => {
+        it("Checking Initial State", () => {
+          const wrapper = shallow(<Signup />);
+          const componentInstance = wrapper.instance();
+          expect(wrapper.state('username')).equals('');
+          expect(wrapper.state('password')).equals('');
+          expect(wrapper.state('error')).equals('');
+
+        });
     });
