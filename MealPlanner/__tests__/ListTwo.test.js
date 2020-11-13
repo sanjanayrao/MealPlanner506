@@ -14,4 +14,5 @@ configure({ adapter: new Adapter() });
 it("List Renders Same as Prior Test", () => {
     const wrapper = render(<List />);
     expect(wrapper).toMatchSnapshot();
+    
   });

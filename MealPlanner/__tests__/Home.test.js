@@ -22,3 +22,34 @@ describe('Home Test 1', () => {
       expect(wrapper.find("View").length).equals(2);
     });
     });
+    describe('Home Test 3', () => {
+        it("Checking Initial State", () => {
+          const wrapper = shallow(<Home />);
+          const componentInstance = wrapper.instance();
+          expect(wrapper.state('showLogin')).equals(false);
+          expect(wrapper.state('showSignup')).equals(false);
+
+        });
+    });
+
+    describe('Home Test 4', () => {
+        it("Checking Initial State and Changing State", () => {
+          const wrapper = shallow(<Home />);
+          const componentInstance = wrapper.instance();
+          expect(wrapper.state('showLogin')).equals(false);
+          expect(wrapper.state('showSignup')).equals(false);
+          componentInstance.showLogin();
+          expect(wrapper.state('showLogin')).equals(true);
+          expect(wrapper.state('showSignup')).equals(false);
+          componentInstance.hideLogin();
+          expect(wrapper.state('showLogin')).equals(false);
+          expect(wrapper.state('showSignup')).equals(false);
+          componentInstance.showSignup();
+          expect(wrapper.state('showLogin')).equals(false);
+          expect(wrapper.state('showSignup')).equals(true);
+          componentInstance.hideSignup();
+          expect(wrapper.state('showLogin')).equals(false);
+          expect(wrapper.state('showSignup')).equals(false);
+
+        });
+    });

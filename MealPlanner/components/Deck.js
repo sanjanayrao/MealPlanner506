@@ -15,7 +15,7 @@ export default class Meals extends React.Component{
             user: ''
         }
     }
-
+/*
     async get_meals(user){
         // use controller thing
         var response = {};
@@ -65,7 +65,7 @@ export default class Meals extends React.Component{
             this.setState({meals: response.deck})
         }   
     }
-
+*/
     getMealCards(){
         let cards = [];
 

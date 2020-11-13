@@ -22,3 +22,13 @@ describe('Deck Test 1', () => {
       expect(wrapper.find("View").length).equals(2);
     });
     });
+
+    describe('Deck Test 3', () => {
+        it("Checking Initial State", () => {
+          const wrapper = shallow(<Deck />);
+          const componentInstance = wrapper.instance();
+          expect(wrapper.state('servings')).equals('4');
+          expect(wrapper.state('user')).equals('');
+      
+        });
+        });
