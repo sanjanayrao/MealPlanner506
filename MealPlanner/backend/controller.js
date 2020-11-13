@@ -43,7 +43,7 @@ export async function user_login(username, password) {
     return response
 }
 
-/*
+
 export async function user_signup(username, password) {
     var response = {success: false, err: ''};
 
@@ -437,7 +437,7 @@ export async function get_grocery_list(username) {
     })
 
     if(!response.success)
-        return success;
+        return response;
         
     var user_meals = [];
 
@@ -607,4 +607,3 @@ export async function update_meal(username, meal){
 
     return response;
 }
-*/
