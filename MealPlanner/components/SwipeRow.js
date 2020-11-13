@@ -1,18 +1,37 @@
 import React from 'react';
 import { View } from 'react-native';
-//import {
- // PanGestureHandler,
- // State as GestureState,
-//} from 'react-native-gesture-handler';
-//import Animated from 'react-native-reanimated';
+import {
+  PanGestureHandler,
+  State as GestureState,
+} from 'react-native-gesture-handler';
+import Animated from 'react-native-reanimated';
 
 
 // NOTE: this implementation is based off of a medium post tutorial on swipeable carde
 // https://snack.expo.io/@computerjazz/swipetodelete-rngh-reanimated
 
+const {
+  event,
+  cond,
+  Value,
+  block,
+  set,
+  eq,
+  not,
+  clockRunning,
+  and,
+  startClock,
+  stopClock,
+  spring,
+  greaterThan,
+  lessThan,
+  call,
+  Clock,
+} = Animated;
+
 class SwipeRow extends React.Component {
-  //clock = new Clock();
-  //gestureState = new Value(GestureState.UNDETERMINED);
+  clock = new Clock();
+  gestureState = new Value(GestureState.UNDETERMINED);
   animState = {
     finished: new Value(0),
     position: new Value(0),

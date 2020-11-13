@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Renders Same as Prior Test 1`] = `
+exports[`Signup Renders Same as Prior Test 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {},

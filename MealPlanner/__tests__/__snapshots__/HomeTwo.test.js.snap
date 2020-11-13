@@ -1,0 +1,1071 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Renders Same as Prior Test 1`] = `
+initialize {
+  "0": Object {
+    "attribs": Object {
+      "style": "background-color:#F1F2EE;flex:1;flex-direction:column",
+    },
+    "children": Array [
+      Object {
+        "attribs": Object {
+          "style": "flex:3;font-size:85px;font-weight:bold;color:#070707;align-self:center;margin-top:150px",
+        },
+        "children": Array [
+          Object {
+            "data": " Meal Planner ",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "text",
+          },
+        ],
+        "name": "text",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "style": "flex:5;align-items:center;height:150px;flex-direction:column",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "focusable": "true",
+                "style": "background-color:#9FC9AE;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "style": "color:white",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "Log In",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "text",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "style": undefined,
+                  },
+                },
+              ],
+              "name": "view",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {
+                  "focusable": "true",
+                  "style": "background-color:#553555;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "style": "color:white",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "Sign Up",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "text",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "style": undefined,
+                    },
+                  },
+                ],
+                "name": "view",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "focusable": undefined,
+                "style": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "focusable": undefined,
+                "style": undefined,
+              },
+            },
+            Object {
+              "attribs": Object {
+                "focusable": "true",
+                "style": "background-color:#553555;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "style": "color:white",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "Sign Up",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "text",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "style": undefined,
+                  },
+                },
+              ],
+              "name": "view",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "focusable": "true",
+                  "style": "background-color:#9FC9AE;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "style": "color:white",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "Log In",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "text",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "style": undefined,
+                    },
+                  },
+                ],
+                "name": "view",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "focusable": undefined,
+                "style": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "focusable": undefined,
+                "style": undefined,
+              },
+            },
+          ],
+          "name": "view",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": Object {
+            "attribs": Object {},
+            "children": Array [],
+            "name": "view",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": Object {
+              "attribs": Object {},
+              "children": Array [],
+              "name": "view",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {},
+              "x-attribsPrefix": Object {},
+            },
+            "parent": [Circular],
+            "prev": [Circular],
+            "type": "tag",
+            "x-attribsNamespace": Object {},
+            "x-attribsPrefix": Object {},
+          },
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "style": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "style": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": null,
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "style": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "style": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "style": "flex:5;align-items:center;height:150px;flex-direction:column",
+        },
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "focusable": "true",
+              "style": "background-color:#9FC9AE;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "style": "color:white",
+                },
+                "children": Array [
+                  Object {
+                    "data": "Log In",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "text",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "style": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "style": undefined,
+                },
+              },
+            ],
+            "name": "view",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": Object {
+              "attribs": Object {
+                "focusable": "true",
+                "style": "background-color:#553555;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "style": "color:white",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "Sign Up",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "text",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "style": undefined,
+                  },
+                },
+              ],
+              "name": "view",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "focusable": undefined,
+                "style": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "focusable": undefined,
+                "style": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "focusable": undefined,
+              "style": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "focusable": undefined,
+              "style": undefined,
+            },
+          },
+          Object {
+            "attribs": Object {
+              "focusable": "true",
+              "style": "background-color:#553555;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "style": "color:white",
+                },
+                "children": Array [
+                  Object {
+                    "data": "Sign Up",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "text",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "style": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "style": undefined,
+                },
+              },
+            ],
+            "name": "view",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "focusable": "true",
+                "style": "background-color:#9FC9AE;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "style": "color:white",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "Log In",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "text",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "style": undefined,
+                  },
+                },
+              ],
+              "name": "view",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "focusable": undefined,
+                "style": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "focusable": undefined,
+                "style": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "focusable": undefined,
+              "style": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "focusable": undefined,
+              "style": undefined,
+            },
+          },
+        ],
+        "name": "view",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {},
+          "children": Array [],
+          "name": "view",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": Object {
+            "attribs": Object {},
+            "children": Array [],
+            "name": "view",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": [Circular],
+            "type": "tag",
+            "x-attribsNamespace": Object {},
+            "x-attribsPrefix": Object {},
+          },
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {},
+          "x-attribsPrefix": Object {},
+        },
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "style": "flex:3;font-size:85px;font-weight:bold;color:#070707;align-self:center;margin-top:150px",
+          },
+          "children": Array [
+            Object {
+              "data": " Meal Planner ",
+              "next": null,
+              "parent": [Circular],
+              "prev": null,
+              "type": "text",
+            },
+          ],
+          "name": "text",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": null,
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "style": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "style": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "style": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "style": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {},
+        "children": Array [],
+        "name": "view",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {},
+          "children": Array [],
+          "name": "view",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": null,
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {},
+          "x-attribsPrefix": Object {},
+        },
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "style": "flex:5;align-items:center;height:150px;flex-direction:column",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "focusable": "true",
+                "style": "background-color:#9FC9AE;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "style": "color:white",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "Log In",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "text",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "style": undefined,
+                  },
+                },
+              ],
+              "name": "view",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {
+                  "focusable": "true",
+                  "style": "background-color:#553555;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "style": "color:white",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "Sign Up",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "text",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "style": undefined,
+                    },
+                  },
+                ],
+                "name": "view",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "focusable": undefined,
+                "style": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "focusable": undefined,
+                "style": undefined,
+              },
+            },
+            Object {
+              "attribs": Object {
+                "focusable": "true",
+                "style": "background-color:#553555;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "style": "color:white",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "Sign Up",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "text",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "style": undefined,
+                  },
+                },
+              ],
+              "name": "view",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "focusable": "true",
+                  "style": "background-color:#9FC9AE;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "style": "color:white",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "Log In",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "text",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "style": undefined,
+                    },
+                  },
+                ],
+                "name": "view",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "focusable": undefined,
+                "style": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "focusable": undefined,
+                "style": undefined,
+              },
+            },
+          ],
+          "name": "view",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": Object {
+            "attribs": Object {
+              "style": "flex:3;font-size:85px;font-weight:bold;color:#070707;align-self:center;margin-top:150px",
+            },
+            "children": Array [
+              Object {
+                "data": " Meal Planner ",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "text",
+              },
+            ],
+            "name": "text",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": [Circular],
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "style": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "style": undefined,
+            },
+          },
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "style": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "style": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {},
+        "x-attribsPrefix": Object {},
+      },
+      Object {
+        "attribs": Object {},
+        "children": Array [],
+        "name": "view",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": null,
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {},
+          "children": Array [],
+          "name": "view",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": Object {
+            "attribs": Object {
+              "style": "flex:5;align-items:center;height:150px;flex-direction:column",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "focusable": "true",
+                  "style": "background-color:#9FC9AE;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "style": "color:white",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "Log In",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "text",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "style": undefined,
+                    },
+                  },
+                ],
+                "name": "view",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": Object {
+                  "attribs": Object {
+                    "focusable": "true",
+                    "style": "background-color:#553555;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "style": "color:white",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "Sign Up",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "text",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "style": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "style": undefined,
+                      },
+                    },
+                  ],
+                  "name": "view",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": [Circular],
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "focusable": undefined,
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "focusable": undefined,
+                    "style": undefined,
+                  },
+                },
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+              },
+              Object {
+                "attribs": Object {
+                  "focusable": "true",
+                  "style": "background-color:#553555;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "style": "color:white",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "Sign Up",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "text",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "style": undefined,
+                    },
+                  },
+                ],
+                "name": "view",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": Object {
+                  "attribs": Object {
+                    "focusable": "true",
+                    "style": "background-color:#9FC9AE;padding:10px;border-radius:10px;height:60px;width:175px;margin:10px;align-items:center;justify-content:center",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "style": "color:white",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "Log In",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "text",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "style": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "style": undefined,
+                      },
+                    },
+                  ],
+                  "name": "view",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": [Circular],
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "focusable": undefined,
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "focusable": undefined,
+                    "style": undefined,
+                  },
+                },
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+              },
+            ],
+            "name": "view",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": [Circular],
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "style": "flex:3;font-size:85px;font-weight:bold;color:#070707;align-self:center;margin-top:150px",
+              },
+              "children": Array [
+                Object {
+                  "data": " Meal Planner ",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "text",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "style": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "style": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "style": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "style": undefined,
+            },
+          },
+          "type": "tag",
+          "x-attribsNamespace": Object {},
+          "x-attribsPrefix": Object {},
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {},
+        "x-attribsPrefix": Object {},
+      },
+    ],
+    "name": "view",
+    "namespace": "http://www.w3.org/1999/xhtml",
+    "next": null,
+    "parent": null,
+    "prev": null,
+    "root": Object {
+      "attribs": Object {},
+      "children": Array [
+        [Circular],
+      ],
+      "name": "root",
+      "namespace": "http://www.w3.org/1999/xhtml",
+      "next": null,
+      "parent": null,
+      "prev": null,
+      "type": "root",
+      "x-attribsNamespace": Object {},
+      "x-attribsPrefix": Object {},
+    },
+    "type": "tag",
+    "x-attribsNamespace": Object {
+      "style": undefined,
+    },
+    "x-attribsPrefix": Object {
+      "style": undefined,
+    },
+  },
+  "_root": [Circular],
+  "length": 1,
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;

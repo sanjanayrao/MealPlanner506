@@ -1,0 +1,804 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deck Renders Same as Prior Test 1`] = `
+initialize {
+  "0": Object {
+    "attribs": Object {},
+    "children": Array [
+      Object {
+        "attribs": Object {},
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "style": "flex-direction:row;margin:10px",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "style": "margin:15px",
+                },
+                "children": Array [
+                  Object {
+                    "data": "Meals on Deck",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "text",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": Object {
+                  "attribs": Object {
+                    "style": "height:5px;width:50px;margin-top:-68px",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "items": "[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]",
+                        "selectedindex": "0",
+                        "style": "0:[object Object]",
+                      },
+                      "children": Array [],
+                      "name": "rctpicker",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "items": undefined,
+                        "selectedindex": undefined,
+                        "style": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "items": undefined,
+                        "selectedindex": undefined,
+                        "style": undefined,
+                      },
+                    },
+                  ],
+                  "name": "view",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": Object {
+                    "attribs": Object {
+                      "focusable": "true",
+                      "style": "background-color:#553555;padding:10px;border-radius:50px;width:15%;align-self:flex-end;align-items:center;margin:10px",
+                    },
+                    "children": Array [
+                      Object {
+                        "attribs": Object {
+                          "style": "color:white;font-size:36px",
+                        },
+                        "children": Array [
+                          Object {
+                            "data": "↺",
+                            "next": null,
+                            "parent": [Circular],
+                            "prev": null,
+                            "type": "text",
+                          },
+                        ],
+                        "name": "text",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {
+                          "style": undefined,
+                        },
+                        "x-attribsPrefix": Object {
+                          "style": undefined,
+                        },
+                      },
+                    ],
+                    "name": "view",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": [Circular],
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "focusable": undefined,
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "focusable": undefined,
+                      "style": undefined,
+                    },
+                  },
+                  "parent": [Circular],
+                  "prev": [Circular],
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "style": undefined,
+                  },
+                },
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "style": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "style": undefined,
+                },
+              },
+              Object {
+                "attribs": Object {
+                  "style": "height:5px;width:50px;margin-top:-68px",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "items": "[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]",
+                      "selectedindex": "0",
+                      "style": "0:[object Object]",
+                    },
+                    "children": Array [],
+                    "name": "rctpicker",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "items": undefined,
+                      "selectedindex": undefined,
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "items": undefined,
+                      "selectedindex": undefined,
+                      "style": undefined,
+                    },
+                  },
+                ],
+                "name": "view",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": Object {
+                  "attribs": Object {
+                    "focusable": "true",
+                    "style": "background-color:#553555;padding:10px;border-radius:50px;width:15%;align-self:flex-end;align-items:center;margin:10px",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "style": "color:white;font-size:36px",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "↺",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "text",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "style": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "style": undefined,
+                      },
+                    },
+                  ],
+                  "name": "view",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": [Circular],
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "focusable": undefined,
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "focusable": undefined,
+                    "style": undefined,
+                  },
+                },
+                "parent": [Circular],
+                "prev": Object {
+                  "attribs": Object {
+                    "style": "margin:15px",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "Meals on Deck",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "text",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": [Circular],
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "style": undefined,
+                  },
+                },
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "style": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "style": undefined,
+                },
+              },
+              Object {
+                "attribs": Object {
+                  "focusable": "true",
+                  "style": "background-color:#553555;padding:10px;border-radius:50px;width:15%;align-self:flex-end;align-items:center;margin:10px",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "style": "color:white;font-size:36px",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "↺",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "text",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "style": undefined,
+                    },
+                  },
+                ],
+                "name": "view",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": Object {
+                  "attribs": Object {
+                    "style": "height:5px;width:50px;margin-top:-68px",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "items": "[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]",
+                        "selectedindex": "0",
+                        "style": "0:[object Object]",
+                      },
+                      "children": Array [],
+                      "name": "rctpicker",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "items": undefined,
+                        "selectedindex": undefined,
+                        "style": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "items": undefined,
+                        "selectedindex": undefined,
+                        "style": undefined,
+                      },
+                    },
+                  ],
+                  "name": "view",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": [Circular],
+                  "parent": [Circular],
+                  "prev": Object {
+                    "attribs": Object {
+                      "style": "margin:15px",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "Meals on Deck",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "text",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": [Circular],
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "style": undefined,
+                    },
+                  },
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "style": undefined,
+                  },
+                },
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "focusable": undefined,
+                  "style": undefined,
+                },
+              },
+            ],
+            "name": "view",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": Object {
+              "attribs": Object {},
+              "children": Array [],
+              "name": "view",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {},
+              "x-attribsPrefix": Object {},
+            },
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "style": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "style": undefined,
+            },
+          },
+          Object {
+            "attribs": Object {},
+            "children": Array [],
+            "name": "view",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "style": "flex-direction:row;margin:10px",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "style": "margin:15px",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "Meals on Deck",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "text",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": Object {
+                    "attribs": Object {
+                      "style": "height:5px;width:50px;margin-top:-68px",
+                    },
+                    "children": Array [
+                      Object {
+                        "attribs": Object {
+                          "items": "[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]",
+                          "selectedindex": "0",
+                          "style": "0:[object Object]",
+                        },
+                        "children": Array [],
+                        "name": "rctpicker",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {
+                          "items": undefined,
+                          "selectedindex": undefined,
+                          "style": undefined,
+                        },
+                        "x-attribsPrefix": Object {
+                          "items": undefined,
+                          "selectedindex": undefined,
+                          "style": undefined,
+                        },
+                      },
+                    ],
+                    "name": "view",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": Object {
+                      "attribs": Object {
+                        "focusable": "true",
+                        "style": "background-color:#553555;padding:10px;border-radius:50px;width:15%;align-self:flex-end;align-items:center;margin:10px",
+                      },
+                      "children": Array [
+                        Object {
+                          "attribs": Object {
+                            "style": "color:white;font-size:36px",
+                          },
+                          "children": Array [
+                            Object {
+                              "data": "↺",
+                              "next": null,
+                              "parent": [Circular],
+                              "prev": null,
+                              "type": "text",
+                            },
+                          ],
+                          "name": "text",
+                          "namespace": "http://www.w3.org/1999/xhtml",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "tag",
+                          "x-attribsNamespace": Object {
+                            "style": undefined,
+                          },
+                          "x-attribsPrefix": Object {
+                            "style": undefined,
+                          },
+                        },
+                      ],
+                      "name": "view",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": [Circular],
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "focusable": undefined,
+                        "style": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "focusable": undefined,
+                        "style": undefined,
+                      },
+                    },
+                    "parent": [Circular],
+                    "prev": [Circular],
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "style": undefined,
+                    },
+                  },
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "style": undefined,
+                  },
+                },
+                Object {
+                  "attribs": Object {
+                    "style": "height:5px;width:50px;margin-top:-68px",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "items": "[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]",
+                        "selectedindex": "0",
+                        "style": "0:[object Object]",
+                      },
+                      "children": Array [],
+                      "name": "rctpicker",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "items": undefined,
+                        "selectedindex": undefined,
+                        "style": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "items": undefined,
+                        "selectedindex": undefined,
+                        "style": undefined,
+                      },
+                    },
+                  ],
+                  "name": "view",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": Object {
+                    "attribs": Object {
+                      "focusable": "true",
+                      "style": "background-color:#553555;padding:10px;border-radius:50px;width:15%;align-self:flex-end;align-items:center;margin:10px",
+                    },
+                    "children": Array [
+                      Object {
+                        "attribs": Object {
+                          "style": "color:white;font-size:36px",
+                        },
+                        "children": Array [
+                          Object {
+                            "data": "↺",
+                            "next": null,
+                            "parent": [Circular],
+                            "prev": null,
+                            "type": "text",
+                          },
+                        ],
+                        "name": "text",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {
+                          "style": undefined,
+                        },
+                        "x-attribsPrefix": Object {
+                          "style": undefined,
+                        },
+                      },
+                    ],
+                    "name": "view",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": [Circular],
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "focusable": undefined,
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "focusable": undefined,
+                      "style": undefined,
+                    },
+                  },
+                  "parent": [Circular],
+                  "prev": Object {
+                    "attribs": Object {
+                      "style": "margin:15px",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "Meals on Deck",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "text",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": [Circular],
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "style": undefined,
+                    },
+                  },
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "style": undefined,
+                  },
+                },
+                Object {
+                  "attribs": Object {
+                    "focusable": "true",
+                    "style": "background-color:#553555;padding:10px;border-radius:50px;width:15%;align-self:flex-end;align-items:center;margin:10px",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "style": "color:white;font-size:36px",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "↺",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "text",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "style": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "style": undefined,
+                      },
+                    },
+                  ],
+                  "name": "view",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": Object {
+                    "attribs": Object {
+                      "style": "height:5px;width:50px;margin-top:-68px",
+                    },
+                    "children": Array [
+                      Object {
+                        "attribs": Object {
+                          "items": "[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]",
+                          "selectedindex": "0",
+                          "style": "0:[object Object]",
+                        },
+                        "children": Array [],
+                        "name": "rctpicker",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {
+                          "items": undefined,
+                          "selectedindex": undefined,
+                          "style": undefined,
+                        },
+                        "x-attribsPrefix": Object {
+                          "items": undefined,
+                          "selectedindex": undefined,
+                          "style": undefined,
+                        },
+                      },
+                    ],
+                    "name": "view",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": [Circular],
+                    "parent": [Circular],
+                    "prev": Object {
+                      "attribs": Object {
+                        "style": "margin:15px",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "Meals on Deck",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "text",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": [Circular],
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "style": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "style": undefined,
+                      },
+                    },
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "style": undefined,
+                    },
+                  },
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "focusable": undefined,
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "focusable": undefined,
+                    "style": undefined,
+                  },
+                },
+              ],
+              "name": "view",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "style": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "style": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {},
+            "x-attribsPrefix": Object {},
+          },
+        ],
+        "name": "view",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": null,
+        "parent": [Circular],
+        "prev": null,
+        "type": "tag",
+        "x-attribsNamespace": Object {},
+        "x-attribsPrefix": Object {},
+      },
+    ],
+    "name": "rctscrollview",
+    "namespace": "http://www.w3.org/1999/xhtml",
+    "next": null,
+    "parent": null,
+    "prev": null,
+    "root": Object {
+      "attribs": Object {},
+      "children": Array [
+        [Circular],
+      ],
+      "name": "root",
+      "namespace": "http://www.w3.org/1999/xhtml",
+      "next": null,
+      "parent": null,
+      "prev": null,
+      "type": "root",
+      "x-attribsNamespace": Object {},
+      "x-attribsPrefix": Object {},
+    },
+    "type": "tag",
+    "x-attribsNamespace": Object {},
+    "x-attribsPrefix": Object {},
+  },
+  "_root": [Circular],
+  "length": 1,
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;

@@ -31,13 +31,7 @@ describe('Login Test 2', () => {
     });
     });
 
-    describe(`Login Test 4`, () => {
-      test(`Screenshot test to test rendering`, () => {
-        const wrapper = shallow(<Login />);
-        expect(wrapper).toMatchSnapshot();
-      });
-    });
-
+    
 
 
 
