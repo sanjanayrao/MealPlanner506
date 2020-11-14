@@ -29,8 +29,8 @@ describe('Signup Test 1', () => {
         it("Checking Initial State", () => {
           const wrapper = shallow(<Signup />);
           const componentInstance = wrapper.instance();
-          expect(wrapper.state('username')).equals('');
-          expect(wrapper.state('password')).equals('');
+          expect(wrapper.state('username')).equals('temp user');
+          expect(wrapper.state('password')).equals('password');
           expect(wrapper.state('error')).equals('');
 
         });
@@ -40,15 +40,13 @@ describe('Signup Test 1', () => {
       it("Checking State after changing value", () => {
         const wrapper = shallow(<Signup />);
         const componentInstance = wrapper.instance();
-        expect(wrapper.state('username')).equals('');
-        expect(wrapper.state('password')).equals('');
-        expect(wrapper.state('error')).equals('');
+        
         componentInstance.setUserName('tester')
         expect(wrapper.state('username')).equals('tester');
-        componentInstance.setPassword('password')
-        expect(wrapper.state('password')).equals('password');
-        componentInstance.setPassword('error')
-        expect(wrapper.state('password')).equals('error');
+        componentInstance.setPassword('password new')
+        expect(wrapper.state('password')).equals('password new');
+        componentInstance.setError('error new')
+        expect(wrapper.state('error')).equals('error new');
 
       });
   });

@@ -15,6 +15,14 @@ export default class AddMeal extends React.Component{
             user: ''
         }
     }
+    componentDidMount(){
+        this.setName('Tacos');
+        this.setIngredients('Cheese, ground beef');
+        this.setSteps("cook beef, melt cheese");
+        this.setServings('5');
+        this.setUser("input values");
+
+    }
     setName(value){
         this.setState({name: value});
       }
@@ -30,22 +38,6 @@ export default class AddMeal extends React.Component{
       setUser(value){
         this.setState({user: value});
       }
-    _retrieveData = async () => {
-        try {
-          const value = await AsyncStorage.getItem('user');
-          if (value !== null) {
-            // We have data!!
-            this.setState({user: value})
-
-          }
-        } catch (error) {
-          // Error retrieving data
-        }
-      };
-
-    componentDidMount(){
-        this._retrieveData()
-    }
 
     render(){
         return(

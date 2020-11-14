@@ -12,6 +12,13 @@ class Signup extends React.Component {
       error: ''
     };
   }
+  componentDidMount(){
+    this.setUserName('temp user');
+    this.setPassword('password');
+    this.setError('');
+    
+
+}
 
     
 

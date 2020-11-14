@@ -14,57 +14,7 @@ export default class Meals extends React.Component{
             user: ''
         }
     }
-/*
-    async get_meals(user){
-        // use controller thing
-        var response = {};
 
-        if(!user){
-            user = this.state.user
-        }
-        await controller.get_meals(user)
-        .then(function(result) {
-            response = result;
-        });
-        
-        // overwrite test meals?
-        if(response.success){
-            this.setState({meals: response.meals});
-            //testMeals = response.meals;
-        }
-
-        //this.setState({meals: data_from_shit})
-    }
-    _retrieveData = async () => {
-        try {
-          const value = await AsyncStorage.getItem('user');
-          if (value !== null) {
-            // We have data!!
-            this.setState({user: value})
-            this.get_meals(value)
-
-          }
-        } catch (error) {
-          // Error retrieving data
-        }
-      };
-    componentDidMount(){
-        this._retrieveData()
-    }
-    async generate(){
-        console.log("GENERATE");
-        //  GET GENERATED MEALS FROM API using the number of servings in the stateS
-        var response = {};
-        await controller.generate_deck(this.state.user, this.state.servings)
-        .then(function(result) {
-            response = result
-        })
-
-        if(response.success) {
-            this.setState({meals: response.deck})
-        }   
-    }
-*/
     getMealCards(){
         let cards = [];
 

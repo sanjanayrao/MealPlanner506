@@ -7,15 +7,30 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: 'admin',
-      password: 'admin',
+      username: '',
+      password: '',
       error: '',
       token: ''
     };
   }
-
- 
-
+  componentDidMount(){
+    this.setUsername('admin');
+    this.setPassword('admin');
+    this.setError('');
+    this.setToken('');
+}
+setUsername(value){
+    this.setState({username: value});
+  }
+  setPassword(value){
+    this.setState({password: value});
+  }
+  setError(value){
+    this.setState({error: value});
+  }
+  setToken(value){
+    this.setState({token: value});
+  }
   render() {
     if(this.props.show) {
       const screenWidth = Math.round(Dimensions.get('window').width);

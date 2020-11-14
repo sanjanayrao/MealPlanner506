@@ -36,6 +36,20 @@ describe('Login Test 2', () => {
     });
     });
 
+    describe('Login Test 4', () => {
+      it("Checking Initial State", () => {
+        const wrapper = shallow(<Login />);
+        const componentInstance = wrapper.instance();
+        expect(wrapper.state('username')).equals('admin');
+        expect(wrapper.state('password')).equals('admin');
+        expect(wrapper.state('error')).equals('');
+        expect(wrapper.state('token')).equals('');
+        componentInstance.setUsername('tester');
+        expect(wrapper.state('username')).equals('tester');
+        
+      });
+      });
+
     
 
    

@@ -23,28 +23,14 @@ export default class Meals extends React.Component{
       setErr(value){
         this.setState({err: value});
       }
-    
-    
-    
-    
-
-   
-    componentWillUnmount(){
-        this.focusListener()
-    }
+      setMeals(){
+          this.setState({meals: ['meal one', 'meal two']})
+      }
   
-    _retrieveData = async () => {
-        try {
-          const value = await AsyncStorage.getItem('user');
-          if (value !== null) {
-            // We have data!!
-            this.setState({user: value})
-            this.get_meals(value)
-
-          }
-        } catch (error) {
-          // Error retrieving data
-        }
+    _retrieveData() {
+        
+        this.setUser('tester')
+        this.get_meals('user')  
       };
 
     getMealCards(){

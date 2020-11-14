@@ -30,6 +30,9 @@ describe('Deck Test 1', () => {
           const componentInstance = wrapper.instance();
           expect(wrapper.state('servings')).equals('4');
           expect(wrapper.state('user')).equals('');
+          componentInstance.getMealCards();
+          componentInstance.picker('10');
+          expect(wrapper.state('servings')).equals('10');
       
         });
         });

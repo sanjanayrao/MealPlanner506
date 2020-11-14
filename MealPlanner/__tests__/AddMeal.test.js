@@ -28,11 +28,11 @@ describe('AddMeal Test 1', () => {
       it("Checking Initial State", () => {
         const wrapper = shallow(<AddMeal />);
         const componentInstance = wrapper.instance();
-        expect(wrapper.state('ingredients')).equals('');
-        expect(wrapper.state('steps')).equals('');
-        expect(wrapper.state('servings')).equals('');
-        expect(wrapper.state('user')).equals('');
-
+        expect(wrapper.state('name')).equals('Tacos');
+        expect(wrapper.state('ingredients')).equals('Cheese, ground beef');
+        expect(wrapper.state('steps')).equals('cook beef, melt cheese');
+        expect(wrapper.state('servings')).equals('5');
+        expect(wrapper.state('user')).equals('input values');
     
       });
       });
@@ -41,10 +41,7 @@ describe('AddMeal Test 1', () => {
         it("Checking Initial State", () => {
           const wrapper = shallow(<AddMeal />);
           const componentInstance = wrapper.instance();
-          expect(wrapper.state('ingredients')).equals('');
-          expect(wrapper.state('steps')).equals('');
-          expect(wrapper.state('servings')).equals('');
-          expect(wrapper.state('user')).equals('');
+          
 
           componentInstance.setIngredients('sugar and salt');
           expect(wrapper.state('ingredients')).equals('sugar and salt');
@@ -63,4 +60,7 @@ describe('AddMeal Test 1', () => {
       
         });
         });
+        
+
+        
     

@@ -16,13 +16,10 @@ class List extends React.Component {
     data: [],
   }
 
-  //componentDidMount(){
-    //const listener = this.props.navigation.addListener('focus', () => {
-      // do something
-      //this._update()
-    //});
+  componentDidMount(){
+    this._update()
 
- // }
+  }
 
   _update(){
     this._retrieveData()
