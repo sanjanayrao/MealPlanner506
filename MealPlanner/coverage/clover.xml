@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1605317446980" clover="3.2.0">
-  <project timestamp="1605317446981" name="All files">
+<coverage generated="1605321183831" clover="3.2.0">
+  <project timestamp="1605321183832" name="All files">
     <metrics statements="154" coveredstatements="94" conditionals="14" coveredconditionals="6" methods="95" coveredmethods="53" elements="263" coveredelements="153" complexity="0" loc="154" ncloc="154" packages="1" files="9" classes="9"/>
     <file name="AddMeal.js" path="C:\Users\dwalt\Documents\506\meal planner second iteration\MealPlanner506\MealPlanner\components\AddMeal.js">
       <metrics statements="19" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="8"/>
