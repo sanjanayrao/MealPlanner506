@@ -12,7 +12,7 @@ cd MealPlanner
 npm install
 
 
-Running the Application
+Running the Tests
 
 In order to run the front end tests, type in the following command
 npm run test 
