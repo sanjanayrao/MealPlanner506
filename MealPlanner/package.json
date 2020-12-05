@@ -12,6 +12,7 @@
   "dependencies": {
     "@firebase/testing": "^0.20.11",
     "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-picker/picker": "^1.9.4",
     "@react-navigation/bottom-tabs": "^5.9.2",
     "@react-navigation/native": "^5.7.6",
     "@react-navigation/stack": "^5.9.3",
@@ -26,6 +27,7 @@
     "react-native-elements": "^3.0.0-alpha.1",
     "react-native-gesture-handler": "~1.7.0",
     "react-native-login-screen": "^2.1.1",
+    "react-native-numeric-input": "^1.8.3",
     "react-native-popup-dialog": "^0.18.3",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "^3.1.4",

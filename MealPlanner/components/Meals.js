@@ -103,29 +103,44 @@ export default class Meals extends React.Component{
 
                 </View>   
                 {this.state.err ? <Text style={{marginTop: '40%', alignSelf: 'center', color:'grey'}}>{this.state.err}</Text> : <Text></Text>}
-                <SafeAreaView style={styles.container}>
-                    <FlatList 
-                        data={this.state.meals}
-                        numColumns={2} 
-                        keyExtractor={(item) => item.id}
-                        renderItem={(item) => 
-                            <Card key={item.id}>
-                                <Card.Title>
-                                    {item.item.name}
-                                </Card.Title>
-                               
-                                <Button
-                                    text={'View Meal'}
-                                    textStyle={{color: 'white'}}
-                                    buttonStyle={styles.mealButton}
-                                    onPress={()=>{
-                                        this.props.navigation.navigate('Meal View', {'meal' : item.item} ) ;
-                                    }}
-                                    /> 
-                            </Card>  
-                    }
-                    />
-                </SafeAreaView>
+                
+                    <View
+                    nestedScrollEnabled={true} 
+                    onStartShouldSetResponderCapture={() => {
+                     this.setState({ enableScrollViewScroll: true });
+                    }}>
+                    <ScrollView
+                    prop nestedScrollEnabled={true} 
+                    scrollEnabled={this.state.enableScrollViewScroll}
+                    ref={myScroll => (this._myScroll = myScroll)}>
+                        <View
+                        nestedScrollEnabled={true}>
+                            <FlatList 
+                            nestedScrollEnabled={true}
+                                data={this.state.meals}
+                                numColumns={2} 
+                                keyExtractor={(item) => item.id}
+                                renderItem={(item) => 
+                                    <Card key={item.id}>
+                                        <Card.Title>
+                                            {item.item.name}
+                                        </Card.Title>
+                                    
+                                        <Button
+                                            text={'View Meal'}
+                                            textStyle={{color: 'white'}}
+                                            buttonStyle={styles.mealButton}
+                                            onPress={()=>{
+                                                this.props.navigation.navigate('Meal View', {'meal' : item.item} ) ;
+                                            }}
+                                            /> 
+                                    </Card>  
+                            }
+                            />
+                        </View>
+                    </ScrollView>
+                    </View>
+                
                 </View>
         )
     }

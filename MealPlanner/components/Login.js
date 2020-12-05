@@ -1,15 +1,14 @@
 import React from 'react';
 import { Text, View, TouchableWithoutFeedback, TextInput, StyleSheet, Dimensions } from 'react-native';
 import Button from './Button';
-import base64 from 'base-64';
 import * as controller from '../backend/controller'
 
 class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: 'admin',
-      password: 'admin',
+      username: '',
+      password: '',
       error: '',
       token: ''
     };
@@ -23,6 +22,7 @@ class Login extends React.Component {
 
     if(login_result.success) {
       this.setState({username: this.state.username}, ()=>{this.props.auth(this.state.username)});
+      this.setState({error: ''})
     } else {
       this.setState({password: ''});
       this.setState({error: login_result.err });

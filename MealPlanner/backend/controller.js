@@ -1,9 +1,7 @@
 import * as fb from './firebase'
 import base64 from 'base-64'
-import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
 import * as helper from './helper'
-import { add } from 'react-native-reanimated';
-import { useReducer } from 'react';
+
 
 const invalid_login = 'Invalid Username or Password';
 const internal_error = 'Internal Error: Unable to process request';

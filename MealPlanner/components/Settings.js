@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, AsyncStorage} from 'react-native';
-import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
-import  {Dialog, DialogFooter, DialogButton, DialogContent, DialogTitle } from 'react-native-popup-dialog';
+import {View,  StyleSheet, AsyncStorage} from 'react-native';
+import { Card, Text } from 'react-native-elements';
+import  {Dialog, DialogFooter, DialogButton, DialogTitle } from 'react-native-popup-dialog';
 import Button from './Button'
 import * as controller from '../backend/controller'
 
@@ -44,7 +44,7 @@ export default class Settings extends React.Component{
     }
     async removeUser(){
         this.setStateFalseUser()
-            // TODO:  remove user 
+            // sremove user 
         await controller.delete_user(this.state.user)
         this.props.navigation.navigate("Log In")
 

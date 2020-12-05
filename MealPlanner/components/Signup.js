@@ -32,12 +32,14 @@ class Signup extends React.Component {
 
     if(signup_result.success) {
       this.setState({username: this.state.username}, ()=>{this.props.auth(this.state.username)});
+      this.setState({error: ''})
     } else {
 			this.setState({username: ''});
       this.setState({password: ''});
       this.setState({error: signup_result.err });
     }
   }
+ 
 
   render() {
     if(this.props.show) {

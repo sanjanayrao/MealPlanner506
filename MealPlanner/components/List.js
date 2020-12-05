@@ -81,6 +81,7 @@ class List extends React.Component {
         <Text style={styles.header} h2>
           Grocery List
         </Text>
+        <Text  style={styles.header}>Swipe left to delete an item</Text>
        <FlatList 
           data={this.state.data}
           renderItem={this.renderItem}

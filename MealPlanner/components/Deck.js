@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, Picker, FlatList, AsyncStorage} from 'react-native';
+import { View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, FlatList, AsyncStorage} from 'react-native';
+import {Picker} from '@react-native-picker/picker';
+import NumericInput from 'react-native-numeric-input'
+
 import { Card, ListItem, Icon, Text } from 'react-native-elements';
 import Button from './Button';
 import * as controller from '../backend/controller'
@@ -11,7 +14,7 @@ export default class Meals extends React.Component{
         super();
         this.state = {
             meals: [],
-            servings: '4',
+            servings: 4,
             user: ''
         }
     }
@@ -34,7 +37,6 @@ export default class Meals extends React.Component{
             //testMeals = response.meals;
         }
 
-        //this.setState({meals: data_from_shit})
     }
     _retrieveData = async () => {
         try {
@@ -92,45 +94,21 @@ export default class Meals extends React.Component{
     
     picker(itemValue){
         this.setState({servings: itemValue})
-        console.log(itemValue)
     }
     render(){
         return(
            <ScrollView>
+               <Text style={styles.header} h2 >Meals on Deck</Text>
+               <Text style={styles.header}h5>Select the number of meals you'd like to randomly generate</Text>
                <View  style={{
                                 flexDirection: 'row',
-                                margin: 10
+                                margin: 10,
                             }}> 
-                    <Text style={styles.header} h2>Meals on Deck</Text>
                     
-                    <Picker
-                        selectedValue={this.state.servings}
-                        style={{ height: 5, width: 50,
-                            
-                        marginTop: -68,
-                
-                        }}
-                        onValueChange={(itemValue) => this.picker(itemValue) }
-                    >
-                        <Picker.Item label="4" value="4" />
-                        <Picker.Item label="5" value="5" />
-                        <Picker.Item label="6" value="6" />
-                        <Picker.Item label="7" value="7" />
-                        <Picker.Item label="8" value="8" />
-                        <Picker.Item label="9" value="9" />
-                        <Picker.Item label="10" value="10" />
-                        <Picker.Item label="11" value="11" />
-                        <Picker.Item label="12" value="12" />
-                        <Picker.Item label="13" value="13" />
-                        <Picker.Item label="14" value="14" />
-                        <Picker.Item label="15" value="15" />
-                        <Picker.Item label="16" value="16" />
-                        <Picker.Item label="17" value="17" />
-                        <Picker.Item label="18" value="18" />
-                        <Picker.Item label="19" value="19" />
-                        <Picker.Item label="20" value="20" />
-                    </Picker>
-                    <Button text={'↺'} textStyle={{color:'white', fontSize: 36}} buttonStyle={styles.generate} onPress={()=>this.generate()}/>
+                    <NumericInput minValue={4} maxValue={80} value={this.state.servings} onChange={value => this.picker(value)} />
+
+                  
+                    <Button text={'GENERATE'} textStyle={{color:'white'}} buttonStyle={styles.generate} onPress={()=>this.generate()}/>
                </View>
                 <View>
                     {this.getMealCards()}
@@ -165,9 +143,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#553555', 
         padding: 10, 
         borderRadius: 50,
-        width: '15%',
         alignSelf: 'flex-end',
         alignItems: 'center',
         margin:10,
+        marginTop: 25,
+        marginLeft: 140
       }
   });
