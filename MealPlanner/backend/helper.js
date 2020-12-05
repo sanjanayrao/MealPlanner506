@@ -1,4 +1,7 @@
 export function string_to_array(string) {
+    if(!string.includes(",")){
+        return string
+    }
     var arr = string.split(","); 
     
     arr.forEach(elem => {

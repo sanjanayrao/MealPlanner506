@@ -189,23 +189,16 @@ export default class MealInfo extends React.Component{
                         style={styles.input}
                         />
                         <TextInput
-                        onChangeText={value => this.changeName(value)}
-                        value={this.state.modalVals.name}
+                        onChangeText={value => this.changeSteps(value)}
+                        value={this.state.modalVals.steps}
                         style={styles.input}
                         />
-
-                        <Input
-                        placeholder={this.returnCurrIngredientsString()}
-                        onChangeText={value => this.changeIngredients(value)}
-                        />
-                        <Input
-                        placeholder={this.state.modalVals.steps}
-                        onChangeText={value => this.changeSteps(value)}
-                        />
-                        <Input
-                        placeholder={this.state.modalVals.servings.toString()}
+                        <TextInput
                         onChangeText={value => this.changeServings(value)}
+                        value={this.state.modalVals.servings.toString()}
+                        style={styles.input}
                         />
+                       
 
                         <TouchableHighlight
                         style={{ ...styles.openButton}}
