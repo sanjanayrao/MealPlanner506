@@ -1,9 +1,14 @@
 import React from 'react';
-import {View,  StyleSheet, AsyncStorage} from 'react-native';
+import {View,  StyleSheet, AsyncStorage, LogBox} from 'react-native';
 import { Card, Text } from 'react-native-elements';
 import  {Dialog, DialogFooter, DialogButton, DialogTitle } from 'react-native-popup-dialog';
 import Button from './Button'
 import * as controller from '../backend/controller'
+
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
+
+
 
 
 export default class Settings extends React.Component{

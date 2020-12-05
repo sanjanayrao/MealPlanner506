@@ -67,7 +67,7 @@ export default class Meals extends React.Component{
       };
 
     getMealCards(){
-        let cards = [];
+        var cards = [];
 
         for(const i in this.state.meals){
             cards.push(
@@ -94,6 +94,54 @@ export default class Meals extends React.Component{
         this.props.navigation.navigate('Add Meal', {update : this.get_meals})
 
     }
+
+    render_user_meals(){
+        let cards = [];
+        let card_data = this.state.meals;
+
+        if (card_data.length % 2 != 0) {
+            card_data.push({});
+        }
+
+        for(let i = 0; i < card_data.length; i += 2){
+                cards.push(
+                <View style={{flex: 1, flexDirection: 'row'}}>
+                <Card style={{width: 100}}
+                        key={i}>
+                    <Card.Title>
+                        {this.state.meals[i].name}
+                    </Card.Title>
+                    <Text>
+                        Serves: {this.state.meals[i].servings}
+                    </Text>
+                
+                    <Button
+                        text={'View Meal'}
+                        textStyle={{color: 'white'}}
+                        buttonStyle={styles.mealButton}
+                        onPress={()=>this.props.navigation.navigate('Meal View', {'meal' : this.state.meals[i] } )}
+                        />            
+                </Card>
+                
+                <Card key={i+1}>
+                    <Card.Title>
+                        {this.state.meals[i+1].name}
+                    </Card.Title>
+                    <Text>
+                        Serves: {this.state.meals[i+1].servings}
+                    </Text>
+                
+                    <Button
+                        text={'View Meal'}
+                        textStyle={{color: 'white'}}
+                        buttonStyle={styles.mealButton}
+                        onPress={()=>this.props.navigation.navigate('Meal View', {'meal' : this.state.meals[i+1] } )}
+                        />            
+                </Card>
+                </View>)
+        }
+        return cards;
+    }
     render(){
         return(
             <View>
@@ -103,43 +151,17 @@ export default class Meals extends React.Component{
 
                 </View>   
                 {this.state.err ? <Text style={{marginTop: '40%', alignSelf: 'center', color:'grey'}}>{this.state.err}</Text> : <Text></Text>}
-                
-                    <View
-                    nestedScrollEnabled={true} 
-                    onStartShouldSetResponderCapture={() => {
-                     this.setState({ enableScrollViewScroll: true });
-                    }}>
-                    <ScrollView
-                    prop nestedScrollEnabled={true} 
-                    scrollEnabled={this.state.enableScrollViewScroll}
-                    ref={myScroll => (this._myScroll = myScroll)}>
-                        <View
-                        nestedScrollEnabled={true}>
-                            <FlatList 
-                            nestedScrollEnabled={true}
-                                data={this.state.meals}
-                                numColumns={2} 
-                                keyExtractor={(item) => item.id}
-                                renderItem={(item) => 
-                                    <Card key={item.id}>
-                                        <Card.Title>
-                                            {item.item.name}
-                                        </Card.Title>
-                                    
-                                        <Button
-                                            text={'View Meal'}
-                                            textStyle={{color: 'white'}}
-                                            buttonStyle={styles.mealButton}
-                                            onPress={()=>{
-                                                this.props.navigation.navigate('Meal View', {'meal' : item.item} ) ;
-                                            }}
-                                            /> 
-                                    </Card>  
-                            }
-                            />
+                    <SafeAreaView
+                        style={{marginBottom: 350}}
+                    >
+                    <View>
+                    <ScrollView>
+                        <View>
+                            {this.render_user_meals()}
                         </View>
                     </ScrollView>
                     </View>
+                    </SafeAreaView>
                 
                 </View>
         )

@@ -1,9 +1,12 @@
 import React from 'react';
-import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, Modal, TouchableHighlight, AsyncStorage} from 'react-native';
+import {  View, TouchableWithoutFeedback, Dimensions, TextInput, StyleSheet, ScrollView, Modal, TouchableHighlight, AsyncStorage, LogBox} from 'react-native';
 import { Card, ListItem, Icon, Text, Input } from 'react-native-elements';
 import Button from './Button';
 import * as helper from '../backend/helper'
 import * as controller from '../backend/controller'
+
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
 
 export default class MealInfo extends React.Component{
     constructor(){
@@ -174,10 +177,23 @@ export default class MealInfo extends React.Component{
                 >
                     <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Input
-                        placeholder={this.state.modalVals.name}
+                      
+                        <TextInput
                         onChangeText={value => this.changeName(value)}
+                        value={this.state.modalVals.name}
+                        style={styles.input}
                         />
+                        <TextInput
+                        onChangeText={value => this.returnCurrIngredientsString(value)}
+                        value={this.state.modalVals.ingredients}
+                        style={styles.input}
+                        />
+                        <TextInput
+                        onChangeText={value => this.changeName(value)}
+                        value={this.state.modalVals.name}
+                        style={styles.input}
+                        />
+
                         <Input
                         placeholder={this.returnCurrIngredientsString()}
                         onChangeText={value => this.changeIngredients(value)}
@@ -345,6 +361,16 @@ const styles = StyleSheet.create({
       modalText: {
         marginBottom: 15,
         textAlign: "center"
-      }
+      },
+      input: {
+        width: 250,
+        height: 44,
+        padding: 10,
+        marginTop: 20,
+        marginBottom: 10,
+        backgroundColor: '#e8e8e8',
+        borderBottomColor: '#000000',
+        borderBottomWidth: 1,
+      },
     
 });
