@@ -66,30 +66,6 @@ export default class Meals extends React.Component{
         }
       };
 
-    getMealCards(){
-        var cards = [];
-
-        for(const i in this.state.meals){
-            cards.push(
-            <Card key={this.state.meals[i].id}>
-                <Card.Title>
-                    {this.state.meals[i].name}
-                </Card.Title>
-                <Text>
-                    Serves: {this.state.meals[i].servings}
-                </Text>
-                <Button
-                    text={'View Meal'}
-                    textStyle={{color: 'white'}}
-                    buttonStyle={styles.mealButton}
-                    onPress={()=>this.props.navigation.navigate('Meal View', 
-                                                        {'meal' : this.state.meals[i] } )}
-                    />            
-            </Card>)
-        }
-        return cards;
-    }
-
     addMeal(){
         this.props.navigation.navigate('Add Meal', {update : this.get_meals})
 
@@ -99,15 +75,10 @@ export default class Meals extends React.Component{
         let cards = [];
         let card_data = this.state.meals;
 
-        if (card_data.length % 2 != 0) {
-            card_data.push({});
-        }
-
         for(let i = 0; i < card_data.length; i += 2){
                 cards.push(
                 <View style={{flex: 1, flexDirection: 'row'}}>
-                <Card style={{width: 100}}
-                        key={i}>
+                <Card key={i}>
                     <Card.Title>
                         {this.state.meals[i].name}
                     </Card.Title>
@@ -122,7 +93,7 @@ export default class Meals extends React.Component{
                         onPress={()=>this.props.navigation.navigate('Meal View', {'meal' : this.state.meals[i] } )}
                         />            
                 </Card>
-                
+                {i + 1 != card_data.length &&
                 <Card key={i+1}>
                     <Card.Title>
                         {this.state.meals[i+1].name}
@@ -138,21 +109,22 @@ export default class Meals extends React.Component{
                         onPress={()=>this.props.navigation.navigate('Meal View', {'meal' : this.state.meals[i+1] } )}
                         />            
                 </Card>
-                </View>)
+                }
+                </View>
+                )
         }
         return cards;
     }
     render(){
         return(
             <View>
-                <View>
+                <View style={{flex:0, flexDirection:"row", justifyContent:'space-between'}}>
                      <Text style={styles.header} h2>My Meals</Text>
                      <Button text={'+'} textStyle={{color:'white', fontSize: 36}} buttonStyle={styles.add} onPress={()=>this.addMeal()}/>
-
                 </View>   
                 {this.state.err ? <Text style={{marginTop: '40%', alignSelf: 'center', color:'grey'}}>{this.state.err}</Text> : <Text></Text>}
                     <SafeAreaView
-                        style={{marginBottom: 350}}
+                        style={{marginBottom: 200, marginLeft: 'auto', marginRight: 'auto'}}
                     >
                     <View>
                     <ScrollView>
