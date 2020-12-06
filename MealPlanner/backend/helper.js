@@ -46,7 +46,6 @@ export function remove_duplicates(array) {
   let final = []
   let index = 0
 
-
   for(const [key,value] of Object.entries(counts)) {
     if (value > 1)
       final.push("" + key + " x " + value);
