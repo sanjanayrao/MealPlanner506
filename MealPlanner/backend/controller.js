@@ -145,7 +145,7 @@ export async function add_meal(username, name, ingredients, steps, servings) {
     var meal = {
         name: name,
         ingredients: ingredients,
-        directions: steps,
+        steps: steps,
         servings: servings ,
         username: encoded_username
     }
@@ -207,7 +207,7 @@ export async function get_meals(username) {
                 meal.id = meal_doc.id;
                 meal.name = meal_doc.data.name;
                 meal.ingredients = meal_doc.data.ingredients.join(",");
-                meal.steps = meal_doc.data.directions;
+                meal.steps = meal_doc.data.steps;
                 meal.servings = meal_doc.data.servings;
                 meal.username = meal_doc.data.username;
                 response.meals.push(meal);
@@ -247,7 +247,7 @@ export async function get_deck_meals(username) {
                 meal.id = meal_doc.id;
                 meal.name = meal_doc.data.name;
                 meal.ingredients = meal_doc.data.ingredients.join(",");
-                meal.steps = meal_doc.data.directions;
+                meal.steps = meal_doc.data.steps; 
                 meal.servings = meal_doc.data.servings;
                 meal.username = meal_doc.data.username;
                 response.meals.push(meal);
@@ -600,6 +600,7 @@ export async function update_meal(username, meal){
         if(field != "id")
             meal_doc.data[field] = value;
     }
+    console.log(meal_doc.data.steps);
 
     // Update meal doc in meals collection
     await fb.update_collection(meal_doc, "meals")

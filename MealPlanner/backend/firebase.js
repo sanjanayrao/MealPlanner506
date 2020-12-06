@@ -16,7 +16,7 @@ export default !firebase.apps.length ? firebase.initializeApp(firebase_config) :
 
 const db = firebase.firestore();
 
-const __DEBUG__ = true;
+const __DEBUG__ = false;
 
 
 /**
@@ -34,13 +34,12 @@ export async function query_collection(queries, collection) {
         console.debug("QUERY PARAMETERS:\n", queries);
     }
 
-    console.debug("HERE1");
     // Filter document reference for each query parameter
     var collection_ref = db.collection(collection);
     queries.forEach(query => {
         collection_ref = collection_ref.where(query[0], query[1], query[2]);
     });
-    console.debug("HERE2");
+
     var collection_query = [];
 
     // Retrieve filtered data
@@ -53,7 +52,7 @@ export async function query_collection(queries, collection) {
     .catch(function(error) {
         console.error("Error retrieving document: ", error);
     });
-    console.debug("HERE3");
+
     if(__DEBUG__) {
         console.debug("QUERY DATA:\n", collection_query);
         console.debug("--END DEBUGGING--");

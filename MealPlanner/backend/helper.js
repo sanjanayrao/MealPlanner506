@@ -1,6 +1,9 @@
 export function string_to_array(string) {
-    if(!string.includes(",")){
+    if(Array.isArray(string)){
         return string
+    }
+    if(!string.includes(",")){
+        return [string]
     }
     var arr = string.split(","); 
     
@@ -34,4 +37,22 @@ export function shuffleArray(array) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
+}
+
+export function remove_duplicates(array) {
+  let list = array.sort();
+  var counts = {};
+  list.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+  let final = []
+  let index = 0
+
+
+  for(const [key,value] of Object.entries(counts)) {
+    if (value > 1)
+      final.push("" + key + " x " + value);
+    else 
+      final.push(""+key);
+  }
+
+  return final
 }

@@ -33,6 +33,7 @@ export default class MealInfo extends React.Component{
     componentDidMount(){
         this._retrieveData()
         this.setState({meal : this.props.route.params.meal})
+        console.log(this.props.route.params.meal)
     }
     
     async deleteMeal(){
@@ -85,8 +86,7 @@ export default class MealInfo extends React.Component{
         if(this.state.meal.servings.toString() != this.state.modalVals.servings.toString()){
             mealObj['servings'] = this.state.modalVals.servings;
         }
-        
-        this.setState({meal: mealObj}, ()=>{this.sendUpdate(mealObj)})
+        this.setState({meal: Object.assign({}, mealObj)}, ()=>{this.sendUpdate(mealObj)})
     }
 
     async sendUpdate(mealObj){
@@ -117,16 +117,16 @@ export default class MealInfo extends React.Component{
     }
    returnCurrIngredientsString(){
        let s = ""
-       /*
-       for(const i in this.state.meal.ingredients){
-            let ing = this.state.meal.ingredients[i];
-            let add = ing.amount + " " + ing.unit + " of " + ing.name + ", "
-            s += add;
-       }
        
-       return s;
-       */
-      return this.state.meal.ingredients
+    //    for(const i in this.state.modalVals.ingredients){
+    //         let ing = this.state.modalVals.ingredients[i];
+    //         let add = ing.amount + " " + ing.unit + " of " + ing.name + ", "
+    //         s += add;
+    //    }
+      
+       return this.state.modalVals.ingredients;
+       
+     // return this.state.meal.ingredients
    }
     hideModalAndSave = () =>{
         this.updateMeal();
@@ -138,9 +138,12 @@ export default class MealInfo extends React.Component{
     }
 
     showModal = () =>{
-        
+        console.log(this.state.meal)
+
         this.setState({modalVals: Object.assign({}, this.state.meal)})
         this.setState({modal: true})
+        //console.log(this.state.meals.ingredients)
+      
     }
 
     changeName(val){
@@ -184,8 +187,8 @@ export default class MealInfo extends React.Component{
                         style={styles.input}
                         />
                         <TextInput
-                        onChangeText={value => this.returnCurrIngredientsString(value)}
-                        value={this.state.modalVals.ingredients}
+                        onChangeText={value => this.changeIngredients(value)}
+                        value={this.returnCurrIngredientsString()}
                         style={styles.input}
                         />
                         <TextInput

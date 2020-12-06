@@ -51,8 +51,10 @@ class List extends React.Component {
         response = result;
     })
 
+    let filtered_list = helper.remove_duplicates(response.list);
+
     if(response.success)
-        this.setState({data: response.list});
+        this.setState({data: filtered_list});
   }
    
 
@@ -85,7 +87,7 @@ class List extends React.Component {
        <FlatList 
           data={this.state.data}
           renderItem={this.renderItem}
-          keyExtractor={(item, index) => index.toString()}
+          keyExtractor={(item, index) => new Date().getTime().toString() + (Math.floor(Math.random() * Math.floor(new Date().getTime()))).toString() + index.toString()}
           />
       </View>
     );
