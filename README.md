@@ -1,5 +1,5 @@
 # 506MealPrep
-This repository holds the code for iteration 2 of the Meal Planner application.
+This repository holds the code for the Meal Planner application.
 
 ## Required Software
 The latest version of Node.js is required to build and run the application.
